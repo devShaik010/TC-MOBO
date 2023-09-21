@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+    
+{% block content %}
+{% load cart %}
+<div class="container">
+      <div class="container ">
+           
+            {% for product in products %}
+          
+              <div class="card p-2">
+                  <div class="p-1 rouded rounded-2 card-title bg-dark text-white">
+                        Sno. {{forloop.counter}} <span> <b class="text-white bg-danger p-1 rounded">{{product.name}}</b> </span>
+                  </div>
+                  <div class="content row">
+                          <div class="col-6 ">
+                              <img src="{{product.image.url}}" class="card-img w-50 " alt="">
+                          </div>
+                          <div class="col-6 ">
+                              <p class="bg-light">Quantity = {{product|check_count:request.session.cart}}</p>
+                              <p class="bg-light">Price____= {{product|price_total:request.session.cart}}</p>
+                        </div>
+                  </div>
+              </div>
+              {% endfor %}
+          </div>
+          <div class="title m-3   p-0 m-0">
+            <div class="row bg-light align-center p-2 rouded rouded-2 ">
+              <div class="col-6 h4">
+                   Total Amoun
+              </div>
+              <div class="col-6 text-center h4">
+               = {{products|total_cart_price:request.session.cart}}&#8377;
+              </div>
+            </div>
+         </div>
+          
+          
+      <div class=" rounded  pt-0">
+   
+
+           <div class="container">
+            <div class="row">
+                  <div class="col-4 ps-1">
+                        <a href="/product" class="btn  btn-dark text-white rounded  btn-danger col-lg-3 float-right">Add item </a>
+                  </div>
+
+                  {% if products %}
+                  <div class="col   pl-4 ">
+                        <form action="/check-out/" method="post">
+                              {% csrf_token %}
+                              <input type="text" hidden name="total" value="{{products|total_cart_price:request.session.cart}}">
+                         <input type="submit" class="btn w-100 btn-warning text-black rounded  btn-warning col-lg-3 float-right"  value="Check out" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  </div>
+                  {% endif %}
+            </div>
+            </div>
+           </div>
+           
+           
+      </div>
+</div>
+
+
+  <!-- ----------Model for imput------------ -->
+<!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Check Out Form</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            
+            <div class="m-2 p3">
+                  <form action="/check-out/" method="post">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                          <label for="" class="form-label">Address</label>
+                          <input type="text" name="address" id="" class="form-control" placeholder="" aria-describedby="helpId" required>
+                          <small id="helpId" class="text-muted">Enter current address</small>
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="" class="form-label">Phone</label>
+                          <input type="tel" name="phone" id="" class="form-control" placeholder="" aria-describedby="helpId" required>
+                          <small id="helpId" class="text-muted">Enter working phoe number </small>
+                        </div>
+
+                        <select class="form-select" aria-label="Default select example" name="zone" required>
+                              <option selected>Select Zone</option>
+                              <option value="TOLICHOWKI">TOLICHOWKI</option>
+                              <option value="GACHIBOWLI">GACHIBOWLI</option>
+                              <option value="MEHDIPATNAM">MEHDIPATNAM</option>
+                        </select>
+                        <small id="helpId" class="text-muted">We deliver only these zone</small>
+
+                         <input type="submit" class= " form-control mt-2 btn btn-outline-danger btn-light col-lg-6 flo"   value="Check Out">
+                  </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

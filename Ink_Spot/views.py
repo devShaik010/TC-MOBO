@@ -47,6 +47,8 @@ def index(request):
     product = Product.get_all()
     book = Book.get_all()
     user_profile = (request.session.get('name'))
+    user_mail = (request.session.get('email'))
+    user_phone = (request.session.get('phone'))
     login_button = None
     if user_profile:
         login_button = None
@@ -55,6 +57,8 @@ def index(request):
 
     s_data = {}
     s_data['user'] = user_profile
+    s_data['mail'] = user_mail
+    s_data['phone'] = user_phone
     s_data['login']= login_button     
     s_data['product'] = product 
     s_data['book'] = book 
@@ -151,6 +155,7 @@ def login(request):
             if flag:
                 request.session['customer_id']= customer.id
                 request.session['email']= customer.email
+                request.session['phone']= customer.phone
                 request.session['name']= customer.name
                 
                 return redirect('home')
@@ -221,6 +226,8 @@ def product(request):
         cart = request.POST.get('cart')
         if cart:
             request.session.get('cart').clear()
+
+        
 
     # returning empty cart if cart not exixts
     cart = request.session.get('cart')
@@ -325,3 +332,13 @@ def orders(request):
 def payment_page(request):
     return render('home')
     
+
+def searchBar(request):
+    if request.method == 'GET':
+        query = request.GET.get('query')
+        if query:
+            products = Product.objects.filter(name__icontains=query)
+            return render(request,"testing.html",  {'products':products})
+        else:
+            return(request,'testing.html',{})
+            

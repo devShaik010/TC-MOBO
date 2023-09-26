@@ -10,9 +10,63 @@
  
   
   <title>LOGIN</title>
+  <style>
+    
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  transition: opacity 0.75s, visibility 0.75s;
+  z-index: 9999;
+}
+
+.loader--hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader::after {
+  content: "";
+  width: 75px;
+  height: 75px;
+  border: 15px solid #363535;
+  border-top-color: #ff0000;
+  border-radius: 50%;
+  animation: loading 0.75s ease infinite;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+
+</style>
+<script>
+     window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+  
+    loader.classList.add("loader--hidden");
+  
+    loader.addEventListener("transitionend", () => {
+      document.body.removeChild(loader);
+    });
+  });
+</script>
 </head>
 <body class="bg-light">
   
+  <div class="loader"></div>
 
     
     <div class="container bg-light">
@@ -40,7 +94,7 @@
                       <form class="mx-1 mx-md-4 mt-4" method="POST" action="/login/" >
                       {% csrf_token %}
       
-                        <div class="d-flex flex-row  align-items-center mb-2" style="font-family: verdana;">
+                        <div class="d-flex flex-row  align-items-center mb-2 rouded rouded-5" style="font-family: verdana;">
                           <div class="form-outline flex-fill mb-0">
                             <input type="email" id="" name="email" class="form-control p-3 shadow-sm " placeholder="&#8594;  ENTER MAIL ID " />
                           </div>

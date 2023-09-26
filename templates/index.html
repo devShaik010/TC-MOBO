@@ -1,27 +1,301 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<!-- Main container div body --> 
-               <!-- -----search baar----- --><div class="mb-3">
-  <div class="container">
+<!-- Main container div body -->
 
-    <div class="row height d-flex justify-content-center align-items-center">
 
-      <div class="col-md-6">
-
-        <div class="form">
-          <i class="fa fa-search"></i>
-          <input type="text" class="form-control form-input" placeholder="Search anything...">
-          <span class="left-pan"><i class="fa fa-microphone"></i></span>
-        </div>
-        
+         <!-- ---------------- Booking Models & Form ----------------- -->
+<!-- Modal -->
+<div class="modal fade bg-dark" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content rounded rounded-0">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Mobile reparing</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      
+      <div class="modal-body">
+        
+        <!-- ------Brnad Slection---- -->
+        
+        <form  id="sheetdb-form" name="userAccountSetupForm" onload="alert('Your Booking is Done')" action="https://sheetdb.io/api/v1/58d2lqqnmyrjj" enctype="multipart/form-data" method="POST" class="text-base-content">
+      {% csrf_token %}
+
+        {% if user %}
+          <div class="box" hidden>
+            <input type="text" value="{{user}}" name="data[NAME]">
+            <input type="text" value="{{mail}}" name="data[NUMBER]">
+            <input type="text" value="{{phone}}" name="data[BRAND]">
+          </div>
+       {% endif %}
+          
+          <p class=" p-1 bg-warning  text-dark rounded ">Select Problem || సమస్యను ఎంచుకోండి || समस्या का चयन करें</p>
+          <div class="container parent mb-2">
+            <div class="row gap-1 mb-1">
+                <div class='col text-center shadow-sm border rounded'>
+                <input type="radio" name="imgbackground" id="1" class="d-none imgbgchk" value="apple" name="data[PROBLEM]">
+                  <label for="1">
+                    <!-- <p class="font-sm text-white bg-dark p-1 rounded">Battery Fix</p> -->
+                    <img src="{% static './images/fix/charging.png' %}" class="img-fluid mt-1  "  alt="Image 1">
+                    <div class="tick_container">
+                      <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                    </div>
+                  </label>
+                  <p style="font-size: x-small;">charging fix</p>
+                </div>
+                <div class='col text-center shadow-sm border rounded'>
+                <input type="radio" name="imgbackground" id="2" class="d-none imgbgchk" value="mi" name="data[PROBLEM]">
+                  <label for="2">
+                    <!-- <p class="font-sm text-white bg-dark p-1 rounded">Microphone fix</p> -->
+                    <img src="{% static './images/fix/displayfix.png' %}" class="img-fluid mt-1  "  alt="Image 1">
+                    <div class="tick_container">
+                      <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                    </div>
+                  </label>
+                  <p style="font-size: x-small;">Display fix</p>
+                </div>
+                <div class='col text-center shadow-sm  border rounded'>
+                <input type="radio" name="imgbackground" id="3" class="d-none imgbgchk" value="samsung" name="data[PROBLEM]">
+                  <label for="3">
+                    <img src="{% static './images/fix/battery.png' %}" class="img-fluid mt-1  "  alt="Image 1">
+                    <div class="tick_container">
+                      <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                    </div>
+                  </label>
+                  <p style="font-size: x-small;">Battery fix</p>
+                </div>
+                <div class='col text-center shadow-sm border rounded'>
+                <input type="radio" name="imgbackground" id="4" class="d-none imgbgchk" value="realme" name="data[PROBLEM]">
+                    <label for="4">
+                    <img src="{% static './images/fix/camera.png' %}" class="img-fluid mt-1  "  alt="Image 1">
+                      <div class="tick_container">
+                        <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                      </div>
+                    </label>
+                  <p style="font-size: x-small;">Camera fix</p>
+                </div>
+              </div>
+            <div class="row gap-1 mb-1">
+              <div class='col text-center shadow-sm border rounded'>
+                <input type="radio" name="imgbackground" id="4" class="d-none imgbgchk" value="realme" name="data[PROBLEM]">
+                    <label for="4">
+                    <img src="{% static './images/fix/mic.png' %}" class="img-fluid mt-1  "  alt="Image 1">
+                      <div class="tick_container">
+                        <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                      </div>
+                    </label>
+                  <p style="font-size: x-small;">Mic fix</p>
+                </div>
+                <div class='col text-center shadow-sm border rounded'>
+                  <input type="radio" name="imgbackground" id="4" class="d-none imgbgchk" value="realme" name="data[PROBLEM]">
+                      <label for="4">
+                      <img src="{% static './images/fix/speaker.png' %}" class="img-fluid mt-1  "  alt="Image 1">
+                        <div class="tick_container">
+                          <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                        </div>
+                      </label>
+                  <p style="font-size: x-small;">Speaker fix</p>
+                  </div>
+                  <div class='col text-center shadow-sm border rounded'>
+                    <input type="radio" name="imgbackground" id="4" class="d-none imgbgchk" value="realme" name="data[PROBLEM]">
+                        <label for="4">
+                        <img src="{% static './images/fix/water.png' %}" class="img-fluid mt-1  "  alt="Image 1">
+                          <div class="tick_container">
+                            <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                          </div>
+                        </label>
+                  <p style="font-size: x-small;">Water fix</p>
+                    </div>
+                  <div class='col text-center shadow-sm border rounded'>
+                    <input type="radio" name="imgbackground" id="4" class="d-none imgbgchk" value="realme" name="data[PROBLEM]">
+                        <label for="4">
+                        <img src="{% static './images/fix/lock.png' %}" class="img-fluid mt-1  "  alt="Image 1">
+                          <div class="tick_container">
+                            <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                          </div>
+                        </label>
+                  <p style="font-size: x-small;">Unlock Flash</p>
+
+                    </div>
+             </div>
+
+         </div>
+
+      <br>
+
+
+
+
+           <p class=" p-1 bg-warning text-dark rounded ">Slecet Comany || కంపెనీని ఎంచుకోండి || कंपनी चुनें</p>
+          <div class="container parent">
+            <div class="row gap-1 mb-1">
+                <div class='col text-center shadow-sm border rounded'>
+                <input type="radio" name="imgbackground" id="img1" class="d-none imgbgchk" value="apple">
+                  <label for="img1">
+                    <img src="{% static './images/brands/apple.jpg' %}" class="img-fluid w-70 " alt="Image 1">
+                    <div class="tick_container">
+                      <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                    </div>
+                    </label>
+                </div>
+                <div class='col text-center shadow-sm border rounded'>
+                <input type="radio" name="imgbackground" id="img2" class="d-none imgbgchk" value="mi">
+                  <label for="img2">
+                    <img src="{% static './images/brands/mi.jpg' %}" class="img-fluid w-70" alt="Image 2">
+                    <div class="tick_container">
+                      <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                    </div>
+                  </label>
+                </div>
+                <div class='col text-center shadow-sm  border rounded'>
+                <input type="radio" name="imgbackground" id="img3" class="d-none imgbgchk" value="samsung">
+                  <label for="img3">
+                    <img src="{% static './images/brands/samsung.jpg' %}" class="img-fluid w-70" alt="Image 3">
+                    <div class="tick_container">
+                      <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                    </div>
+                  </label>
+                </div>
+                <div class='col text-center shadow-sm border rounded'>
+                <input type="radio" name="imgbackground" id="img4" class="d-none imgbgchk" value="realme">
+                    <label for="img4">
+                      <img src="{% static './images/brands/realme.jpg' %}" class="img-fluid w-70" alt="Image 4">
+                      <div class="tick_container">
+                        <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                      </div>
+                    </label>
+                </div>
+              </div>
+            <div class="row gap-1 mb-1">
+                <div class='col text-center shadow-sm border rounded'>
+                <input type="radio" name="imgbackground" id="img5" class="d-none imgbgchk" value="vivo">
+                  <label for="img5">
+                    <img src="{% static './images/brands/vivo.jpg' %}" class="img-fluid w-70 " alt="Image 1">
+                    <div class="tick_container">
+                      <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                    </div>
+                    </label>
+                </div>
+                <div class='col text-center shadow-sm border rounded'>
+                <input type="radio" name="imgbackground" id="img6" class="d-none imgbgchk" value="oppo">
+                  <label for="img6">
+                    <img src="{% static './images/brands/oppo.jpg' %}" class="img-fluid w-70" alt="Image 2">
+                    <div class="tick_container">
+                      <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                    </div>
+                  </label>
+                </div>
+                <div class='col text-center shadow-sm  border rounded'>
+                <input type="radio" name="imgbackground" id="img7" class="d-none imgbgchk" value="oneplus">
+                  <label for="img7">
+                    <img src="{% static './images/brands/oneplus.jpg' %}" class="img-fluid w-70" alt="Image 3">
+                    <div class="tick_container">
+                      <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                    </div>
+                  </label>
+                </div>
+                <div class='col text-center shadow-sm border rounded'>
+                <input type="radio" name="imgbackground" id="img8" class="d-none imgbgchk" value="asus">
+                    <label for="img8">
+                      <img src="{% static './images/brands/asus.jpg' %}" class="img-fluid w-70" alt="Image 4">
+                      <div class="tick_container">
+                        <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                      </div>
+                    </label>
+                </div>
+              </div>
+            <div class="row gap-1 mb-1">
+                <div class='col text-center shadow-sm border rounded'>
+                <input type="radio" name="imgbackground" id="img9" class="d-none imgbgchk" value="honor">
+                  <label for="img9">
+                    <img src="{% static './images/brands/honor.jpg' %}" class="img-fluid w-70 " alt="Image 1">
+                    <div class="tick_container">
+                      <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                    </div>
+                    </label>
+                </div>
+                <div class='col text-center shadow-sm border rounded'>
+                <input type="radio" name="imgbackground" id="img10" class="d-none imgbgchk" value="iqoo">
+                  <label for="img10">
+                    <img src="{% static './images/brands/iqoo.jpg' %}" class="img-fluid w-70" alt="Image 2">
+                    <div class="tick_container">
+                      <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                    </div>
+                  </label>
+                </div>
+                <div class='col text-center shadow-sm  border rounded'>
+                <input type="radio" name="imgbackground" id="img11" class="d-none imgbgchk" value="poco">
+                  <label for="img11">
+                    <img src="{% static './images/brands/pcoc.jpg' %}" class="img-fluid w-70" alt="Image 3">
+                    <div class="tick_container">
+                      <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                    </div>
+                  </label>
+                </div>
+                <div class='col text-center shadow-sm border rounded'>
+                <input type="radio" name="imgbackground" id="img12" class="d-none imgbgchk" value="letv">
+                    <label for="img12">
+                      <img src="{% static './images/brands/letv.jpg' %}" class="img-fluid w-70" alt="Image 4">
+                      <div class="tick_container">
+                        <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                      </div>
+                    </label>
+                </div>
+              </div>
+            <div class="row gap-1 mb-1">
+                <div class='col text-center shadow-sm border rounded'>
+                <input type="radio" name="imgbackground" id="img13" class="d-none imgbgchk" value="motorola">
+                  <label for="img13">
+                    <img src="{% static './images/brands/motorola.jpg' %}" class="img-fluid w-70 " alt="Image 1">
+                    <div class="tick_container">
+                      <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                    </div>
+                    </label>
+                </div>
+                <div class='col text-center shadow-sm border rounded'>
+                <input type="radio" name="imgbackground" id="img14" class="d-none imgbgchk" value="nokia">
+                  <label for="img14">
+                    <img src="{% static './images/brands/nokia.jpg' %}" class="img-fluid w-70" alt="Image 2">
+                    <div class="tick_container">
+                      <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                    </div>
+                  </label>
+                </div>
+                <div class='col text-center shadow-sm  border rounded'>
+                <input type="radio" name="imgbackground" id="img15" class="d-none imgbgchk" value="nothing">
+                  <label for="img15">
+                    <img src="{% static './images/brands/nothing.jpg' %}" class="img-fluid w-70" alt="Image 3">
+                    <div class="tick_container">
+                      <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                    </div>
+                  </label>
+                </div>
+                <div class='col text-center shadow-sm border rounded'>
+                <input type="radio" name="imgbackground" id="img16" class="d-none imgbgchk" value="google">
+                    <label for="img16">
+                      <img src="{% static './images/brands/google.jpg' %}" class="img-fluid w-70" alt="Image 4">
+                      <div class="tick_container">
+                        <div class="tick"><img src="{% static './images/svg/done.svg' %}" width="25px" alt=""></div>
+                      </div>
+                    </label>
+                </div> 
+              </div>
+            </div>
+              <hr>
+              <br><br>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <input type="submit" class="btn btn-success fw-bold " value="Submit Reaquest">
+            </div>
+          </form>
     </div>
-    
-  </div>      
+  </div>
+</div>
+
+
+
          <!-- ----------card and catogery option------- -->
-         <div  id="carouselExampleAutoplaying" class="carousel slide mb-5  shadow shadow-sm bg-light border border-0 m-2 rounded rounded-2" data-bs-ride="carousel">
+         <div  id="carouselExampleAutoplaying" class="carousel slide mb-3   shadow shadow-sm  border border-0 m-2 rounded rounded-2" data-bs-ride="carousel">
           <div class="carousel-inner ">
             <div class="carousel-item active">
               <img src="{% static './images/1.png' %}" class="d-block w-110 img-fluid shadow rounded rounded-2" alt="...">
@@ -41,12 +315,12 @@
             <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
             <span class="visually-hidden">Next</span>
           </button>
+
         </div>     
-       
+      
 
 
-
-   
+      
 
 
         <!-- Slection of device for repairing -->
@@ -57,7 +331,7 @@
          </p> 
        </center>
 
-        <div class="d-flex justify-content-center align-item-center justify-item-center mt-4" >
+        <div class="d-flex justify-content-center align-item-center justify-item-center mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <div class="phone d-flex border   align-item-center shadow shadow-sm rounded rounded-5 p-0" style="width: 92%;">
             <img src="{% static '/images/svg/phone.svg' %}" class="p-3  bg-danger mr-2" width="19%" alt="My image">
             <div class="heading d-flex  align-item-center pt-2 ps-2" >
@@ -67,7 +341,7 @@
               </div>
             </div>
             
-            <div class="d-flex justify-content-center align-item-center justify-item-center mt-3 mb-5" >
+            <div class="d-flex justify-content-center align-item-center justify-item-center mt-3 mb-3" >
               <div class="phone d-flex border   align-item-center shadow shadow-sm rounded rounded-5" style="width: 92%;">
                 <img src="{% static '/images/svg/laptop.svg' %}" class="p-3 bg-danger mr-2" width="19%" alt="My image">
                 <div class="heading d-flex  align-item-center pt-2 ps-2" >
@@ -76,9 +350,63 @@
               </div>
           </div>
         </div>
+
+        <div class="container m-0   ">
+          <p class="text-center bg-danger text-white shadow shadow-sm rounded">shope 🛒 your favourite category</p>
+  
+          <div class="row ">
+            <div class="card border border-0 col-4 text-center " style="justify-content: center;" >
+            <a href="product/?categories=11"> 
+              <img  src="{% static './images/services/headphone.png' %}" width="80px" class="border shadow shadow-sm" style="border-radius: 50%;"  alt="">
+            </a>
+                <p class="card-content" style="font-size: x-small;text-shadow: 0.1px 0.1px 0px  red;font-family: Georgia, 'Times New Roman', Times, serif;">Headphones</p>
+            </div>
+            <div class="card border border-0 col-4 text-center " style="justify-content: center;">
+            <a href="product/?categories=10"> 
+              <img src="{% static './images/services/charger.png' %}" width="80px" class="border border shadow shadow-sm" style="border-radius: 50%;"  alt="">
+           </a>
+              <p class="card-content" style="font-size: x-small;text-shadow: 0.1px 0.1px 0px  red;font-family: Georgia, 'Times New Roman', Times, serif;">Charger</p>
+            </div>
+            <div class="card border border-0 col-4 text-center " style="justify-content: center;">
+                <img src="{% static './images/services/usb.png' %}" width="80px" class="border border shadow shadow-sm" style="border-radius: 50%;"  alt="">
+                <p class="card-content" style="font-size: x-small;text-shadow: 0.1px 0.1px 0px  red;font-family: Georgia, 'Times New Roman', Times, serif;">Cables & OTG</p>
+            </div>
+            <div class="card border border-0 col-4 text-center " style="justify-content: center;">
+                <img src="{% static './images/services/glass.png' %}" width="80px" class="border border shadow shadow-sm" style="border-radius: 50%;"  alt="">
+                <p class="card-content" style="font-size: x-small;text-shadow: 0.1px 0.1px 0px  red;font-family: Georgia, 'Times New Roman', Times, serif;">Tempered glass</p>
+            </div>
+            <div class="card border border-0 col-4 text-center " style="justify-content: center;">
+                <img src="{% static './images/services/backcover.png' %}" width="80px" class="border border shadow shadow-sm" style="border-radius: 50%;"  alt="">
+                <p class="card-content" style="font-size: x-small;text-shadow: 0.1px 0.1px 0px  red;font-family: Georgia, 'Times New Roman', Times, serif;">Back covers</p>
+            </div>
+            <div class="card border border-0 col-4 text-center " style="justify-content: center;">
+                <img src="{% static './images/services/skin.png' %}" width="80px" class="border border shadow shadow-sm" style="border-radius: 50%;"  alt="">
+                <p class="card-content" style="font-size: x-small;text-shadow: 0.1px 0.1px 0px  red;font-family: Georgia, 'Times New Roman', Times, serif;">Skin & accesories</p>
+            </div>
+          </div>
+     
+        </div>
+     
         
+
+       
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
        <!-- ---------Core Service------------ -->
-       <center>
+       <!-- <center>
        <p class=" text-center h4 mt-4 bg-dark text-white w-75 shadow shadow-lg border border-0  rounded rounded-3" style="font-weight: ;font-family: fantasy;">
         DOORSTEP SERVICES
       </p>
@@ -130,7 +458,7 @@
          
       </div> 
         
-       </div>
+       </div> -->
 
        
 

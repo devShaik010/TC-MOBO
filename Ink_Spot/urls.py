@@ -13,5 +13,6 @@ urlpatterns = [
     path('orders/',orders, name="orders"),
     path('payment/',payment_page, name="payment"),
     path('products/',searchBar, name="testing"),
+    path('mobile/',phone_form, name="phone"),
 
 ]

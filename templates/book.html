@@ -41,7 +41,7 @@
     <div class="col ">
       <div class="mt-4  card mb-2 shadow  borer border-rounded rounded-1 gradient-border p-2  "   data-bs-toggle="modal" data-bs-target="#modal{{ i.id }}" style="border: 1px solid  rgb(2, 8, 68);">
         <center>
-        <img src="{{i.image.url}}" class=" text-center p-0 card-img m-0 " style="width: 20rem;height: 13rem;filter: brightness(110%);border: 0.8px dotted rgb(2, 8, 68); ;" alt="..." > 
+        <img src="{{i.image.url}}" class=" text-center p-0 card-img m-0  img-fluid" style="filter: brightness(110%);border: 0.8px dotted rgb(2, 8, 68); ;" alt="..." > 
       </center>
         <div class="card-body">
           <p class=" h6 card-title larg mt-1" style="font-family: 'Raleway';color: rgb(2, 8, 68);font-weight: bolder;font-size: large;">{{i.name}}</p>
@@ -50,7 +50,6 @@
       </div>
    </div>
   </div> 
-
 
 
     <!-- Modal -->
@@ -91,6 +90,7 @@
     </div>
 </div>
 {% endfor %}
+<div class="mb-5"></div>
 
 
         

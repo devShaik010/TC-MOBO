@@ -5,3 +5,4 @@ function othername() {
         alert("Click on agree button"); 
     }
 }
+

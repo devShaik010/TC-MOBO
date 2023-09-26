@@ -341,4 +341,6 @@ def searchBar(request):
             return render(request,"testing.html",  {'products':products})
         else:
             return(request,'testing.html',{})
-            
+
+def phone_form(request):
+    return render(request, 'mobile.html')

@@ -3,7 +3,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password, make_password
 # Import packages from Models
 from .models.product import Product
+from .models.profile import Profile
 from .models.categories import Categories
+from .models.profilecat import Profilecat
 from .models.book import Book
 from .models.b_catogeries import B_categories
 from .models.customer import Customer
@@ -337,10 +339,36 @@ def searchBar(request):
     if request.method == 'GET':
         query = request.GET.get('query')
         if query:
-            products = Product.objects.filter(name__icontains=query)
+            products = Product.objects.filter(desc__icontains=query)
             return render(request,"testing.html",  {'products':products})
         else:
             return(request,'testing.html',{})
 
 def phone_form(request):
     return render(request, 'mobile.html')
+
+def profile(request):
+    profile = Profile.get_all()
+    profile = None
+    pcat = Profilecat.all_catogaries()
+    categoryID = request.GET.get('categories')
+    if categoryID:
+        profile = Profile.get_all_filter(categoryID )
+    else:
+        profile = Profile.get_all()
+
+    user_profile = (request.session.get('name'))
+    login_button = None
+    if user_profile:
+        login_button = ''
+    else:
+        login_button = "Login"  
+
+
+    pdata = {} 
+    pdata['profile'] = profile
+    pdata['profilecat'] = pcat
+    pdata['user'] = user_profile
+    pdata['login']= login_button 
+
+    return render(request, 'profile.html',pdata)

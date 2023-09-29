@@ -3,54 +3,17 @@
 {% load static %}
   {% load cart %}
 
-     
 
-  <div class="container bg-ligt  d-fluid ">
- 
-
-    <form action="{% url 'testing' %}" method="get" >
-
-
-   
-
-      <div class="box d-flex gap-1 p-1 " style="justify-content: center;">
-        <input type="text" name="query" placeholder="Find items..." class="rouded  rounded-3 border p-1 w-75" >
-        <input type="submit" value="search" class="btn btn-dark text-white rounded rounded-4"  >
-     </form>
-
-        <div class="contain text-center ">
-         <div class="row mx-auto "   >
-           <div class="dropdown text-center mb-0">
-             <div class="list-group  dropdown-toggle border-0 w-25 "  data-bs-toggle="dropdown" aria-expanded="false"  >
-               Filter
-             </div>
-             <ul class="dropdown-menu dropdown-menu-white" >
-               <li>
-                 <a href="?"  class="dropdown-item w-75 text-center " >Select Items</a></li>
-               <hr>
-               {% for i in catogereis %}
-               <li><a href="?categories={{i.id}}"  class="dropdown-item shadow shadow-sm w-100 m-1 " >&#8594; {{i.name}}</a></li>
-               {% endfor %}
-             </ul>
-           </div>
-          </div>
-       </div>
-      </div>
-      
-
-     
-    
-  
-    <div class="container bg-light  ">
+    <div class="container1 bg-light  ">
       <div class="row">
             {% for i in product %}
             <div class=" col-lg-3 col-6 mb-0 p-1 p-sm-3 ">
-              <div class="mb-2 card border border-0 shadow shadow-sm p-1 " >
+              <div class="mb-2 card   shadow shadow-sm p-1 " style="border-radius: 20px;border: 0.5px solid silver ">
                 <img src="{{i.image.url}}" class="card-img-top mx-auto m-1 p-0  img-fluid " style="width: 150px;height: 150px;"  alt="..." id="{{i.id}}" width="8rem"  data-bs-toggle="modal" data-bs-target="#modal{{ i.id }}"> 
                 <p class="card-title ms-2 ">{{i.name}}</p>
                 <div class="box d-flex">
-                  <p class="  h6 p-0 bg-dark text-white w-50 text-center rounded ">{{i.price}} &#8377;</p>
-                  <p class="  h6 p-0 bg-light text-dark w-50 text-center rounded " style="opacity: 70%;"><del>{{i.discount}} &#8377;</del></p>
+                  <p class="  h5 p-0  text-dark w-50 text-center rounded ">{{i.price}} &#8377;</p>
+                  <p class="  fw-small p-0 bg-light text-dark w-50 text-center rounded " style="opacity: 70%;"><del>{{i.discount}} &#8377;</del></p>
               </div>
               <center>
                 <small style="font-size: x-small;margin-top: -10px;">Free Delevery</small>
@@ -80,7 +43,7 @@
                   <form action="/product/#{{i.id}}" method="POST" class="btn-block p-0">
                     {% csrf_token %}
                   <input name="product" hidden type="text" value='{{i.id}}' />
-                  <input type="submit"  class="btn  border-rounded  bg-danger border-opacity-75  rounded-5 shadow  w-100 text-white" name="cart" style="height:2rem;font-size: small;height: auto; "  value="BUY NOW" />
+                  <input type="submit"  class="btn  border-rounded   border-opacity-75  rounded-5 shadow  w-100 text-white" name="cart" style="height:2rem;font-size: small;height: auto;background-color: #FF9900; "  value="BUY NOW" />
   
                   </form>
                     {% endif %}
@@ -147,6 +110,6 @@
            {% endfor %}
       </div>
       </div>
-     </div>     
+        
            
 {% endblock %}

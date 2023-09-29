@@ -10,10 +10,9 @@
     <link href="{% static 'css/main.css' %}" rel="stylesheet" integrity="maincss" crossorigin="anonymous">
     <link href="{% static 'css/style.css' %}" rel="stylesheet" integrity="stylecss" crossorigin="anonymous">
     <link href="{% static 'css/font/style1.css' %}" rel="stylesheet" integrity="stylecss1" crossorigin="anonymous">
+    
   </head>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Nabla&display=swap');
-  </style>
+ 
   <script>
       
     window.addEventListener("load", () => {
@@ -49,168 +48,71 @@ $(".image-checkbox").on("click", function (e) {
   
       </script>    
 
-  <body style="font-family:Product Sans Medium Regular;"  class="bg-light bg-opacity-25">    
+<body>    
     <!-- Nev baar -->
+    
     <div class="loader"></div>
-    <nav  class="navbar navbar-expand-lg bg-white shadow shadow-sm    m-0 p-1 border border-dark "  >
-      <div class="container-fluid">
-        {% if user %}
-          <!-- <script src="https://cdn.lordicon.com/bhenfmcm.js"></script> -->
-          <img src="{% static '/images/svg/menu.png' %}" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-         
-      <h3 class="title h3" style="font-family: 'Nabla', cursive;text-shadow: 0px 0px 10px black;">TC MOBO</h3>
-        {% endif %}
-        {% if user %}
-        <button class="bg-white border border-0" type="button" >
-          <lord-icon
-              src="https://cdn.lordicon.com/hbvyhtse.json"
-              trigger="click"
-              colors="primary:#121331"
-              style="width:50px;height:50px">
-          </lord-icon>  
-        </button>
-        {% endif %}
-        
-        <div class="  offcanvas offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-          <div class="offcanvas-header">
-            {% if user %}
-            <p class="offcanvas-title alert alert-success" id="offcanvasDarkNavbarLabel"><span class="text-dark">Welcome ! </span> {{user}}</p>
-            {% else %}
-            <h5 class="offcanvas-title  alert alert-danger" id="offcanvasDarkNavbarLabel">Please Login</h5>
-            {% endif %}
-            <button type="button" class="btn-close bg-dark text-white me-1" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-          
-            
-          <form class="d-flex">
-            <ul class="navbar-nav me-auto  bg-danger p-2 w-100 rounded shadow-sm mb-lg-0">  
-            {% if user %}
-            <li class="nav-item  ">
-              <a href="/orders" class="link text-black ">
-                <button type="button" class="btn bg-light position-relative" >
-                  ORDERS
-                 
-                </button>
-              </a>
-            </li>
-            {% endif %}
+    <form action="{% url 'testing' %}" method="get" >
+		<div class="navbar fixed fixed-top">
+			<div class="search-bar">
+				<input type="text" id="search-input" type="text" name="query" placeholder="Search any items">
+				<button id="search-button" type="submit">
+					<img src="{% static 'images/svg/search.svg' %}" alt="Search">
+				</button>
+			</div>
+    </form>
 
-            <li class="nav-item dropdown ">
-              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                {% if user %}
-                <b class="text-white">{{user}}</b>
-                {% endif %}
-              </a>
-
-              
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/login" >
-                {% if login %}
-                {{login}}
-                {% endif %}
-
-                </a></li>
-                {% if user %}
-                
-                <li><a class="dropdown-item" href="/login">logout</a></li>
-                {% else %}
-                <li><a class="dropdown-item" href="/signup/#signup">Register</a></li>
-                <li><a class="dropdown-item" href="/admin" >Partner</a></li>
-                {% endif %}
-              </ul> 
-             </li>
-
-             
-
-             <li class="nav-item">
-              <lord-icon
-                  src="https://cdn.lordicon.com/dqxvvqzi.json"
-                  trigger="loop"
-                  delay="4500"
-                  colors="outline:#121331,danger:#ffffff,secondary:#ffffff"
-                  style="width:35px;height:35px">
-              </lord-icon>
-            </li>
-             </ul> 
-            </li>
-          </form>
-
-        </div>
-      </div>
-
-   </nav>
-
+		</div>
+<br><br>
 
     <!-- end nev -->
-
     {% block content %}
     
     
     
     {% endblock %}
 
-    <br>
-    <br>
-
+    <br><br>
     <!-- Footer  -->
      <!-- --------Services icons------------------ -->
-     <div class="container px-1  text-center border shadow shadow-sm fixed-bottom bg-white">
-      <div class="row gx-5  pt-2 pb-2 border  text-center">
-        <div class="col-3  d-flex">
-          <a class="nav-link active ps-4" aria-current="page" href="/" >
-            <lord-icon
-                src="https://cdn.lordicon.com/slduhdil.json"
-                trigger="click"
-                colors="primary:#121331"
-                style="width:40px;height:40px">
-            </lord-icon> 
-          </a>
-        </div>
-        <div class="col-3 d-flex ">
-          <a class="nav-link active ps-4" aria-current="page" href="/product" ><script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
-            <lord-icon
-    src="https://cdn.lordicon.com/lqsduwhb.json"
-    trigger="click"
-    colors="primary:#121331"
-    style="width:40px;height:40px">
-</lord-icon></a>
-        </div>
-        <div class="col-3 d-flex">
-          <a class="nav-link active ps-4" aria-current="page" href="/book" >
-            <lord-icon
-                src="https://cdn.lordicon.com/pkmkagva.json"
-                trigger="click"
-                colors="primary:#121331"
-                style="width:40px;height:40px">
-            </lord-icon></a>
-        </div>
-        <div class="col-3 ">
-         
-          {% if user %}
-          
-          <a href="/cart" class="link text-black ">
-          <button type="button" class="btn bg-white position-relative p-0">
-            <lord-icon
-                src="https://cdn.lordicon.com/udbbfuld.json"
-                trigger="click"
-                colors="primary:#121331"
-                style="width:40px;height:40px">
-            </lord-icon>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            {{request.session.cart.keys|length}}
-              <span class="visually-hidden">unread messages</span>
-            </span>
-          </button>
-        </a>
-        
-       {% endif %}
-        </div>
-      </div>
-    </div>
+     <nav class="footer-nav">
+      <a href="/" class="nav-item" id="home">
+        <img src="{% static 'images/svg/home.svg' %}" width="50%"  alt="">
+        <span>Home</span>
+      </a>
+
+      <a href="/book" class="nav-item" id="buy-sell">
+        <img src="{% static 'images/svg/sell.svg' %}"   width="50%" alt="">
+        <span>Buy/Sell</span>
+      </a>
+
+      <a href="/product" class="nav-item" id="store">
+        <img src="{% static 'images/svg/shop.svg' %}" width="50%"   alt="">
+        <span>Store</span>
+      </a>
+
+      <a href="/cart" class="nav-item" id="cart">
+        <button type="button" class="btn bg-white position-relative p-0">
+        <img src="{% static 'images/svg/cart.svg' %}" width="50%"  alt="">
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
+          {{request.session.cart.keys|length}}
+        </span>
+        <span style="font-size: x-small;">Cart</span>
+        </button>
+      </a>
+
+      <a href="/profile" class="nav-item" id="settings">
+        <img src="{% static 'images/svg/profile.svg' %}" width="50%"  alt="">
+        <span>Settings</span>
+      </a>
+
+  
+
+    </nav>
     
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
+    
     
    </div>
 

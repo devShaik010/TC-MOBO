@@ -1,0 +1,46 @@
+{% extends 'base.html' %} 
+{% block content %}
+{% load static %}
+
+
+ 
+   {% for i in profile %}
+      <div class="container p-2 mt-4 ">
+            <div class="  row m-0  rounded rounded-3 shadow shadow-sm  m-1 p-1 " >
+               {% if i.status %}
+               <span class="badge gradient-border" style="background-color: #FF9900;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">ONLINE</span>
+               {% else %}
+               <span class="badge" style="background-color: #232f3e;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">OFFLINE</span>
+               {% endif %}
+               <div class="img col-4  p-1 text-center" >
+               <img src="{{i.image.url}}" class="img-fluid rounded rounded-3 border gradient-border " alt="">
+               <p class="mt-1" style="font-size: small;">{{i.name}}</p>
+            </div>
+            
+            
+            <div class="title col-8 ">
+               <br>
+               <b style="font-size: small;" class="mt-2">SERVICES OFFER</b>
+               <p class="" style="font-size: small;"> {{i.services}}</p>
+               
+               <b style="font-size: x-small;">LOCATION</b>
+               <p class="" style="font-size: x-small;"> {{i.location}}</p>
+               
+               {% if i.status %}
+                  <div class="contact d-flex  gap-2">
+                     <a href="tel:8897103324">
+                     <button class="btn btn-sm w-100 text-white btn-block" style="box-shadow: 0 0 1px  rgba(37, 199, 211, 0.7);background-color: rgba(37, 199, 211, 0.7);">contact</button>
+                     </a>
+                  <div class="contact d-flex  gap-2">
+                     <a href="https://wa.me/{{i.phone}}?text=Contact%20from%20MOBOFIX">
+                     <button class="btn btn-sm w-100 text-white btn-block" style="box-shadow: 0 0 1px rgba(37, 211, 102, 0.7);background-color: rgba(37, 211, 102, 0.7);">WhatsApp</button>
+                  </a>
+                  </div>
+               </div>
+               {% endif %}
+
+            </div>
+      </div>
+      </div>
+   {% endfor %}
+{% endblock %}

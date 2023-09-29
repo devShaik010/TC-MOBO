@@ -196,7 +196,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-dark"  data-bs-dismiss="modal">Close</button>
-              <input type="submit" class="btn btn-danger fw-bold " value="Submit Reaquest">
+              <input type="submit" class="btn btn-warning fw-bold " value="Submit Reaquest">
             </div>
           </form>
     </div>
@@ -238,91 +238,130 @@
 
         <!-- Slection of device for   ing -->
 
-        <center>
-          <p class=" text-center gradient-border h4 mt-4 bg-dark text-white w-75 shadow shadow-lg border border-0  rounded rounded-3" style="font-family: fantasy;">
-           SELECT YOUR DEVICE 
-         </p> 
-       </center>
+        
 
-        <div class="d-flex justify-content-center align-item-center justify-item-center mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          <div class="phone d-flex border   align-item-center shadow shadow-sm rounded rounded-5 p-0" style="width: 92%;">
-            <img src="{% static '/images/svg/phone.svg' %}" class="p-3  bg-danger mr-2" width="19%" alt="My image">
-            <div class="heading d-flex  align-item-center pt-2 ps-2" >
-                  <h5 class=" ">Mobile    <br>
-                  <small style="font-size: 0.6rem;">Complete Software & Hardware solutions.</small></h3>
+        <div class="container mb-5">
+          <div class="row gap-0 gutters p-1">
+              <div class="col-6 mb-2">
+                <div class="service-box shadow shadow-sm border rounded gradient-border rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <img src="{% static 'images/services/phone.jpg' %}" alt="#">
+                  <p>Phone Repair</p>
+                  <span class=" text-white p-1 rounded rounded-3" style="background-color: #232f3e;">&#8594;</span>
                 </div>
               </div>
-            </div>
-            
-            <div class="d-flex justify-content-center align-item-center justify-item-center mt-3 mb-3" >
-              <div class="phone d-flex border   align-item-center shadow shadow-sm rounded rounded-5" style="width: 92%;">
-                <img src="{% static '/images/svg/laptop.svg' %}" class="p-3 bg-danger mr-2" width="19%" alt="My image">
-                <div class="heading d-flex  align-item-center pt-2 ps-2" >
-                  <h5 class="">Laptop / Pc    <br>
-                    <small style="font-size: 0.6rem;">Complete Software & Hardware solutions.</small></h3>
+              <div class="col-6 mb-2">
+                <div class="service-box shadow shadow-sm border rounded rounded-2 gradient-border">
+                  <img src="{% static 'images/services/laptop.png' %}" alt="#">
+                  <p>Laptop Repair</p>
+                  <span class=" text-white  p-1 rounded rounded-3" style="background-color: #232f3e;">&#8594;</span>
+                  </div>
+              </div>
+              <div class="col-6">
+                  <div class="service-box shadow shadow-sm border border-warning rounded rounded-2">
+                      <img src="{% static 'images/services/store.jpeg' %}" alt="#">
+                      <p>Online Store</p>
+                  </div>
+              </div>
+              <div class="col-6">
+                  
+                  <div class="service-box shadow shadow-sm border border-warning  rounded rounded-2">
+                      <img src="{% static 'images/services/second.png' %}" alt="#">
+                      <p>Buy & Sell</p>
+                  </div>
               </div>
           </div>
+
+
+          <div class="row gap-0 gutters p-3">
+                    <p class="text-center fw-bold " style="font-size: large;">OUR BEST SERVICES</p>
+            <div class="col-3 p-0">
+              <div class="service-box shadow shadow-sm p-1 rounded  rounded-2" style="border:0.6px solid #232f3e;">
+                <img src="{% static 'images/services/cctv.png' %}" alt="#">
+                <p style="font-size: x-small;" class="fw-bold">CCTV SETUP</p>
+              </div>
+            </div>
+            <div class="col-3 p-0">
+              <div class="service-box shadow shadow-sm p-1 rounded  rounded-2" style="border:0.6px solid #232f3e;">
+                <img src="{% static 'images/services/laptop.png' %}" alt="#">
+                <p style="font-size: x-small;" class="fw-bold">WIFI LAN SETUP</p>
+                </div>
+            </div>
+            <div class="col-3 p-0">
+              <div class="service-box shadow shadow-sm p-1 rounded  rounded-2" style="border:0.6px solid #232f3e;">
+                    <img src="{% static 'images/services/store.jpeg' %}" alt="#">
+                <p style="font-size: x-small;" class="fw-bold">OTHER SERVICES</p>
+              </div>
+            </div>
+            <div class="col-3 p-0">
+              
+              <div class="service-box shadow shadow-sm p-1 rounded  rounded-2" style="border:0.6px solid #232f3e;">
+                <img src="{% static 'images/services/second.png' %}" alt="#">
+                <p style="font-size: x-small;" class="fw-bold">OTHER SERVICES</p>
+                </div>
+            </div>
         </div>
 
-        <div class="container m-0   mb-5">
-          <p class="text-center bg-danger text-white shadow shadow-sm rounded">shope 🛒 your favourite category</p>
-  
-          <div class="row ">
-            <div class="card border border-0 col-4 text-center " style="justify-content: center;" >
-            <a href="product/?categories=11"> 
-              <img  src="{% static './images/services/headphone.png' %}" width="70px" class="border shadow shadow-sm" style="border-radius: 50%;"  alt="">
-            </a>
-                <p class="card-content" style="font-size: x-small;text-shadow: 0.1px 0.1px 0px  red;font-family: Georgia, 'Times New Roman', Times, serif;">Headphones</p>
-            </div>
-            <div class="card border border-0 col-4 text-center " style="justify-content: center;">
-            <a href="product/?categories=10"> 
-              <img src="{% static './images/services/charger.png' %}" width="70px" class="border border shadow shadow-sm" style="border-radius: 50%;"  alt="">
-           </a>
-              <p class="card-content" style="font-size: x-small;text-shadow: 0.1px 0.1px 0px  red;font-family: Georgia, 'Times New Roman', Times, serif;">Charger</p>
-            </div>
-            <div class="card border border-0 col-4 text-center " style="justify-content: center;">
-                <img src="{% static './images/services/usb.png' %}" width="70px" class="border border shadow shadow-sm" style="border-radius: 50%;"  alt="">
-                <p class="card-content" style="font-size: x-small;text-shadow: 0.1px 0.1px 0px  red;font-family: Georgia, 'Times New Roman', Times, serif;">Cables & OTG</p>
-            </div>
-            <div class="card border border-0 col-4 text-center " style="justify-content: center;">
-                <img src="{% static './images/services/glass.png' %}" width="70px" class="border border shadow shadow-sm" style="border-radius: 50%;"  alt="">
-                <p class="card-content" style="font-size: x-small;text-shadow: 0.1px 0.1px 0px  red;font-family: Georgia, 'Times New Roman', Times, serif;">Tempered glass</p>
-            </div>
-            <div class="card border border-0 col-4 text-center " style="justify-content: center;">
-                <img src="{% static './images/services/backcover.png' %}" width="70px" class="border border shadow shadow-sm" style="border-radius: 50%;"  alt="">
-                <p class="card-content" style="font-size: x-small;text-shadow: 0.1px 0.1px 0px  red;font-family: Georgia, 'Times New Roman', Times, serif;">Back covers</p>
-            </div>
-            <div class="card border border-0 col-4 text-center " style="justify-content: center;">
-                <img src="{% static './images/services/skin.png' %}" width="70px" class="border border shadow shadow-sm" style="border-radius: 50%;"  alt="">
-                <p class="card-content" style="font-size: x-small;text-shadow: 0.1px 0.1px 0px  red;font-family: Georgia, 'Times New Roman', Times, serif;">Skin & accesories</p>
+          
+
+          
+
+          <a href="/profile" style="text-decoration: none;color: white;">
+          <div  class="service-box shadow shadow-sm border rounded rounded-2 row  " style="background-color: #FF9900;"> 
+            <img src="{% static 'images/services/profile.png' %}" class="col-4" alt="#">
+            <div class="content col-8">
+               <h4>Technicians</h4>
+              <p style="font-size: x-small;">Just connect with technician and repair your device.</p>
+              <span class="bg-secondary text-white p-1 rounded rounded-3">&#8594;</span>
             </div>
           </div>
-     
+        </a>
+          <div  class="service-box shadow shadow-sm border rounded rounded-2 row text-white " style="background-color: #232f3e;">
+            <img src="{% static 'images/services/store.png' %}" class="col-4" alt="#">
+            <div class="content content col-8">
+              <h4>Stores</h4>
+              <p style="font-size: x-small;">Near by stores at your location reapir device physically</p>
+              <span class="bg-secondary text-white p-1 rounded rounded-3">&#8594;</span>
+          </div>
         </div>
-     
+      </div>
+  
+      
+      
+
         
+    
+        
+    
+
+     <div class="product-slider mb-5">
+      <div class="slider ">
+          <div class="slide shadow rounded border" >
+              <img src="product1.jpg" alt="Product 1">
+              <h2>Product 1</h2>
+              <p>Description for Product 1.</p>
+          </div>
+          <div class="slide shadow rounded border">
+              <img src="product2.jpg" alt="Product 2">
+              <h2>Product 2</h2>
+              <p>Description for Product 2.</p>
+          </div>
+          <div class="slide shadow rounded border">
+              <img src="product3.jpg" alt="Product 3">
+              <h2>Product 3</h2>
+              <p>Description for Product 3.</p>
+          </div>
+          <!-- Add more slides as needed -->
+      </div>
+      <div class="controls">
+          <button style="border-radius: 15px;" id="prev">Previous</button>
+          <button style="border-radius: 15px;" id="next">Next</button>
+      </div>
+    </div>
+
 
        
         
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-       
-
-        
-
-           
 
            
 {% endblock %}

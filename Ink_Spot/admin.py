@@ -10,7 +10,7 @@ from .models.order import Order
 
 
 class Book_display(admin.ModelAdmin):
-    list_display = ['name', 'a_uth', 'desc', 'b_categories']
+    list_display = ['model', 'owner_name', 'about', 'b_categories']
     
 class B_categories_display(admin.ModelAdmin):
     list_display = ['name','id']

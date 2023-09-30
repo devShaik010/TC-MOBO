@@ -14,13 +14,15 @@ SECRET_KEY = 'django-insecure-l_-orv@)j2o5(#97-dnnl2ahtnef*^$2^u547e8zfqt9##6dmd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['192.168.0.105']
 
 
 # Application definition
 
-INSTALLED_APPS = [     
-    'django.contrib.admin',  
+INSTALLED_APPS = [   
+    "admin_interface",
+    "colorfield", 
+    'django.contrib.admin', 
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -28,6 +30,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Ink_Spot',
 ]
+
+X_FRAME_OPTIONS = "SAMEORIGIN"
+SILENCED_SYSTEM_CHECKS = ["security.W019"]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

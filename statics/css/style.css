@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 
 html {
@@ -9,107 +8,11 @@ html {
 body
 {
     font-family: 'Poppins', sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
-.height{
 
-height: 10vh;
-}
-
-.form{
-
-position: relative;
-}
-
-.form .fa-search{
-
-position: absolute;
-top:20px;
-left: 20px;
-color: #ff9191;
-
-}
-
-.form span{
-
-   position: absolute;
-right: 17px;
-top: 13px;
-padding: 2px;
-border-left: 1px solid #ff0f0f;
-
-}
-
-.left-pan{
-padding-left: 7px;
-}
-
-.left-pan i{
-
-padding-left: 10px;
-}
-
-.form-input{
-
-height: 55px;
-text-indent: 33px;
-border-radius: 10px;
-}
-
-.form-input:focus{
-
-box-shadow: none;
-
-}
-       .parent{
-           background-color: white;
-       }
-       .parent>.row{
-           display: flex;
-           align-items: center;
-           height: 100%;
-       }
-       .col img{
-           cursor: pointer;
-           transition: transform 1s;
-           object-fit: cover;
-       }
-       .col label{
-           overflow: hidden;
-           position: relativ e;
-       }
-       .imgbgchk:checked + label>.tick_container{
-           opacity: 1;
-
-       }
-/*         aNIMATION */
-       .imgbgchk:checked + label>img{
-           transform: scale(1.25);
-           opacity: 0.3;
-           background-color: green;
-
-       }
-       .tick_container {
-           transition: .5s ease;
-           opacity: 0;
-           position: absolute;
-           top: 50%;
-           left: 50%;
-           transform: translate(-50%, -50%);
-           -ms-transform: translate(-50%, -50%);
-           cursor: pointer;
-           text-align: center;
-
-       }
-       .tick {
-           /* background-color: rgba(0, 0, 0, 0.144); */
-           /* color: white; */
-           font-size: 16px;
-           padding: 6px 12px;
-           height: 40px;
-           width: 40px;
-           border-radius: 100%;
-       }
        
 .loader {
  position: fixed;
@@ -137,7 +40,7 @@ box-shadow: none;
  border: 15px solid #232f3e;
  border-top-color: #FF9900;
  border-radius: 50%;
- animation: loading 0.75s ease infinite;
+ animation: loading 0.70s ease infinite;
 }
 
 
@@ -149,6 +52,8 @@ box-shadow: none;
    transform: rotate(1turn);
  }
 }
+
+
 
 
 #box {

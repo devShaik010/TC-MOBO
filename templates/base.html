@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
     <title>TC MOBILE'S</title>
     {% load static %}
     
@@ -45,6 +46,9 @@ $(".image-checkbox").on("click", function (e) {
   e.preventDefault();
 });
 
+
+
+
   
       </script>    
 
@@ -52,15 +56,19 @@ $(".image-checkbox").on("click", function (e) {
     <!-- Nev baar -->
     
     <div class="loader"></div>
-    <form action="{% url 'testing' %}" method="get" >
-		<div class="navbar fixed fixed-top">
-			<div class="search-bar">
-				<input type="text" id="search-input" type="text" name="query" placeholder="Search any items">
-				<button id="search-button" type="submit">
-					<img src="{% static 'images/svg/search.svg' %}" alt="Search">
-				</button>
-			</div>
-    </form>
+ 
+    <form id="myForm" action="{% url 'testing' %}" method="get">
+    <div class="navbar fixed fixed-top">
+        <div class="search-bar">
+            <input type="text" id="search-input" name="query" placeholder="Search any items">
+            <button id="search-button" type="submit">
+                <img src="{% static 'images/svg/search.svg' %}" alt="Search">
+            </button>
+        </div>
+    </div>
+</form>
+
+         
 
 		</div>
 <br><br>

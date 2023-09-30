@@ -336,13 +336,23 @@ def payment_page(request):
     
 
 def searchBar(request):
-    if request.method == 'GET':
-        query = request.GET.get('query')
-        if query:
-            products = Product.objects.filter(desc__icontains=query)
-            return render(request,"testing.html",  {'products':products})
+    query = request.GET.get('query')
+    if query:
+        products = Product.objects.filter(desc__icontains=query)
+        if not products:
+            return render(request, 'testing.html', {'alert': True})
         else:
-            return(request,'testing.html',{})
+            return render(request, 'testing.html', {'products': products})
+
+
+
+    product = Product.get_all()
+    data = {}
+    data['products'] = product
+    # data['empty']
+    # Handle the case where the query is empty
+    return render(request, 'testing.html',data)
+
 
 def phone_form(request):
     return render(request, 'mobile.html')

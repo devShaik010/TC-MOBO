@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-l_-orv@)j2o5(#97-dnnl2ahtnef*^$2^u547e8zfqt9##6dmd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.105']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Ink_Spot',
+    'storages'
 ]
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
@@ -121,3 +122,18 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# aws access key 
+
+AWS_ACCESS_KEY_ID = "   "
+AWS_SECRET_ACCESS_KEY = "iVfxpjcJFbB1ERMsiAuCSMa+MgOfk9Cx4glz4IVl"
+
+AWS_STORAGE_BUCKET_NAME = "mobo-bucket-09"
+
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
+STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+

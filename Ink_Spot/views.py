@@ -10,6 +10,8 @@ from .models.book import Book
 from .models.b_catogeries import B_categories
 from .models.customer import Customer
 from .models.order import Order
+from .models.pform import Pform
+
 
 #payment gatway
 import razorpay
@@ -51,6 +53,7 @@ def index(request):
     user_profile = (request.session.get('name'))
     user_mail = (request.session.get('email'))
     user_phone = (request.session.get('phone'))
+    location = (request.session.get('location'))
     login_button = None
     if user_profile:
         login_button = None
@@ -64,11 +67,13 @@ def index(request):
     s_data['login']= login_button     
     s_data['product'] = product 
     s_data['book'] = book 
+    s_data['location'] = location
     
     if user_profile:
         return render(request, 'index.html' ,s_data)
     else:
         return render(request,'login.html')
+
 
 # For Creating User ( signup )
 def sign_up(request):
@@ -82,16 +87,18 @@ def sign_up(request):
         name = postData.get('name')
         email = postData.get('email')
         phone = postData.get('phone')
+        area = postData.get('area')
         password = postData.get('password')
         rpassword = postData.get('rpassword')
 
         error_msg = None
-        customer = Customer(name = name,email = email, phone = phone,password = password)
+        customer = Customer(name = name,email = email, phone = phone,password = password,area=area)
  
         value = {
             'name': name,
             'email': email,
             'phone': phone,
+            'area':area,
             'password': password,
             'rpassword':rpassword
          }
@@ -159,6 +166,8 @@ def login(request):
                 request.session['email']= customer.email
                 request.session['phone']= customer.phone
                 request.session['name']= customer.name
+                request.session['location']= customer.area
+
                 
                 return redirect('home')
             else:
@@ -178,8 +187,12 @@ def book(request):
         book = Book.get_all_filter(categoryID )
     else:
         book = Book.get_all()
+    
+    customer_id = request.session.get('customer_id')
+    customer = Customer.objects.get(id=customer_id)
+    user_profile = customer.name
+    user_location = customer.area
 
-    user_profile = (request.session.get('name'))
     login_button = None
     if user_profile:
         login_button = ''
@@ -192,6 +205,7 @@ def book(request):
     bdata['b_catogereis'] = bcat
     bdata['user'] = user_profile
     bdata['login']= login_button 
+    bdata['location'] = user_location
 
     return render(request, 'book.html',bdata)
 
@@ -245,7 +259,11 @@ def product(request):
     else:
         product = Product.get_all() 
 
-    user_profile = (request.session.get('name'))
+    user_id = request.session.get('customer_id')
+    customer = Customer.objects.get(id=user_id)
+    user_profile = customer.name
+    user_location = customer.area
+
     login_button = None
     if user_profile:
         login_button = None
@@ -258,12 +276,15 @@ def product(request):
     data['catogereis'] = cat
     data['user'] = user_profile
     data['login']= login_button 
+    data['location'] = user_location
     return render(request, 'product.html',data)
 
 
 # Cart Page 
 def cart(request):
-    user_profile = (request.session.get('name'))
+    user_id = request.session.get("customer_id")
+    customer = Customer.objects.get(id=user_id)
+    user_profile = customer.name
     
     is_empty = request.session.get('cart')
     if is_empty == None:
@@ -275,6 +296,7 @@ def cart(request):
    
         data = {} 
         data['user'] = user_profile
+        data['location'] = customer.area
         data['products'] = products
         return render(request, 'cart.html',data)
     
@@ -324,11 +346,13 @@ def orders(request):
     user_profile = (request.session.get('name'))
     if request.method == "GET" or request.method == "post":
         customer = request.session.get('customer_id')
+        customer_name = Customer.objects.get(id=customer)
         order = Order.get_orders_by_customer(customer)
         
         orders = {}
         orders['orders'] = order
-        orders['user'] = user_profile
+        orders['user'] = customer_name.name
+        orders['location'] = customer_name.area
         return render(request, 'order.html',orders)
     
 def payment_page(request):
@@ -366,10 +390,12 @@ def profile(request):
         profile = Profile.get_all_filter(categoryID )
     else:
         profile = Profile.get_all()
+        
+    user_id = request.session.get('customer_id')
+    customer = Customer.objects.get(id=user_id)   
 
-    user_profile = (request.session.get('name'))
     login_button = None
-    if user_profile:
+    if customer.name:
         login_button = ''
     else:
         login_button = "Login"  
@@ -378,7 +404,70 @@ def profile(request):
     pdata = {} 
     pdata['profile'] = profile
     pdata['profilecat'] = pcat
-    pdata['user'] = user_profile
+    pdata['user'] = customer.name
     pdata['login']= login_button 
+    pdata['location']=customer.area
 
     return render(request, 'profile.html',pdata)
+
+
+def rqs(request):
+    user_id = request.session.get('customer_id')
+    customer = Customer.objects.get(id=user_id)
+
+
+    url = Pform.get_all()
+
+    user={}
+    user['phone'] = customer.phone
+    user['mail'] = customer.email
+    user['user'] = customer.name
+    user['url'] = url
+    user['location'] = customer.area
+
+
+
+    return render(request, 'rqs.html',user)
+
+
+def updates_profile(request):
+    if request.method == 'GET':
+        user_id = request.session.get('customer_id')
+        customer = Customer.objects.get(id=user_id)
+
+     
+        user={}
+        user['user'] = customer.name
+        user['email']=customer.email
+        user['phone'] = customer.phone
+        user['location'] = customer.area
+        return render(request, "update_profile.html",user)
+    else:
+        postData = request.POST
+        name = postData.get('name')
+        email = postData.get('email')
+        phone = postData.get('phone')
+        area = postData.get('area')   
+        user_id = request.session.get('customer_id')
+
+
+        try:
+            customer = Customer.objects.get(id=user_id)
+            customer.name = name
+            customer.email = email
+            customer.phone = phone
+            customer.location = area
+            customer.register()
+
+        except Customer.DoesNotExist:
+            return render(request, "update_profile.html")
+
+
+
+        user={}
+        user['user'] = name
+        user['email']=email
+        user['phone'] = phone
+        user['location'] = area
+        return render(request, "update_profile.html",user)
+

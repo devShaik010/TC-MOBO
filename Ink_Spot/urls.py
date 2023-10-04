@@ -15,5 +15,8 @@ urlpatterns = [
     path('products/',searchBar, name="testing"),
     path('mobile/',phone_form, name="phone"),
     path('profile/',profile, name="technician"),
+    path('update/',updates_profile, name="profile"),
+    path('rqs/',rqs, name="submission"),
+
 
 ]

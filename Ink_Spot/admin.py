@@ -7,6 +7,8 @@ from .models.book import Book
 from .models.b_catogeries import B_categories
 from .models.customer import Customer
 from .models.order import Order
+from .models.pform import Pform
+
 
 
 class Book_display(admin.ModelAdmin):
@@ -37,6 +39,7 @@ class order_display(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(Product, product_display)
+admin.site.register(Pform)
 admin.site.register(Profile, profile_display)
 admin.site.register(Categories,categories_display)
 admin.site.register(Profilecat,profilecat_display)

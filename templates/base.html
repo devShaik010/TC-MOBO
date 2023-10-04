@@ -47,9 +47,21 @@ $(".image-checkbox").on("click", function (e) {
 });
 
 
+function showhide()
+{
+  var div = document.getElementById('otherbox');
+  div.style.display = "block";
+
+}
+
+function showhide1()
+{
+  var div = document.getElementById('otherbox1');
+  div.style.display = "block";
+
+}
 
 
-  
       </script>    
 
 <body>    
@@ -57,21 +69,31 @@ $(".image-checkbox").on("click", function (e) {
     
     <div class="loader"></div>
  
+ {% if user %}
     <form id="myForm" action="{% url 'testing' %}" method="get">
+
     <div class="navbar fixed fixed-top">
-        <div class="search-bar">
+         <div style="display: flex;justify-content: space-between;;">
+
+
+          <p style="font-size: small;color: white;text-align: right;"><img src="{% static 'images/svg/profile.svg' %}" class="bg-light rouded rounded-3 p-1" > {{user}}</p>
+
+             <p style="font-size: small;color: white;" class="ms-5 ps-5"><img src="{% static 'images/svg/location.svg' %}" class="bg-light rouded rounded-3 p-1"> {{location}}</p>
+          
+        </div>
+        <div class="search d-flex">
             <input type="text" id="search-input" name="query" placeholder="Search any items">
             <button id="search-button" type="submit">
                 <img src="{% static 'images/svg/search.svg' %}" alt="Search">
             </button>
         </div>
+       
     </div>
 </form>
-
+{% endif %}
          
 
-		</div>
-<br><br>
+
 
     <!-- end nev -->
     {% block content %}
@@ -83,7 +105,7 @@ $(".image-checkbox").on("click", function (e) {
     <br><br>
     <!-- Footer  -->
      <!-- --------Services icons------------------ -->
-     <nav class="footer-nav">
+     <nav class="footer-nav" style="padding-bottom: 0px;">
       <a href="/" class="nav-item" id="home">
         <img src="{% static 'images/svg/home.svg' %}" width="50%"  alt="">
         <span>Home</span>
@@ -109,7 +131,7 @@ $(".image-checkbox").on("click", function (e) {
         </button>
       </a>
 
-      <a href="/profile" class="nav-item" id="settings">
+      <a href="/update" class="nav-item" id="settings">
         <img src="{% static 'images/svg/profile.svg' %}" width="50%"  alt="">
         <span>Settings</span>
       </a>
@@ -117,10 +139,25 @@ $(".image-checkbox").on("click", function (e) {
   
 
     </nav>
+   <script>
+  var form = document.getElementById('phone_repairing');
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    fetch(form.action, {
+        method : "POST",
+        body: new FormData(document.getElementById("phone_repairing")),
+    }).then(
+        response => response.json()
+    ).then((html) => {
+      // you can put any JS code here
+      window.location.href = "http://127.0.0.1:8000";
+    });
+  });
+</script>
     
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
-    
+ 
     
    </div>
 

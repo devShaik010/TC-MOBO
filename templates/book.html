@@ -1,67 +1,101 @@
-{% extends 'base.html' %}  
-{% block content %}
-{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+  <title>LOGIN</title>
+</head>
+<script type="text/javascript">
+      window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+  
+    loader.classList.add("loader--hidden");
+  
+    loader.addEventListener("transitionend", () => {
+      document.body.removeChild(loader);
+    });
+  });
+</script>
+<body class="bg-light">
+    <div class="loader" ></div>
+     <center>
+  <div style="width:260px;background-color:black;height: 15px;margin-top: 0%;margin-bottom: 20px;
+  border-bottom-left-radius:30px;border-bottom-right-radius:30px;" ></div>
+</center>
 
+ <div class="position-fixed bottom-0 end-0 p-3" style="margin-bottom: 20%;">
 
-<div class="container mt-4" style="position: fixed;">
- <div class=" row text-center mb-4 ">
-       <div class="col-12">
-         <a  href="" class="btn w-100 shadow shadow btn-warning text-white">CLICK TO SELL</a>
-       </div>
+<div class="btn-group dropup">
+  <button type="button" class="btn btn-primary shadow shadow-lg dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <h1>+</h1>
+  </button>
+  <ul class="dropdown-menu text-center">    
+    <li class="bg-primary p-2 "><a href="#" class=" text-center bg-primary " style="text-decoration: none;color:white;">Sell Now</a></li>
+  </ul>
 </div>
- 
+    </div>
+    <center>
+  
+
+    <form id="myForm" action="{% url 'testing' %}" method="get">
+
+
+   
+        <div class="search bg-white d-flex mb-3 border border-dark mt-0" style="width:95%;border-radius: 18px;">
+            <input type="text" id="search-input" name="query" placeholder="Second Hand .." style="border-radius:20px ;" >
+            <button style="color: white;border-radius:18px ;" class="bg-primary" type="submit" style="">
+                <img src="{% static 'images/svg/search.svg' %}" alt="Search" >
+            </button>
+        </div>
+       
+  </form>
+
+    <div class="container bg-light mt-2 mb-2"  >
+
+   
+</center>
+
+
+
+<div class="container p-0 bg-light " >
+      <div class="container bg-light m-0">
 {% for i in book %}
 
-   <div class="row m-1 p-1 border  rounded shadow shadow-sm" style="margin: 0.7%;">
-     <div class="col-4 pt-2">
-         <img src="{{i.image.url}}" class="img-fluid rounded">
+   <div class="row mb-2 p-1 border  bg-white rounded  shadow shadow-sm" style="margin: 0%;">
+     <div class="col-4 p-0 ">
+         <img src="{{i.image.url}}" class="img-fluid rounded border border-dark " style="filter: contrast(1.3)">
      </div>
-     <div class="col-8 pt-2" style="line-height: 0.4;" data-bs-toggle="modal" data-bs-target="#modal{{ i.id }}">
-        <p style="font-size:x-small;"> Date = {{i.date}}</p>   
-        <p><b style="color: rgba(0, 0, 0, 0.380);">Model :</b> {{i.model}}</p>
-        <p><b style="color: rgba(0, 0, 0, 0.380);">Brand :</b> {{i.brand}}</p>
-        <p style="font-family: Arial;font-size: large;padding: 1%;">{{i.price}}<span > &#8377;</span></p>
+     <div class="col-8 pt-4" style="line-height: 0.4;" data-bs-toggle="modal" data-bs-target="#modal{{ i.id }}">
+        <p style="font-size:x-small;opacity: 80%" class="text-primary"> Date = {{i.date}}</p>   
+        <p><b style="color: rgba(0, 0, 0, 1.380);">Model :</b> {{i.model}}</p>
+        <p><b style="color: rgba(0, 0, 0, 1.380);">Brand :</b> {{i.brand}}</p>
+
+        <p style="font-family: Arial;font-size: large;padding: 1%;"><small><b>Price : </b></small>{{i.price}}<span > &#8377;</span></p>
         <p style="font-size:x-small;"> <img src="{% static 'images/svg/location.svg' %}"> {{i.location}}
        </p>
      </div>
 
-
-
-
-
- </div>
-{% endfor %}
-</div>
-
-
-   
-<div class="container1">
-  <div class="col-lg-10">
-    <div class="container-fluid w-100 ">
-      <!-- <div class="row"> -->
-        
-{% for i in book %}
-
-
-    <!-- Modal -->
-    <div class="modal fade " id="modal{{ i.id }}" tabindex="-1" role="dialog" aria-labelledby="modalLabel{{ i.id }}" aria-hidden="true">
+<div class="modal fade " id="modal{{ i.id }}" tabindex="-1" role="dialog" aria-labelledby="modalLabel{{ i.id }}" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered " role="document">
-            <div class="modal-content p-0 ">
+            <div class="modal-content p-0 m-0">
                 <div class="modal-header">
-                    <h5 class="modal-title " id="modalLabel{{ i.id }}">{{i.name}}</h5>
+                    <h5 class="modal-title " id="modalLabel{{ i.id }}"> {{i.brand}} - {{i.model}}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body p-0">
+                <div class="modal-body p-0 m-0">
                   <div id="carousel{{ i.id }}" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ i.image.url }}" class="d-block w-100" alt="Image 1">
+                            <img src="{{ i.image.url }}" class="d-block w-100" alt="Image 1" style="width:100px;height: 300px;">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ i.image_1.url }}" class="d-block w-100" alt="Image 2">
+                            <img src="{{ i.image_1.url }}" class="d-block w-100" alt="Image 2" style="width:100px;height: 300px;">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ i.image_2.url }}" class="d-block w-100" alt="Image 3">
+                            <img src="{{ i.image_2.url }}" class="d-block w-100" alt="Image 3" style="width:100px;height: 300px;">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carousel{{ i.id }}" role="button" data-bs-slide="prev">
@@ -72,8 +106,15 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </a>
+                    <hr>
                 </div>
-                    <p>{{ i.description }}</p>
+
+                    <div class="p-2">
+                        <p><b style="color: rgba(0, 0, 0, 0.380);">Owner :</b> {{i.owner_name}}</p>
+                        <p><b style="color: rgba(0, 0, 0, 0.380);">Brand :</b> {{i.brand}}</p>
+                    </div>
+
+
                 </div>
              
             </div>
@@ -82,9 +123,47 @@
 </div>
 {% endfor %}
 </div>
-</div>
-</div>
-</div>
 
 
-{% endblock %}
+<br><br>
+    <!-- Footer  -->
+     <!-- --------Services icons------------------ -->
+     <nav class="footer-nav" style="padding-bottom: 0px;">
+      <a href="/" class="nav-item" id="home">
+        <img src="{% static 'images/svg/home.svg' %}" width="50%"  alt="">
+        <span>HOME</span>
+      </a>
+
+      <a href="/book" class="nav-item" id="buy-sell">
+        <img src="{% static 'images/svg/sell.svg' %}"   width="50%" alt="">
+        <span>BUY/SELL</span>
+      </a>
+
+      <a href="/product" class="nav-item" id="store">
+        <img src="{% static 'images/svg/shop.svg' %}" width="50%"   alt="">
+        <span>STORE</span>
+      </a>
+
+      <a href="/cart" class="nav-item" id="cart">
+        <button type="button" class="btn bg-white position-relative p-0">
+        <img src="{% static 'images/svg/cart.svg' %}" width="50%"  alt="">
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
+          {{request.session.cart.keys|length}}
+        </span>
+        <span style="font-size: x-small;">CART</span>
+        </button>
+      </a>
+
+      <a href="/update" class="nav-item" id="settings">
+        <img src="{% static 'images/svg/profile.svg' %}" width="50%"  alt="">
+        <span>ACCOUNT</span>
+      </a>
+    </nav>
+
+</div>
+</div> 
+</div>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+  </html>

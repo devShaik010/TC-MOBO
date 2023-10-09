@@ -2,34 +2,37 @@
     
 {% block content %}
 {% load cart %}
-<div class="container">
+<div class="container" style="margin-top: 30%;">
       <div class="container ">
            
-            {% for product in products %}
+            {% for i in products %}
           
-              <div class="card p-2">
-                  <div class="p-1 rouded rounded-2 card-title bg-dark text-white">
-                        Sno. {{forloop.counter}} <span> <b class="text-white bg-danger p-1 rounded">{{product.name}}</b> </span>
+              <div class="card p-2 border border-0 shadow-sm">
+                  <div class="p-1 rouded rounded-2 card-title bg-secondary text-white">
+                        Sno. {{forloop.counter}} <span> <b class="text-white bg-warning pe-2 ps-2 rounded">{{i.name}}</b> </span>
                   </div>
-                  <div class="content row">
+                  <div class="content row pt-1">
                           <div class="col-6 ">
-                              <img src="{{product.image.url}}" class="card-img w-50 " alt="">
+                              <img src="{{i.image.url}}" class="card-img  " style="width: 90px;font-family: Arial;" alt="">
                           </div>
-                          <div class="col-6 ">
-                              <p class="bg-light">Quantity = {{product|check_count:request.session.cart}}</p>
-                              <p class="bg-light">Price____= {{product|price_total:request.session.cart}}</p>
-                        </div>
+                          <div class="col-6 " style="line-height:10px;">
+                              <p class="bg-white">Price    = {{i.discount}}</p>
+                              <p class="bg-white">Quantity = {{i|check_count:request.session.cart}}</p>
+                              <p class="bg-white">Total = {{i|price_total:request.session.cart}}</p>
+
+                         </div>
                   </div>
+
               </div>
               {% endfor %}
           </div>
           <div class="title m-3   p-0 m-0">
-            <div class="row bg-light align-center p-2 rouded rouded-2 ">
-              <div class="col-6 h4">
-                   Total Amoun
+            <div class="row bg-white   p-2 rouded rouded-2 ">
+              <div class="col-6 h4 p-0 text-center" >
+                   <p style="font-family:Arial;">Total Amount</p>
               </div>
-              <div class="col-6 text-center h4">
-               = {{products|total_cart_price:request.session.cart}}&#8377;
+              <div class="col-6 text-center h4" style="font-family:Arial;">
+               = {{products|total_cart_price:request.session.cart}} &#8377;
               </div>
             </div>
          </div>
@@ -41,7 +44,7 @@
            <div class="container">
             <div class="row">
                   <div class="col-4 ps-1">
-                        <a href="/product" class="btn  btn-dark text-white rounded  btn-danger col-lg-3 float-right">Add item </a>
+                        <a href="/product" class="btn  btn-dark btn-sm text-white rounded  btn-danger col-lg-3 float-right">Add item </a>
                   </div>
 
                   {% if products %}
@@ -49,7 +52,7 @@
                         <form action="/check-out/" method="post">
                               {% csrf_token %}
                               <input type="text" hidden name="total" value="{{products|total_cart_price:request.session.cart}}">
-                         <input type="submit" class="btn w-100 btn-warning text-black rounded  btn-warning col-lg-3 float-right"  value="Check out" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                         <input type="submit" class="btn w-100 btn-warning btn-sm text-black rounded  btn-warning col-lg-3 float-right"  value="Check out" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                   </div>
                   {% endif %}
             </div>
@@ -66,7 +69,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="staticBackdropLabel">Check Out Form</h1>
@@ -98,7 +101,7 @@
                         </select>
                         <small id="helpId" class="text-muted">We deliver only these zone</small>
 
-                         <input type="submit" class= " form-control mt-2 btn btn-danger btn-danger text-black col-lg-6 flo"  style="font-weight: bold;" value="ORDER NOW">
+                         <input type="submit" class= " form-control mt-3 text-dark btn btn-warning btn-warning text-black col-lg-6 flo"  style="font-weight: bold;" value="ORDER NOW">
                   </form>
             </div>
 

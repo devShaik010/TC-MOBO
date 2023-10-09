@@ -2,16 +2,17 @@
 {% block content %}
 {% load static %}
 <!-- Main container div body -->
-
+            
 
          <!-- ---------------- Booking Models & Form ----------------- -->
 
 <div class="  " style="margin-top: 28%;">
+  
     
          <!-- ----------card and catogery option------- -->
-         <div class="container bg-white pt-1 pb-1">
-         <div  id="carouselExampleAutoplaying" class="carousel slide    shadow shadow-sm  border border-0 m-0 rounded rounded-2" data-bs-ride="carousel">
-          <div class="carousel-inner ">
+         <div class="container bg-white pt-1 pb-1 shadow shadow-sm">
+         <div  id="carouselExampleAutoplaying" class="carousel slide " data-bs-ride="carousel">
+          <div class="carousel-inner p-0 m-0">
             <div class="carousel-item active">
               <img src="{% static './images/SRC/1.png' %}" class="d-block w-100 img-fluid rounded" alt="...">
             </div>
@@ -52,11 +53,13 @@
             </a>
               </div>
               <div class="col-6 mb-2">
+                <a href="rqs2/" style="text-decoration:none;color: black;">
                 <div class="service-box shadow shadow-sm border rounded rounded-2 gradient-border">
                   <img src="{% static 'images/services/laptop.png' %}" class="img-fluid rounded" alt="#">
                   <p>Laptop repair</p>
                   <span class=" text-white  p-1 rounded rounded-3" style="background-color: #232f3e;">&#8594;</span>
                   </div>
+                </a>
               </div>
               <div class="col-6">
                 <a href="/product" style="text-decoration:none;color: black;">
@@ -131,7 +134,7 @@
         </div>
           
 
-          
+   
 
           <a href="/profile" style="text-decoration: none;color: white;">
           <div  class="service-box shadow shadow-sm border rounded rounded-2 row  " style="background-color: #FF9900;"> 
@@ -158,11 +161,6 @@
 </div>
         
     
-        
-    
-
-    
-
 
            
 {% endblock %}

@@ -47,22 +47,47 @@ $(".image-checkbox").on("click", function (e) {
 });
 
 
-function showhide()
-{
-  var div = document.getElementById('otherbox');
-  div.style.display = "block";
-
-}
-
-function showhide1()
-{
-  var div = document.getElementById('otherbox1');
-  div.style.display = "block";
-
-}
 
 
-      </script>    
+      </script>   
+
+      <style type="text/css">
+       
+        .payment-container {
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: floatInAir 2s linear infinite;
+        }
+
+        .payment-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #333;
+            background-color: #333;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .payment-button:hover {
+            background-color: #555;
+        }
+
+        @keyframes floatInAir {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(0, -5px); }
+            100% { transform: translate(0, 0); }
+        }
+    </style>
+      </style> 
 
 <body>    
     <!-- Nev baar -->
@@ -81,7 +106,7 @@ function showhide1()
              <p style="font-size: small;color: white;" class="ms-5 ps-5"><img src="{% static 'images/svg/location.svg' %}" class="bg-light rouded rounded-3 p-1"> {{location}}</p>
           
         </div>
-        <div class="search d-flex">
+        <div class="search d-flex w-100  ">
             <input type="text" id="search-input" name="query" placeholder="Search any items">
             <button id="search-button" type="submit">
                 <img src="{% static 'images/svg/search.svg' %}" alt="Search">
@@ -90,6 +115,7 @@ function showhide1()
        
     </div>
 </form>
+
 {% endif %}
          
 
@@ -131,32 +157,17 @@ function showhide1()
         </button>
       </a>
 
-      <a href="/update" class="nav-item" id="settings">
+      <a href="/settings" class="nav-item" id="settings">
         <img src="{% static 'images/svg/profile.svg' %}" width="50%"  alt="">
-        <span>Settings</span>
+        <span>Account</span>
       </a>
 
   
 
     </nav>
-   <script>
-  var form = document.getElementById('phone_repairing');
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-    fetch(form.action, {
-        method : "POST",
-        body: new FormData(document.getElementById("phone_repairing")),
-    }).then(
-        response => response.json()
-    ).then((html) => {
-      // you can put any JS code here
-      window.location.href = "http://127.0.0.1:8000";
-    });
-  });
-</script>
-    
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
+    
  
     
    </div>

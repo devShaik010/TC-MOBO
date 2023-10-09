@@ -17,6 +17,10 @@ urlpatterns = [
     path('profile/',profile, name="technician"),
     path('update/',updates_profile, name="profile"),
     path('rqs/',rqs, name="submission"),
+    path('rqs2/',rqs2, name="submission2"),
+    path('rhis/',request_history, name="rhis"),
+    path('settings',settings,name="settings")
+
 
 
 ]

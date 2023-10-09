@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password, make_password
 # Import packages from Models
 from .models.product import Product
+from .models.contact import Contact
 from .models.profile import Profile
 from .models.categories import Categories
 from .models.profilecat import Profilecat
@@ -65,7 +66,7 @@ def index(request):
     s_data['mail'] = user_mail
     s_data['phone'] = user_phone
     s_data['login']= login_button     
-    s_data['product'] = product 
+    s_data['products'] = product 
     s_data['book'] = book 
     s_data['location'] = location
     
@@ -316,7 +317,7 @@ def check_out(request):
         for product in products:
             order = Order(customer= Customer(id = customer),
                           product = product,
-                          price = product.price,
+                          price = product.discount,
                           quantity = cart.get(str(product.id)),
                           address = address,
                           phone = phone,
@@ -336,8 +337,13 @@ def check_out(request):
         data['receipt'] = order_get['receipt']
         data['total'] = total
         data['user'] = user_profile
-        # Order details
-        return render(request, 'payment.html',data)     
+        request.session['cart'] = {}
+
+
+        return render(request, 'payment.html',data)   
+
+    # if request.method == "GET":
+    #     return HttpResponse("Your payament is success")
     
 
 def orders(request):
@@ -356,7 +362,14 @@ def orders(request):
         return render(request, 'order.html',orders)
     
 def payment_page(request):
-    return render('home')
+    if request.method =="POST":
+        order_id = request.POST.get('data-order_id')
+        print(order_id)
+     
+
+        return redirect('home')
+
+
     
 
 def searchBar(request):
@@ -412,6 +425,25 @@ def profile(request):
 
 
 def rqs(request):
+    user_id = request.session.get('customer_id')
+    customer = Customer.objects.get(id=user_id)
+    contact = Contact.objects.get()
+
+    url = Pform.get_all()
+
+    user={}
+    user['phone'] = customer.phone
+    user['mail'] = customer.email
+    user['user'] = customer.name
+    user['url'] = url
+    user['contact']=contact.offcial_phone
+    user['location'] = customer.area
+
+
+
+    return render(request, 'rqs.html',user)
+
+def rqs2(request):
     user_id = request.session.get('customer_id')
     customer = Customer.objects.get(id=user_id)
 
@@ -471,3 +503,13 @@ def updates_profile(request):
         user['location'] = area
         return render(request, "update_profile.html",user)
 
+
+def request_history(request):
+    if request.method == "POST":
+        problem = request.method.get('data[PROBLEM]')
+        print(problem)
+
+    return HttpResponse("Hello this is working")
+
+def settings(request):
+    return render(request, 'base2.html')

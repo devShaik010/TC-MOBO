@@ -1,51 +1,73 @@
-{% extends 'base.html' %}
-    
+{% extends 'base2.html' %}
 {% block content %}
 {% load cart %}
 {% load custom_filter %}
-      <div class=" rounded  pt-4">
-           <table class="table border">
-            <h1 class="title bg-light text-warning text-outline-black">Your orders </h1>
-            <thead>
-                  <tr>
-                        <th scope="col">Sno.</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Item</th>
-                        <th scope="col" class="border">Price</th>
-                        <th scope="col" class="border">Date</th>
-                        <th scope="col" class="border">Quantity</th>
-                        <th scope="col">Total</th>
-                        <th scope="col">Status</th>
-                  </tr>
-            </thead>
-            <tbody>
-                  {% for order in orders %}
-                  <tr class="border">
-                
-                        <td>{{forloop.counter}}</td>
-                        <td><img src="{{order.product.image.url}}"  style="height: 80px;" alt="" class="rounded-circle img-fluid"></td>
-                        <td>{{order.product.name}}</td>
-                        <td class="border"><span>&#8377;</span>{{order.price}}</td>
-                        <td class="border">{{order.date}}</td>
-                        <td class="border">{{order.quantity}}</td>
-                        <td><span>&#8377;</span>{{order.quantity|multiply:order.price}}</td>
-                         
-                        {% if order.status %}
-                        <td class="border"><span class="badge bg-danger" style="font-weight: 400;">compleated</span></td>
-                        {%else%}
-                        <td class="border"><span class="badge bg-warning" style="font-weight: 400;">pending</span></td>
-                        {% endif %}
-                   </tr>
-                  {% endfor %}
-            </tbody>    
-            
-           </table>
-
-           
-           
+ <div class="container bg-white mb-5 pb-5 mt-0"   >
+    {% if orders %}
+      <div class="title text-center mt-0">
+              <h4 class=" p-1 bg-light rouded rounded-3 shadow shadow-sm">Your orders</h4>
       </div>
+      {% else %}
+      <div class="title text-center mt-5">
+             <h2>There is no orders.</h2>
+      </div>
+      {% endif %}
+
+      {% for order in orders %}
+      <div class="row p-1 rounded shadow shadow-sm mb-1 m-1 border border-dark">
+                  <div class="col-12  border bg-dark text-white " >{{forloop.counter}}. {{order.product.name}}</div>
+                  <div class="col-6" >
+                        <img src="{{order.product.image.url}}" class="img-fluid">
+                  </div>
+                  <div class="col-6 pt-4" style="line-height:10px;">
+                        <p class="bg-white d-block">Price    = {{order.price}}</p>
+                        <p class="bg-white d-block">Quantity = {{order.quantity}}</p>
+                          {% if order.deliverd %}
+                         <button class="btn btn-success btn-sm" id="{{order.id}}"  data-bs-toggle="modal" data-bs-target="#modal{{ order.id }}">Completed</button>
+                     {% elif order.status %}
+                         <button class="btn btn-warning btn-sm" id="{{order.id}}"  data-bs-toggle="modal" data-bs-target="#modal{{ order.id }}">Check status</button> 
+                     {% else %}
+                        <button class="btn btn-primary btn-sm" id="{{order.id}}"  data-bs-toggle="modal" data-bs-target="#modal{{ order.id }}">Check status</button>
+                      {% endif %}
+                     
+                  </div>
+                  <div class="row-footer">
+                       Order Date : {{order.date}}
+                  </div>
+
+      <div class="modal fade " id="modal{{ order.id }}" tabindex="-1" role="dialog" aria-labelledby="modalLabel{{ order.id }}" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered " role="document">
+          <div class="modal-content p-0 " style="border-radius:10px;">
+              <div class="modal-body p-0 text-center">
+                  {% if user %}
+                     {% if order.deliverd %}
+                        
+                     {% elif order.status %}
+                             <div class="content" style="line-height:10px;">
+                              <img src="https://uploads-ssl.webflow.com/61ebe5f773be1acd620f8208/61f23a2c8e6f2bdffaca8df2_71216-delivery-guy.gif" class="img-fluid w-50">
+                              <p class="h6">Dear {{user}}</p>
+                              <p><small>Your order is on the way.</small></p>
+                        </div> 
+                     {% else %}
+
+                        <div class="content" style="line-height:10px;">
+                              <img src="https://cdn.dribbble.com/users/20130/screenshots/2933302/carrello-800600.gif" class="img-fluid w-50 pt-1">
+                              <p class="h6">Getting Your Order</p>
+                              <p style="font-size:x-small;"><small>Incase if we dont have item <br> your complete amount will be refund</small></p>
+                              <p ></p>
+                        </div>
+                      {% endif %}
+
+                  {% endif %}    
+                </div>
+          </div>
+    </div>
+  </div>
 </div>
 
+      {% endfor %}
 
+      
+</div>
 
 {% endblock %}

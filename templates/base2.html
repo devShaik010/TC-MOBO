@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+  <title>LOGIN</title>
+</head>
+<script>
+    window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+  
+    loader.classList.add("loader--hidden");
+  
+    loader.addEventListener("transitionend", () => {
+      document.body.removeChild(loader);
+    });
+  });
+</script>
+<body >
+    <div class="loader" ></div>
+    <center>
+  <div style="width:260px;background-color:black;height: 15px;margin-top: 0%;margin-bottom: 20px;
+  border-bottom-left-radius:30px;border-bottom-right-radius:30px;" ></div>
+</center>
+
+      <div class="container bg-white mt-3"  >
+      <div class="row text-center " >
+        <div class="col-6">
+              <a href="/orders" class="btn text-white shadow shadow-sm w-100" style="background-color: #232F3E;">MY ORDERS</a>
+        </div>
+        <div class="col-6" onclick="alert('this service coming soon')">
+              <a href="#" class="btn text-white shadow shadow-sm w-100" style="background-color: #232F3E;">BOOKINGS</a>
+        </div>
+      </div>
+      <div class="col-12 mt-3">
+          <a href="/update" class="w-100 btn btn-danger text white">Account Details</a>
+      </div>
+    </div>
+    <hr>
+ 
+    {% block content %}
+
+
+    {% endblock %}
+
+
+
+<nav class="footer-nav" style="padding-bottom: 0px;">
+      <a href="/" class="nav-item" id="home">
+        <img src="{% static 'images/svg/home.svg' %}" width="50%"  alt="">
+        <span>Home</span>
+      </a>
+
+      <a href="/book" class="nav-item" id="buy-sell">
+        <img src="{% static 'images/svg/sell.svg' %}"   width="50%" alt="">
+        <span>Buy/Sell</span>
+      </a>
+
+      <a href="/product" class="nav-item" id="store">
+        <img src="{% static 'images/svg/shop.svg' %}" width="50%"   alt="">
+        <span>Store</span>
+      </a>
+
+      <a href="/cart" class="nav-item" id="cart">
+        <button type="button" class="btn bg-white position-relative p-0">
+        <img src="{% static 'images/svg/cart.svg' %}" width="50%"  alt="">
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
+          {{request.session.cart.keys|length}}
+        </span>
+        <span style="font-size: x-small;">Cart</span>
+        </button>
+      </a>
+
+      <a href="/update" class="nav-item" id="settings">
+        <img src="{% static 'images/svg/profile.svg' %}" width="50%"  alt="">
+        <span>Settings</span>
+      </a>
+
+  
+
+    </nav>
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+  </html> 

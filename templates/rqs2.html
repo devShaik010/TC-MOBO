@@ -1,0 +1,313 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+
+
+        {% if user %}
+
+              {% for i in url %}
+              <!-- <form action="{{i.url}}" method="post" id=""> -->
+              {% endfor %}
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered m-4">
+    <div class="modal-content">
+      
+      <div class="modal-body text-center">
+        
+        <center>
+      <div class="modal-body" >
+         <div class="text-center">
+            <img src="{% static 'images/services/success.gif' %}" class="img-fluid" width="30%">
+            <h5>Dear {{name}}</h5>
+            <p style="font-size:small;">Your request has been submited we will contact you soon.</p>
+            <p style="font-size:x-small;">For more details contact: 8897103324</p>
+            <input href="/" class="btn btn-warning text-white m-1" onclick="alert('Thanks for your request! We ll be on our way to repair your device shortly. Please keep your mobile ready for us.')" type="submit"  type="button" class="btn btn-primary"   value="BACK TO HOME" >
+        </div>
+      </div>
+      </div>
+      </center>
+        
+      
+    </div>
+  </div>
+</div>
+
+
+   
+
+
+    <!-- Modal -->
+
+      <div class="container  mb-5" style="margin-top:32%;">
+        
+          
+          <div class="box" hidden >
+            <input type="text" value="{{user}}" name="data[NAME]">
+            <input type="text" value="{{mail}}" name="data[GMAIL]">
+            <input type="text" value="{{phone}}" name="data[PHONE]">
+            <!-- <input type="text" value="918897103324" name="data[WHATSAPP]"> -->
+
+          </div>
+          
+
+            <p class=" fw-bold text-center  mb-2 p-0 "  >QUICK REPAIR - SERVICE</p>
+            <p class="  text-center  mb-2 p-0 " style="font-size:small;" >Your On-Demand Mobile Device Repair Service at Your Doorstep</p>
+            <center>
+            <hr width="70%" >
+            </center>
+            <p class=" fw-bold m-1 mb-2 p-0 " style="font-size: large;"># Problem </p>
+
+             <div class="problem mb-5">
+                <div class="row g-1 mb-2">
+
+                   <div class="col">
+                    <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="CrackFix" value="CrackFix"  >
+                    <label class="btn btn-outline-warning " for="CrackFix" style="width: 70px;">
+                    <img src="{% static './images/services/crackfix.png' %}" class="img-fluid   "   alt="Image 1">
+                    <small style="font-size:x-small;color: black;">CrackFix</small>
+                    </label>
+                  </div>
+
+                  <div class="col" >
+                    <input type="checkbox"  class="btn-check "  name="data[PROBLEM]" id="diplay" value="Display Repair" >
+                    <label class="btn btn-outline-warning " for="diplay" style="width: 70px;">  
+                    <img src="{% static './images/fix/displayfix.png' %}" class="img-fluid   "   alt="Image 1">
+                    <small style="font-size:x-small;color: black;">Display   </small>
+                    </label>
+                  </div>
+
+                  <div class="col">
+                    <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="camera" value="Camera Repair" >
+                    <label class="btn btn-outline-warning " for="camera" style="width: 70px;">  
+                    <img src="{% static './images/fix/camera.png' %}" class="img-fluid   "   alt="Image 1">
+                    <small style="font-size:x-small;color: black;">Camera   </small>
+                    </label>
+                  </div>
+                    <div class="col">
+                    <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="speaker" value="Speacker Repair"  >
+                    <label class="btn btn-outline-warning " for="speaker" style="width: 70px;">  
+                    <img src="{% static './images/fix/speaker.png' %}" class="img-fluid   "   alt="Image 1">
+                    <small style="font-size:x-small;color: black;">Speaker</small>
+                    </label>
+                  </div>
+
+
+                </div>
+
+                
+                 <div class="row g-1 mb-2">
+
+                  <div class="col">
+                    <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="mic" value="Mic Repairing"  >
+                    <label class="btn btn-outline-warning  " for="mic" style="width: 70px;">  
+                    <img src="{% static './images/fix/mic.png' %}" class="img-fluid   "   alt="Image 1">
+                    <small style="font-size:x-small;color: black;">Mic</small>
+                    </label>
+                  </div>
+
+                  <div class="col">
+                    <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="lock" value="Unlcking"  >
+                    <label class="btn btn-outline-warning " for="lock" style="width: 70px;">  
+                    <img src="{% static './images/fix/lock.png' %}" class="img-fluid   "   alt="Image 1">
+                    <small style="font-size:x-small;color: black;">Unlock</small>
+                    </label>
+                  </div>
+
+                  <div class="col ">
+                    <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="Software" value="Software Problem"  >
+                    <label class="btn btn-outline-warning " for="Software" style="width: 70px;">  
+                    <img src="{% static './images/fix/flash.png' %}" class="img-fluid   "   alt="Image 1">
+                    <small style="font-size:x-small;color: black;">Software</small>
+                    </label>
+                  </div>
+                
+                  <div class="col">
+                    <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="water" value="Water damage" >
+                    <label class="btn btn-outline-warning " for="water" style="width: 70px;">  
+                    <img src="{% static './images/fix/water.png' %}" class="img-fluid   "   alt="Image 1">
+                    <small style="font-size:x-small;color: black;">Water</small>
+                    </label>
+                  </div>
+
+
+                </div>
+
+          <div class="row g-1">
+                  <div class="col">
+                    <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="Board" value="Motherboard">
+                    <label class="btn btn-outline-warning " for="Board" style="width: 70px;">  
+                    <img src="{% static './images/fix/bord.png' %}" class="img-fluid   "   alt="Image 1">
+                    <small style="font-size:x-small;color: black;">Board</small>
+                    </label>
+                  </div>
+                    <div class="col">
+                    <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="Battery" value="Battery Repair" >
+                    <label class="btn btn-outline-warning " for="Battery" style="width: 70px;">  
+                    <img src="{% static './images/fix/battery.png' %}" class="img-fluid   "   alt="Image 1">
+                    <small style="font-size:x-small;color: black;">Battery   </small>
+                    </label>
+                  </div>
+                 
+                  <div class="col">
+                    <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="Jack" value="Earphone Jack"  >
+                    <label class="btn btn-outline-warning " for="Jack" style="width: 70px;">  
+                    <img src="{% static './images/fix/jack.png' %}" class="img-fluid   "   alt="Image 1">
+                    <small style="font-size:x-small;color: black;">Jack</small>
+                    </label>
+                  </div>
+                  <div class="col">
+                    <input type="checkbox"  class="btn-check "    id="OTHER"  >
+                    <label onclick="showhide()" class="btn btn-outline-warning  " for="OTHER" style="width: 70px;">  
+                    <img src="{% static './images/svg/other.svg' %}" class="img-fluid   " style="width: 70px;"  alt="Image 1">
+                    <small style="font-size:x-small;color: black;">OTHER</small>
+                    </label>
+                  </div>
+                </div>
+                <div class="row g-1 p-1 mt-1" id="otherbox" style="display: none;" >
+                <div class="col-12 p-0">
+                  <input type="text" class="form-control w-75 active border border-dark shadow shadow-sm " name="data[OTHER_PROBLEM]" placeholder="Enter problem here">
+                 </div>
+                 </div>
+                </div>
+        
+
+               
+
+
+          <p class=" m-1 mb-3 p-0 fw-bold " style="font-size: large;"># Company (Brand)</p>
+          <div class="brand">
+            <section id="section2">
+                <div class="row g-1 mb-2">
+                  <div class="col">
+                    <input type="radio"  class="btn-check "   name="data[BRAND]" id="apple" value="IPhone" >
+                    <label class="btn btn-outline-secondary p-3 " for="apple" style="width: 70px;">  
+                    <img src="{% static './images/fix/apple.png' %}" class="img-fluid  " alt="Image 1">
+                    </label>
+                  </div>
+                  <div class="col">
+                    <input type="radio"  class="btn-check "   name="data[BRAND]" id="mi" value="Redmi / Mi" >
+                    <label class="btn btn-outline-secondary p-0 " for="mi" style="width: 70px;">  
+                    <img src="{% static './images/brands/mi.jpg' %}" class="img-fluid " alt="Image 1">
+                    </label>
+                  </div>
+                  <div class="col">
+                    <input type="radio"  class="btn-check "   name="data[BRAND]" id="samsung" value="Samsung" >
+                    <label class="btn btn-outline-secondary p-0" for="samsung" style="width: 70px;">  
+                    <img src="{% static './images/brands/samsung.jpg' %}" class="img-fluid " alt="Image 1">
+                    </label>
+                  </div>
+                  <div class="col">
+                    <input type="radio"  class="btn-check "   name="data[BRAND]" id="realme" value="Realme" >
+                    <label class="btn btn-outline-secondary p-0" for="realme" style="width: 70px;">  
+                    <img src="{% static './images/brands/realme.jpg' %}" class="img-fluid " alt="Image 1">
+                    </label>
+                  </div>
+                </div>
+
+                <div class="row g-1 mb-2">
+                  <div class="col">
+                    <input type="radio"  class="btn-check "   name="data[BRAND]" id="honor" value="Honor" >
+                    <label class="btn btn-outline-secondary p-0" for="honor" style="width: 70px;">  
+                    <img src="{% static './images/brands/honor.jpg' %}" class="img-fluid  " alt="Image 1">
+                    </label>
+                  </div>
+                  <div class="col">
+                    <input type="radio"  class="btn-check "   name="data[BRAND]" id="iqoo" value="IQoo" >
+                    <label class="btn btn-outline-secondary p-0" for="iqoo" style="width: 70px;">  
+                    <img src="{% static './images/brands/iqoo.jpg' %}" class="img-fluid  " alt="Image 1">
+                    </label>
+                  </div>
+                  <div class="col">
+                    <input type="radio"  class="btn-check "   name="data[BRAND]" id="pcoc" value="Poco" >
+                    <label class="btn btn-outline-secondary p-0" for="pcoc" style="width: 70px;">  
+                    <img src="{% static './images/brands/pcoc.jpg' %}" class="img-fluid  " alt="Image 1">
+                    </label>
+                  </div>
+                
+                  <div class="col">
+                    <input type="radio"  class="btn-check "   name="data[BRAND]" id="letv" value="Letv" >
+                    <label class="btn btn-outline-secondary p-0" for="letv" style="width: 70px;">  
+                    <img src="{% static './images/brands/letv.jpg' %}" class="img-fluid  " alt="Image 1">
+                    </label>
+                  </div>
+                
+                </div>
+                <div class="row g-1 mb-2">
+                  <div class="col">
+                    <input type="radio"  class="btn-check "   name="data[BRAND]" id="vivo" value="Vivo" >
+                    <label class="btn btn-outline-secondary p-0" for="vivo" style="width: 70px;">  
+                    <img src="{% static './images/brands/vivo.jpg' %}" class="img-fluid  " alt="Image 1">
+                    </label>
+                  </div>
+                  <div class="col">
+                    <input type="radio"  class="btn-check "   name="data[BRAND]" id="oppo" value="Oppo" >
+                    <label class="btn btn-outline-secondary p-0" for="oppo" style="width: 70px;">  
+                    <img src="{% static './images/brands/oppo.jpg' %}" class="img-fluid  " alt="Image 1">
+                    </label>
+                  </div>
+                  <div class="col">
+                    <input type="radio"  class="btn-check "   name="data[BRAND]" id="oneplus" value="Oneplus" >
+                    <label class="btn btn-outline-secondary p-0" for="oneplus" style="width: 70px;">  
+                    <img src="{% static './images/brands/oneplus.jpg' %}" class="img-fluid  " alt="Image 1">
+                    </label>
+                  </div>
+                
+                  <div class="col">
+                    <input type="radio"  class="btn-check "   name="data[BRAND]" id="asus" value="Asus" >
+                    <label class="btn btn-outline-secondary p-0" for="asus" style="width: 70px;">  
+                    <img src="{% static './images/brands/asus.jpg' %}" class="img-fluid  " alt="Image 1">
+                    </label>
+                  </div>
+                
+                </div>
+                <div class="row g-1">
+                  <div class="col">
+                    <input type="radio"  class="btn-check "   name="data[BRAND]" id="moto" value="Motorola" >
+                    <label class="btn btn-outline-secondary p-0" for="moto" style="width: 70px;">  
+                    <img src="{% static './images/brands/motorola.jpg' %}" class="img-fluid  " alt="Image 1">
+                    </label>
+                  </div>
+                  <div class="col">
+                    <input type="radio"  class="btn-check "   name="data[BRAND]" id="nokia" value="Nokia" >
+                    <label class="btn btn-outline-secondary p-0" for="nokia" style="width: 70px;">  
+                    <img src="{% static './images/brands/nokia.jpg' %}" class="img-fluid  " alt="Image 1">
+                    </label>
+                  </div>
+                  <div class="col">
+                    <input type="radio"  class="btn-check "   name="data[BRAND]" id="oneplus" value="Google" >
+                    <label class="btn btn-outline-secondary p-0" for="Google" style="width: 70px;">  
+                    <img src="{% static './images/brands/google.jpg' %}" class="img-fluid  " alt="Image 1">
+                    </label>
+                  </div>
+                
+                  <div class="col">
+                    <input type="radio"  class="btn-check "   name="data[BRAND]" id="other"  >
+                    <label onclick="showhide1()" class="btn btn-outline-secondary p-3" for="other" style="width: 70px;">  
+                    <img src="{% static './images/svg/other.svg' %}" class="img-fluid " alt="Image 1" style="width: 40px;">
+                    </label>
+                  </div>
+                
+                </div>
+                <div class="row  p-0 m-0" id="otherbox1" style="display: none;" >
+                <div class="col-12 p-0 mt-2">
+                  <input type="text" class="form-control w-75  active border border-dark shadow shadow-sm " name="data[OTHER_BRNAD]" placeholder="Enter Company name">
+                 </div>
+                 </div>
+                </div>
+            </div>
+
+           </section>
+         
+    
+           <div class="  mb-5 text-center pe-3 ps-3 pb-5">
+              <input  class="btn btn-warning w-75 shadow border border-0 shadow-lg " type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"  value="Submit Reaquest"  />
+            </div>
+          <!-- </form> -->
+       {% endif %}
+
+          </div>
+
+
+{% endblock %}

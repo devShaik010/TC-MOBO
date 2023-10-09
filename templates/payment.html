@@ -1,10 +1,29 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 {% block content %}
-{% load cart %}
+{% load static %}
+
+ <div class="container1" style="margin-top:29%;">
+
+ <form action="/payment/" method="POST">
+     
+     {% csrf_token %}
 
 
- 
- <form action="/orders/" method="POST">
+
+       <div class="container text-center mt-5">
+    <h1 class="display-4">Choose Your Payment Method</h1>
+    <p  style="font-size:x-small;">
+        Select your preferred payment method: Make an online payment using our secure payment gateway or choose Cash on Delivery (COD) to pay in person when your order is delivered.
+    </p>
+
+
+    <div class="payment-container">
+    <p>Select Payment Method:</p>
+    <a class="payment-button" href="/">Cash on Delivery</a>
+    <input type="submit"  type="submit" class="payment-button " style="background-color:blue;" value="Online Payment">
+   </div>
+         
+     </div>
      <script
      src="https://checkout.razorpay.com/v1/checkout.js"
      data-key="rzp_test_YlYtdLrSGniSFi" // Enter the Test API Key ID generated from Dashboard → Settings → API Keys
@@ -14,17 +33,13 @@
      data-buttontext=""
      data-name="{{receip}}"
      data-description="Paymet for your order in TC MOBILE'S"
-     data-image="https://example.com/your_logo.jpg"
+     data-image="{% static 'images/svg/logo.svg' %}"
      data-prefill.name="{{recpie}}"
-     data-theme.color="#4169e1"
-     ></script>
-     <input type="hidden" custom="Hidden Element"  name="hidden"/>
-     
-     {% csrf_token %}
-
-    <div class="container text-center">
-     <input type="submit"  type="submit" class="btn btn-larg btn-danger text-white " value="PAY ONLINE">
- </div>
+     data-theme.color="#000000"
+      ></script> 
+     <input type="hidden" custom="Hidden Element"  name="hidden" />
     </form>
 
-{% endblock %}
+
+</div>
+ {% endblock %}

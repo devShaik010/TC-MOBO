@@ -1,9 +1,51 @@
-{% extends "base.html" %}
-{% block content %}
-{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+  <title>LOGIN</title>
+</head>
+
+    <script>
+    window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+  
+    loader.classList.add("loader--hidden");
+  
+    loader.addEventListener("transitionend", () => {
+      document.body.removeChild(loader);
+    });
+  });
+        $(document).ready(function() {
+            $('#phone_repairing').submit(function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Get form data
+                var formData = $('#phone_repairing').serialize();
+
+                    // Send data to the second URL
+                    $.post('http://192.168.0.109:8000/rhis/', formData, function(response2) {
+                        console.log('Data sent to URL 2', response2);
+
+                        // If you need to perform additional actions, do it here
+                    });
+                
+            });
+        });
 
 
 
+    </script>
+<body>
+    <div class="loader" ></div>
+
+<center>
+  <div style="width:260px;background-color:black;height: 15px;margin-top: 0%;margin-bottom: 20px;
+  border-bottom-left-radius:30px;border-bottom-right-radius:30px;"></div>
+</center>
         {% if user %}
 
               {% for i in url %}
@@ -20,9 +62,9 @@
       <div class="modal-body" >
          <div class="text-center">
             <img src="{% static 'images/services/success.gif' %}" class="img-fluid" width="30%">
-            <h5>Dear {{name}}</h5>
+            <h5>Dear {{user}}</h5>
             <p style="font-size:small;">Your request has been submited we will contact you soon.</p>
-            <p style="font-size:x-small;">For more details contact: 8897103324</p>
+            <p style="font-size:x-small;">For more details contact: {{contact}} </p>
             <input href="/" class="btn btn-warning text-white m-1" onclick="alert('Thanks for your request! We ll be on our way to repair your device shortly. Please keep your mobile ready for us.')" type="submit"  type="button" class="btn btn-primary"   value="BACK TO HOME" >
         </div>
       </div>
@@ -35,22 +77,22 @@
 </div>
 
 
+
    
 
 
-    <!-- Modal -->
 
-      <div class="container  mb-5" style="margin-top:32%;">
-        
+      <div class="container   mb-3" >
+          
           
           <div class="box" hidden >
-            <input type="text" value="{{name}}" name="data[NAME]">
+            <input type="text" value="{{user}}" name="data[NAME]">
             <input type="text" value="{{mail}}" name="data[GMAIL]">
             <input type="text" value="{{phone}}" name="data[PHONE]">
             <!-- <input type="text" value="918897103324" name="data[WHATSAPP]"> -->
 
           </div>
-          
+             
 
             <p class=" fw-bold text-center  mb-2 p-0 "  >QUICK REPAIR - SERVICE</p>
             <p class="  text-center  mb-2 p-0 " style="font-size:small;" >Your On-Demand Mobile Device Repair Service at Your Doorstep</p>
@@ -64,7 +106,7 @@
 
                    <div class="col">
                     <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="CrackFix" value="CrackFix"  >
-                    <label class="btn btn-outline-warning " for="CrackFix" style="width: 70px;">  
+                    <label class="btn btn-outline-warning " for="CrackFix" style="width: 70px;">
                     <img src="{% static './images/services/crackfix.png' %}" class="img-fluid   "   alt="Image 1">
                     <small style="font-size:x-small;color: black;">CrackFix</small>
                     </label>
@@ -158,8 +200,8 @@
                     </label>
                   </div>
                   <div class="col">
-                    <input type="checkbox"  class="btn-check "    id="OTHER"  >
-                    <label onclick="showhide()" class="btn btn-outline-warning  " for="OTHER" style="width: 70px;">  
+                    <input type="button"  class="btn-check "    id="OTHER"   >
+                    <label class="btn btn-outline-warning  " onclick="showhide()" for="OTHER" style="width: 70px;">  
                     <img src="{% static './images/svg/other.svg' %}" class="img-fluid   " style="width: 70px;"  alt="Image 1">
                     <small style="font-size:x-small;color: black;">OTHER</small>
                     </label>
@@ -178,6 +220,8 @@
 
           <p class=" m-1 mb-3 p-0 fw-bold " style="font-size: large;"># Company (Brand)</p>
           <div class="brand">
+            <div class="brand" id="brand-section">
+  <!-- ... your brand selection code ... -->
                 <div class="row g-1 mb-2">
                   <div class="col">
                     <input type="radio"  class="btn-check "   name="data[BRAND]" id="apple" value="IPhone" >
@@ -275,7 +319,7 @@
                     </label>
                   </div>
                   <div class="col">
-                    <input type="radio"  class="btn-check "   name="data[BRAND]" id="oneplus" value="Google" >
+                    <input type="radio"  class="btn-check "   name="data[BRAND]" id="Google" value="Google" >
                     <label class="btn btn-outline-secondary p-0" for="Google" style="width: 70px;">  
                     <img src="{% static './images/brands/google.jpg' %}" class="img-fluid  " alt="Image 1">
                     </label>
@@ -297,16 +341,102 @@
                 </div>
             </div>
 
-           
+           </div>
          
     
-           <div class="  mb-5 text-center pe-3 ps-3 pb-5">
-              <input  class="btn btn-warning w-75 shadow border border-0 shadow-lg " type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"  value="Submit Reaquest"  />
+           <div class="  mb-5 text-center  " >
+              <input  class="btn btn-warning w-75 shadow border  border-0 shadow-lg " type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"  value="BOOK "  />
             </div>
           </form>
        {% endif %}
+ </div>
+    <br><br><br>
+    <!-- Footer  -->
+     <!-- --------Services icons------------------ -->
+     <nav class="footer-nav" style="padding-bottom: 0px;">
+      <a href="/" class="nav-item" id="home">
+        <img src="{% static 'images/svg/home.svg' %}" width="50%"  alt="">
+        <span>Home</span>
+      </a>
 
-          </div>
+      <a href="/book" class="nav-item" id="buy-sell">
+        <img src="{% static 'images/svg/sell.svg' %}"   width="50%" alt="">
+        <span>Buy/Sell</span>
+      </a>
 
+      <a href="/product" class="nav-item" id="store">
+        <img src="{% static 'images/svg/shop.svg' %}" width="50%"   alt="">
+        <span>Store</span>
+      </a>
 
-{% endblock %}
+      <a href="/cart" class="nav-item" id="cart">
+        <button type="button" class="btn bg-white position-relative p-0">
+        <img src="{% static 'images/svg/cart.svg' %}" width="50%"  alt="">
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
+          {{request.session.cart.keys|length}}
+        </span>
+        <span style="font-size: x-small;">Cart</span>
+        </button>
+      </a>
+
+      <a href="/update" class="nav-item" id="settings">
+        <img src="{% static 'images/svg/profile.svg' %}" width="50%"  alt="">
+        <span>Settings</span>
+      </a>
+
+  
+
+    </nav>
+    <script src="{% static 'js/main.js' %}"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const problemCheckboxes = document.querySelectorAll('input[name="data[PROBLEM]"]');
+    const brandSection = document.getElementById('brand-section');
+
+    // Function to scroll to the brand section
+    function scrollToBrandSection() {
+      brandSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Add event listener to each problem checkbox
+    problemCheckboxes.forEach(function (checkbox) {
+      checkbox.addEventListener("change", function () {
+        if (this.checked) {
+          scrollToBrandSection();
+        }
+      });
+    });
+  });
+
+    var form = document.getElementById('phone_repairing');
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    fetch(form.action, {
+        method : "POST",
+        body: new FormData(document.getElementById("phone_repairing")),
+    }).then(
+        response => response.json()
+    ).then((html) => {
+      // you can put any JS code here
+      window.location.href = "http://192.168.0.109:8000/rhis/";
+    });
+  });
+
+  
+function showhide()
+{
+  var div = document.getElementById('otherbox');
+  div.style.display = "block";
+
+}
+
+function showhide1()
+{
+  var div = document.getElementById('otherbox1');
+  div.style.display = "block";
+
+}
+</script>
+ 
+  </body>
+  </html>

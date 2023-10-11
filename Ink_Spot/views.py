@@ -202,7 +202,7 @@ def book(request):
 
 
     bdata = {} 
-    bdata['book'] = book
+    bdata['book'] = book 
     bdata['b_catogereis'] = bcat
     bdata['user'] = user_profile
     bdata['login']= login_button 
@@ -446,20 +446,22 @@ def rqs(request):
 def rqs2(request):
     user_id = request.session.get('customer_id')
     customer = Customer.objects.get(id=user_id)
+    contact = Contact.objects.get()
+
 
 
     url = Pform.get_all()
-
     user={}
     user['phone'] = customer.phone
     user['mail'] = customer.email
     user['user'] = customer.name
     user['url'] = url
+    user['contact']=contact.offcial_phone
     user['location'] = customer.area
 
 
 
-    return render(request, 'rqs.html',user)
+    return render(request, 'rqs2.html',user)
 
 
 def updates_profile(request):
@@ -505,11 +507,18 @@ def updates_profile(request):
 
 
 def request_history(request):
-    if request.method == "POST":
-        problem = request.method.get('data[PROBLEM]')
-        print(problem)
+    id_ = request.session.get('customer_id')
+    customer = Customer.objects.get(id=id_)
+    contact = Contact.objects.get()
 
-    return HttpResponse("Hello this is working")
+    data = {}
+    data['name']=customer.name
+    data['phone'] = customer.phone
+    data['location'] = customer.area
+    data['contact']=contact.offcial_phone
+
+
+    return render(request, 'bookings.html',data)
 
 def settings(request):
     return render(request, 'base2.html')

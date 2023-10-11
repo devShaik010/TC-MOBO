@@ -14,8 +14,8 @@
       {% endif %}
 
       {% for order in orders %}
-      <div class="row p-1 rounded shadow shadow-sm mb-1 m-1 border border-dark">
-                  <div class="col-12  border bg-dark text-white " >{{forloop.counter}}. {{order.product.name}}</div>
+      <div class="row p-1 rounded shadow shadow-sm mb-2 m-1 border ">
+                  <div class="col-12  border bg-dark text-white  rounded" >{{forloop.counter}}. {{order.product.name}}</div>
                   <div class="col-6" >
                         <img src="{{order.product.image.url}}" class="img-fluid">
                   </div>
@@ -24,14 +24,14 @@
                         <p class="bg-white d-block">Quantity = {{order.quantity}}</p>
                           {% if order.deliverd %}
                          <button class="btn btn-success btn-sm" id="{{order.id}}"  data-bs-toggle="modal" data-bs-target="#modal{{ order.id }}">Completed</button>
-                     {% elif order.status %}
+                     {% elif order.dispatch %}
                          <button class="btn btn-warning btn-sm" id="{{order.id}}"  data-bs-toggle="modal" data-bs-target="#modal{{ order.id }}">Check status</button> 
                      {% else %}
                         <button class="btn btn-primary btn-sm" id="{{order.id}}"  data-bs-toggle="modal" data-bs-target="#modal{{ order.id }}">Check status</button>
                       {% endif %}
                      
                   </div>
-                  <div class="row-footer">
+                  <div class="row-footer bg-warning text-dark fw-sm rounded">
                        Order Date : {{order.date}}
                   </div>
 
@@ -42,7 +42,7 @@
                   {% if user %}
                      {% if order.deliverd %}
                         
-                     {% elif order.status %}
+                     {% elif order.dispatch %}
                              <div class="content" style="line-height:10px;">
                               <img src="https://uploads-ssl.webflow.com/61ebe5f773be1acd620f8208/61f23a2c8e6f2bdffaca8df2_71216-delivery-guy.gif" class="img-fluid w-50">
                               <p class="h6">Dear {{user}}</p>

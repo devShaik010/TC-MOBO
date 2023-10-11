@@ -1,0 +1,13 @@
+{% extends 'base2.html' %}
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+  <div class="container mt-5">
+        <h1>View Your Booking Request</h1>
+        <p>You can view your booking request on WhatsApp by clicking the button below:</p>
+
+        <!-- Replace 'PHONE_NUMBER' with the actual phone number -->
+        <a href="https://wa.me/7330012300?text=I%20have%20send%20repairing%20request." class="btn btn-success">Contact on WhatsApp</a>
+    </div>
+
+{% endblock %}

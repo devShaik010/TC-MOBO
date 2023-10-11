@@ -78,24 +78,24 @@
        </p>
      </div>
 
-<div class="modal fade " id="modal{{ i.id }}" tabindex="-1" role="dialog" aria-labelledby="modalLabel{{ i.id }}" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered " role="document">
-            <div class="modal-content p-0 m-0">
+<div class="modal " id="modal{{ i.id }}" tabindex="-1" role="dialog" aria-labelledby="modalLabel{{ i.id }}" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered m-0 p-0 " role="document">
+            <div class="modal-content p-0 m-0 bg-white">
                 <div class="modal-header">
                     <h5 class="modal-title " id="modalLabel{{ i.id }}"> {{i.brand}} - {{i.model}}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-0 m-0">
                   <div id="carousel{{ i.id }}" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
+                    <div class="carousel-inner rounded ">
                         <div class="carousel-item active">
-                            <img src="{{ i.image.url }}" class="d-block w-100" alt="Image 1" style="width:100px;height: 300px;">
+                            <img src="{{ i.image.url }}" class="d-block w-100 img-fluid" alt="Image 1" >
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ i.image_1.url }}" class="d-block w-100" alt="Image 2" style="width:100px;height: 300px;">
+                            <img src="{{ i.image_1.url }}" class="d-block w-100 img-fluid" alt="Image 2" >
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ i.image_2.url }}" class="d-block w-100" alt="Image 3" style="width:100px;height: 300px;">
+                            <img src="{{ i.image_2.url }}" class="d-block w-100 img-fluid" alt="Image 3" >
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carousel{{ i.id }}" role="button" data-bs-slide="prev">
@@ -106,12 +106,13 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </a>
-                    <hr>
                 </div>
 
-                    <div class="p-2">
-                        <p><b style="color: rgba(0, 0, 0, 0.380);">Owner :</b> {{i.owner_name}}</p>
-                        <p><b style="color: rgba(0, 0, 0, 0.380);">Brand :</b> {{i.brand}}</p>
+                    <div class="p-0 ps-3 table">
+                        <p><b  class="bg-primary text-white p-1 rounded">Seller :</b> <img src="{% static 'images/svg/profile.svg' %}"> {{i.owner_name}}</p>
+                        <p><b class="bg-primary text-white p-1 rounded"> Location :</b> <img src="{% static 'images/svg/location.svg' %}">{{i.location}}</p>
+
+                        <p><b class="bg-success text-white p-1 rounded"> About  :</b> {{i.about}}</p>
                     </div>
 
 
@@ -154,7 +155,7 @@
         </button>
       </a>
 
-      <a href="/update" class="nav-item" id="settings">
+      <a href="/orders" class="nav-item" id="settings">
         <img src="{% static 'images/svg/profile.svg' %}" width="50%"  alt="">
         <span>ACCOUNT</span>
       </a>

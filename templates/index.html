@@ -79,8 +79,7 @@
               </div>
           </div>
 
-
-          <div class="row gap-0 gutters p-3 border">
+    <div class="row gap-0 gutters p-3 border">
                     <p class="text-center fw-bold " style="font-size: large;">OUR BEST SERVICES</p>
             <div class="col-3 p-0">
               <div class="service-box pb-0 shadow shadow-sm p-1 rounded  rounded-2" style="border:0.6px solid #232f3e;">
@@ -108,15 +107,20 @@
                 </div>
             </div>
         </div>
+      
 
   <div class="row gap-0 gutters p-3 text-center">
                     <p class="text-center fw-bold " style="font-size: large;">LETS SHOP ON YOUR FAVURATE CATOGERY</p>
+
+                    {% for i in catogereis %}
             <div class="col-3 p-1">
-                <img src="{% static 'images/services/charger.png' %}" alt="#" style="width:50px;">
-                <p style="font-size: x-small;" class="fw-bold">CCTV SETUP</p>
+                <img src="{{i.image.url}}" alt="#" style="width:60px;border-radius: 50%;border: 1px solid silver;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.545);">
+                <p style="font-size: x-small;" class="fw-bold">{{i.name}}</p>
             </div>
 
-            <div class="col-3 p-1">
+            {% endfor %}
+
+           <!--  <div class="col-3 p-1">
                 <img src="{% static 'images/services/wifi.png' %}" alt="#" style="width:50px;">
                 <p style="font-size: x-small;" class="fw-bold">WIFI LAN SETUP</p>
             </div>
@@ -130,8 +134,48 @@
               
                 <img src="{% static 'images/services/second.png' %}" alt="#" style="width:50px;">
                 <p style="font-size: x-small;" class="fw-bold">OTHER SERVICES</p>
-            </div>
+            </div> -->
         </div>
+
+
+   <!-- ----------card and catogery option------- -->
+  <div class="container pt-1 pb-1 rounded rounded-3 mt-2" style="background-image: url('{% static 'images/services/bg.gif' %}');">
+  <div id="productCardCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner p-0 m-0">
+      {% for product in products %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}" >
+          <div class="product-card  card text-center p-0 shadow shadow-sm " >
+            <center>
+            <img src="{{ product.image.url }}" class="d-block   rounded" alt="{{ product.title }}" style="width: 250px;height: 250px;">
+            <h3>{{ product.title }}</h3>
+            <p>Price: ${{ product.discount }}</p>
+            </center>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#productCardCarousel" data-bs-slide="prev">
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#productCardCarousel" data-bs-slide="next">
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           
 
    
@@ -154,10 +198,7 @@
               <span class="bg-secondary text-white p-1 rounded rounded-3">&#8594;</span>
           </div>
         </div>
-      </div>
-  
-      
-      
+      </div>    
 </div>
         
     

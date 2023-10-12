@@ -50,6 +50,7 @@ def payment(amount , user_profile):
 # Create your views here.
 def index(request):
     product = Product.get_all()
+    catogereis = Categories.all_catogaries()
     book = Book.get_all()
     user_profile = (request.session.get('name'))
     user_mail = (request.session.get('email'))
@@ -67,7 +68,8 @@ def index(request):
     s_data['phone'] = user_phone
     s_data['login']= login_button     
     s_data['products'] = product 
-    s_data['book'] = book 
+    s_data['catogereis'] = catogereis 
+    s_data['books'] = book 
     s_data['location'] = location
     
     if user_profile:

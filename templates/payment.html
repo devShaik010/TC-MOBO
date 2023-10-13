@@ -4,7 +4,7 @@
 
  <div class="container1" style="margin-top:29%;">
 
- <form action="/payment/" method="POST">
+ <form action="/orders/" method="POST">
      
      {% csrf_token %}
 
@@ -19,7 +19,7 @@
 
     <div class="payment-container">
     <p>Select Payment Method:</p>
-    <a class="payment-button" href="/">Cash on Delivery</a>
+    <a class="payment-button" href="/orders/">Cash on Delivery</a>
     <input type="submit"  type="submit" class="payment-button " style="background-color:blue;" value="Online Payment">
    </div>
          

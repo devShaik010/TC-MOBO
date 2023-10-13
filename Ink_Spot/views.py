@@ -301,6 +301,8 @@ def cart(request):
         data['user'] = user_profile
         data['location'] = customer.area
         data['products'] = products
+        data['address'] = customer.address
+        data['number'] = customer.phone
         return render(request, 'cart.html',data)
     
 # Check Out 
@@ -378,10 +380,16 @@ def searchBar(request):
     query = request.GET.get('query')
     if query:
         products = Product.objects.filter(desc__icontains=query)
+        user_id = request.session.get('customer_id')
+        customer = Customer.objects.get(id=user_id)
+        data = {}
+        data['user'] = customer.name
+        data['location'] = customer.area
+        data['products'] = products
         if not products:
             return render(request, 'testing.html', {'alert': True})
         else:
-            return render(request, 'testing.html', {'products': products})
+            return render(request, 'testing.html', data)
 
 
 
@@ -391,6 +399,30 @@ def searchBar(request):
     # data['empty']
     # Handle the case where the query is empty
     return render(request, 'testing.html',data)
+
+def searchBar2(request):
+    query = request.GET.get('query')
+    if query:
+        products = Book.objects.filter(about__icontains=query)
+        user_id = request.session.get('customer_id')
+        customer = Customer.objects.get(id=user_id)
+        data = {}
+        data['user'] = customer.name
+        data['location'] = customer.area
+        data['book'] = products
+        if not products:
+            return render(request, 'testing2.html', {'alert': True})
+        else:
+            return render(request, 'testing2.html', data)
+
+
+
+    product = Book.get_all()
+    data = {}
+    data['book'] = product
+    # data['empty']
+    # Handle the case where the query is empty
+    return render(request, 'testing2.html',data)
 
 
 def phone_form(request):

@@ -3,17 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-
     <title>TC MOBILE'S</title>
     {% load static %}
-    
-    <!-- Option 1: Include in HTML -->
     <link  rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <link  rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    
-    
+  
   </head>
- 
   <script>
       
     window.addEventListener("load", () => {
@@ -26,8 +21,7 @@
     });
   });
 
-  // image gallery
-// init the state from the input
+
 $(".image-checkbox").each(function () {
   if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
     $(this).addClass('image-checkbox-checked');
@@ -47,80 +41,7 @@ $(".image-checkbox").on("click", function (e) {
 });
 
       </script>   
-
-      <style type="text/css">
-       
-        .payment-container {
-            background: rgba(255, 255, 255, 0.3);
-            border: 1px solid #ccc;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            animation: floatInAir 2s linear infinite;
-        }
-
-        .payment-button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #333;
-            background-color: #333;
-            color: #fff;
-            font-size: 16px;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .payment-button:hover {
-            background-color: #555;
-        }
-
-        @keyframes floatInAir {
-            0% { transform: translate(0, 0); }
-            50% { transform: translate(0, -5px); }
-            100% { transform: translate(0, 0); }
-        }
-
-
-
-    </style>
-
-<body>    
-    <!-- Nev baar -->
-    
-    <div class="loader"></div>
- 
- {% if user %}
-    <form id="myForm" action="{% url 'testing' %}" method="get">
-
-    <div class="navbar fixed fixed-top">
-         <div style="display: flex;justify-content: space-between;;">
-
-
-          <p style="font-size: small;color: white;text-align: right;"><img src="{% static 'images/svg/profile.svg' %}" class="bg-light rouded rounded-3 p-1" > {{user}}</p>
-
-             <p style="font-size: small;color: white;" class="ms-5 ps-5"><img src="{% static 'images/svg/location.svg' %}" class="bg-light rouded rounded-3 p-1"> {{location}}</p>
-          
-        </div>
-        <div class="search d-flex w-100  ">
-            <input type="text" id="search-input" name="query" placeholder="Search any items">
-            <button id="search-button" type="submit">
-                <img src="{% static 'images/svg/search.svg' %}" alt="Search">
-            </button>
-        </div>
-       
-    </div>
-</form>
-
-{% endif %}
-         
-
-
-
-    <!-- end nev -->
+<body class="bg-white">    
     {% block content %}
     
     
@@ -129,7 +50,6 @@ $(".image-checkbox").on("click", function (e) {
 
     <br><br>
     <!-- Footer  -->
-     <!-- --------Services icons------------------ -->
      <nav class="footer-nav" style="padding-bottom: 0px;">
       <a href="/" class="nav-item" id="home">
         <img src="{% static 'images/svg/home.svg' %}" width="50%"  alt="">

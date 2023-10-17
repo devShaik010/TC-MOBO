@@ -12,7 +12,7 @@ SECRET_KEY = 'django-insecure-l_-orv@)j2o5(#97-dnnl2ahtnef*^$2^u547e8zfqt9##6dmd
 DEBUG = True   
 
 #Allowed Hosts
-ALLOWED_HOSTS = ['192.168.0.110']
+ALLOWED_HOSTS = ['192.168.0.104']
 
 
 # All isnatlled application defin
@@ -96,7 +96,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
-MEDIA_URL = '/tcmobilebestrepairserviceforever/'
+MEDIA_URL = '/8091/'
 MEDIA_ROOT = BASE_DIR
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'statics'),
@@ -108,19 +108,19 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# Aws access key 
-AWS_ACCESS_KEY_ID = "AKIA5TIYTV7MLEWJ3AMZ"
-AWS_SECRET_ACCESS_KEY = "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"
+# # Aws access key 
+# AWS_ACCESS_KEY_ID = "AKIA5TIYTV7MLEWJ3AMZ"
+# AWS_SECRET_ACCESS_KEY = "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"
 
-AWS_STORAGE_BUCKET_NAME = "mobo-bucket-09"
+# AWS_STORAGE_BUCKET_NAME = "mobo-bucket-09"
 
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+# DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
-STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+# STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
-ADMIN_MEDIA_PREFIX = f'https://{AWS_S3_CUSTOM_DOMAIN}/admin/'
+# ADMIN_MEDIA_PREFIX = f'https://{AWS_S3_CUSTOM_DOMAIN}/admin/'
         
-ACCOUNT_SID = "ACb191cb3cbc2ffe0efac329ed3d6ec8af"
-AUTH_TOKEN = "8ee010461281a25ff37e2701fda8bef9"
+# ACCOUNT_SID = "ACb191cb3cbc2ffe0efac329ed3d6ec8af"
+# AUTH_TOKEN = "8ee010461281a25ff37e2701fda8bef9"

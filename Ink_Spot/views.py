@@ -75,7 +75,7 @@ def index(request):
     if user_profile:
         return render(request, 'index.html' ,s_data)
     else:
-        return render(request,'login.html')
+        return render(request,'intro.html')
 
 
 # For Creating User ( signup )

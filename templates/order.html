@@ -1,7 +1,22 @@
-{% extends 'base2.html' %}
+{% extends 'base.html' %}
 {% block content %}
 {% load cart %}
 {% load custom_filter %}
+   <div class="container bg-white mt-3"  >
+      <div class="row text-center " >
+        <div class="col-6">
+              <a href="/orders" class="btn text-white shadow shadow-sm w-100" style="background-color: #232F3E;">MY ORDERS</a>
+        </div>
+        <div class="col-6" >
+              <a href="/rhis" class="btn text-white shadow shadow-sm w-100" style="background-color: #232F3E;">BOOKINGS</a>
+        </div>
+      </div>
+      <div class="col-12 mt-3">
+          <a href="/update" class="w-100 btn btn-danger text white">Account Details</a>
+      </div>
+    </div>
+    <hr>
+ 
  <div class="container bg-white mb-5 pb-5 mt-0"   >
     {% if orders %}
       <div class="title text-center mt-0">

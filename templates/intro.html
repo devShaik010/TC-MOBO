@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Animated Posters</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .poster-container {
+            width: 300%;
+            height: 100vh;
+            display: flex;
+            transition: transform 1s; /* Use transform to slide the posters */
+        }
+
+        .poster {
+            width: 100%;
+            height: 100vh;
+            flex: 1;
+            opacity: 1;
+            transition: opacity 1s;
+            background: #f7f7f7; /* Background color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Hide overflow content */
+        }
+
+        .poster-content {
+            text-align: center;
+            color: #000000; /* Text color */
+        }
+
+        .button-container {
+            position: absolute;
+            bottom: 10%;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+
+        .action-button {
+            padding: 10px 20px;
+            min-height: 40px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 80%;
+        }
+        
+        /* Add a class to control the sliding animation */
+        .sliding {
+            transform: translateX(-100%); /* Slide content left by 100% */
+        }
+    </style>
+</head>
+<body>
+    <div class="poster-container">
+        <div class="poster">
+            <div class="poster-content">
+                <img src="{% static 'images/store.webp' %}" width="150px" style="border-radius:10px;" alt="accessries">
+                <h1>Accessories</h1>
+                <p style="font-size:x-small;font-family: verdana;">"Shop for mobile and computer accessories online – your one-stop destination for all your tech needs."</p>
+            </div>
+        </div>
+       <div class="poster">
+            <div class="poster-content">
+                <img src="{% static 'images/store.webp' %}" width="150px" style="border-radius:10px;" alt="accessries">
+                <h1>Accessories</h1>
+                <p style="font-size:x-small;font-family: verdana;">"Shop for mobile and computer accessories online – your one-stop destination for all your tech needs."</p>
+            </div>
+        </div>
+        <div class="poster">
+            <div class="poster-content">
+                <h1>Third Poster</h1>
+                <p>This is the third poster's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <center>
+            <button class="action-button" id="actionButton">Next &rarr;</button>
+        </center>
+    </div>
+
+    <script>
+        const posters = document.querySelectorAll(".poster");
+        const actionButton = document.querySelector("#actionButton");
+        let currentPoster = 0;
+
+        actionButton.addEventListener("click", () => {
+            // Hide the current poster's content
+            posters[currentPoster].classList.remove("sliding");
+            
+            if (currentPoster < posters.length - 1) {
+                currentPoster++;
+            } else {
+                currentPoster = 0;
+                actionButton.textContent = "Create Account";
+            }
+
+            // Show the next poster's content
+            posters[currentPoster].classList.add("sliding");
+        });
+    </script>
+</body>
+</html>

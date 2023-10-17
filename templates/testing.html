@@ -3,11 +3,19 @@
 {% load static %}
   {% load cart %}
 
-     
+    <form id="myForm" action="{% url 'testing' %}" method="get">
+    <div class="navbar sticky sticky-top">
+        <div class="search d-flex w-100  ">
+            <input type="text" id="search-input" name="query" placeholder="Search any items">
+            <button id="search-button" type="submit">
+                <img src="{% static 'images/svg/search.svg' %}" alt="Search">
+            </button>
+        </div>
+       
+    </div>
+</form>
 
-    
-
-  <div class="container1 bg-white  " style="margin-top:29%;">
+  <div class="container1 bg-white  " >
        {% if alert %}
            <div class="container mt-4">
                 <h1 class=" h3 bg-warning text-dark rounded rouded-4 p-4 text-center mt-4"> Sorry 😥 Item not found !</h1>

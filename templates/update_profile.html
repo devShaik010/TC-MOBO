@@ -1,6 +1,9 @@
-{% extends 'base2.html' %}
+{% extends 'base.html' %}
 {% block content %}
-
+<center>
+<div style="width:260px;background-color:#232f3e;margin-top: 0%;margin-bottom: 20px;
+  border-bottom-left-radius:30px;border-bottom-right-radius:30px;" class="text-center text-white"> <marquee>{{offer}} </marquee> </div>
+</center>
 				<div class="container1  " >
                       {% if user %}
                       <!-- ------form ragisteration-- -->
@@ -54,8 +57,13 @@
                         <div class="d-flex justify-content-center mx-2 form-group mb-3 mb-lg-4">
                           <button type="submit" class="btn  btn-lg shadow-sm w-100 text-white " onclick="othername();" style="background-color: #ff9900;">Update Profile</button>
                         </div>
-      
                       </form>
+                      <a href="/" style="text-decoration:none;color:white;">
+                        <div class="d-flex justify-content-center mx-2 form-group mb-3 mb-lg-4">
+                           <button  class="btn  btn-lg shadow-sm w-100 text-white " onclick="othername();" style="background-color: #232f3e;">Back to home</button>
+                         </div>
+                       </a>
+      
                   </div>
                   {% endif %}
 

@@ -3,6 +3,21 @@
 {% load static %}
   {% load cart %}
 
+ {% if user %}
+    <form id="myForm" action="{% url 'testing' %}" method="get">
+
+    <div class="navbar sticky sticky-top">
+        <div class="search d-flex w-100  ">
+            <input type="text" id="search-input" name="query" placeholder="Search any items">
+            <button id="search-button" type="submit">
+                <img src="{% static 'images/svg/search.svg' %}" alt="Search">
+            </button>
+        </div>
+       
+    </div>
+</form>
+
+{% endif %}
 
     <div class="container1 bg-white " style="margin-top: 24%;">
       <div class="row">

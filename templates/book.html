@@ -1,187 +1,147 @@
 {% extends 'base.html' %}  
 {% block content %}
 {% load static %}
-  {% load cart %}
-
-<center>
-<div style="width:260px;background-color:#232f3e;margin-top: 0%;margin-bottom: 20px;
-  border-bottom-left-radius:30px;border-bottom-right-radius:30px;" class="text-center text-white"> <marquee>{{offer}} </marquee> </div>
-</center>
+{% load cart %}
 
 <div class="modal fade" id="customModal" tabindex="-1" aria-labelledby="customModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content "> 
-      <div class="modal-body text-center" style="line-height:10px;">
+    <div class="modal-content">
+      <div class="modal-body text-center" style="line-height: 10px;">
         <img src="{% static 'images/sell.jpeg' %}" class="img-fluid w-50 m-2 rounded rouded-4">
-        <p>Now sell your device at best price.</p>
-        <p style="font-size:x-small;">Send details on Whatspp</p>
+        <p>Now sell your device at the best price.</p>
+        <p style="font-size: x-small;">Send details on WhatsApp</p>
         <a href="https://wa.me/+918897103324?text=Hi%20i%20am%20*{{user}}*.I%20want%20sell%20My%20Device." class="btn btn-md bg-success text-white shadow shadow-sm">Send Details</a>
       </div>
     </div>
   </div>
 </div>
 
- <div class="position-fixed bottom-0 end-0 p-3" style="margin-bottom: 20%;">
-
-<!-- <div class="btn-group dropup"> -->
-  <button type="button" class="btn  shadow shadow-lg text-white" style="background-color:#232f3e;" data-bs-toggle="modal" data-bs-target="#customModal">
-      <h6>SELL <br>+</h6>
+<div class="position-fixed bottom-0 end-0 p-3" style="margin-bottom: 20%;">
+  <button type="button" class="btn shadow shadow-lg text-white" style="background-color: #232f3e;" data-bs-toggle="modal" data-bs-target="#customModal">
+    <h6>SELL <br>+</h6>
   </button>
-<!-- </div> -->
+</div>
+
+<center>
+  <form id="myForm" action="{% url 'testing2' %}" method="get">
+    <div class="search bg-white d-flex mb-3 border border-dark mt-0" style="width: 95%; border-radius: 18px;">
+      <input type="text" id="search-input" name="query" placeholder="Second Hand .." style="border-radius: 20px;">
+      <button style="color: white; border-radius: 18px;" style="background-color: #232f3e;" type="submit">
+        <img src="{% static 'images/svg/search.svg' %}" alt="Search">
+      </button>
     </div>
-    <center>
-  
-
-    <form id="myForm" action="{% url 'testing2' %}" method="get">
-
-
-   
-        <div class="search bg-white d-flex mb-3 border border-dark mt-0" style="width:95%;border-radius: 18px;">
-            <input type="text" id="search-input" name="query" placeholder="Second Hand .." style="border-radius:20px ;" >
-            <button style="color: white;border-radius:18px ;" style="background-color:#232f3e;" type="submit" style="">
-                <img src="{% static 'images/svg/search.svg' %}" alt="Search" >
-            </button>
-        </div>
-       
   </form>
-
-    <div class="container bg-light mt-2 mb-2"  >
-
-   
 </center>
 
-
-
-<div class="container p-0 bg-light " >
-      <div class="container bg-light m-0 mb-5">
-{% for i in book %}
-
-   <div class="row mb-2 p-1 border  bg-white rounded  shadow shadow-sm" style="margin: 0%;">
-     <div class="col-4 p-0 pt-2 pb-2" style="display: flex;">
-         <img src="{{i.image.url}}" class="img-fluid rounded border border-dark " style="filter: contrast(1.3);display: block;">
-     </div>
-     <div class="col-8 pt-4" style="line-height: 0.4;" data-bs-toggle="modal" data-bs-target="#modal{{ i.id }}">
-        <p style="font-size:x-small;opacity: 80%" style="color:#232f3e;"> Date = {{i.date}}</p>   
-        <p><b style="color: rgba(0, 0, 0, 1.380);">Model :</b> {{i.model}}</p>
-        <p><b style="color: rgba(0, 0, 0, 1.380);">Brand :</b> {{i.brand}}</p>
-
-        <p style="font-family: Arial;font-size: large;padding: 1%;"><small><b>Price : </b></small>{{i.price}}<span > &#8377;</span></p>
-        <p style="font-size:x-small;text-align: center;"> <img src="{% static 'images/svg/location.svg' %}" > {{i.location}}.
-       </p>
-     </div>
-
-<div class="modal fade" id="modal{{ i.id }}" tabindex="-1" role="dialog" aria-labelledby="modalLabel{{ i.id }}" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered m-0 p-0 " role="document">
-            <div class="modal-content p-0 m-0 bg-white">
-                <div class="modal-body p-0 m-0">
-                  <div id="carousel{{ i.id }}" class="carousel slide" data-bs-ride="carousel" style="border-bottom: 0.5px solid silver;">
-                    <div class="carousel-inner rounded ">
-                        <div class="carousel-item active">
-                            <img src="{{ i.image.url }}" class="d-block w-100 img-fluid" alt="Image 1" >
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ i.image_1.url }}" class="d-block w-100 img-fluid" alt="Image 2" >
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ i.image_2.url }}" class="d-block w-100 img-fluid" alt="Image 3" >
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carousel{{ i.id }}" role="button" data-bs-slide="prev">
-                        <img src="{% static 'images/arrow.webp' %}" aria-hidden="true" class="img-fluid w-75 m-2" style="rotate:180deg;">
-                    </a>
-                    <a class="carousel-control-next" href="#carousel{{ i.id }}" role="button" data-bs-slide="next">
-                        <img src="{% static 'images/arrow.webp' %}" aria-hidden="true" class="img-fluid w-75 m-2">
-                    </a>
-                </div>
-
-                    <div class="pt-3 ps-3 row">
-                              <div class="1 col-4 ">
-                                  <p class=" rounded badge bg-dark text-white">Brand & Modal : </p>
-                              </div>  
-                              <div class="1 col-8 ">
-                                  <p class="bg-light rounded badge text-dark">{{i.brand}}-{{i.model}}</p>
-                              </div> 
-
-                              <div class="1 col-4 ">
-                                  <p class=" rounded badge bg-dark text-white">Saller Name : </p>
-                              </div>  
-                              <div class="1 col-8 ">
-                                  <p class="bg-light rounded badge text-dark">{{i.owner_name}}</p>
-                              </div>
-
-                              <div class="1 col-4 ">
-                                  <p class=" rounded badge bg-dark text-white">About device :</p>
-                              </div>  
-                              <div class="1 col-8 ">
-                                        <p class="bg-light rounded rounded p-1 text-dark" style="font-size:small;">{{i.about}}</p>
-                              </div>
-                          
-                              <div class="1 col-4 ">
-                                  <p class=" rounded badge bg-warning text-dark">Location : </p>
-                              </div>  
-                                  <div class="1 col-8 ">
-                                    <p class="bg-light rounded rounded p-1 text-dark text-center" style="font-size:x-small;"><img src="{% static 'images/svg/location.svg' %}">{{i.location}}</p>
-                            
-                              </div>
-
-                            
-                            
-                    </div>
-                        <div class=" text-center pe-2 ps-2">
-                                    <a href="https://wa.me/+91{{i.contact}}?text=I%20want%20buy%20it.%20*{{i.brand}}*%20*{{i.model}}*." style="background-color: #ff9900;" class="btn text-white btn-md w-100 mb-1">Buy Now</a>
-                              </div>
-
-                                <div class="text-center pe-2 ps-2">
-                                    <a href="#" style="background-color:#232f3e;;" class="btn  text-white btn-md w-100 mb-2" data-bs-dismiss="modal">Close</a>
-                              </div>
-
-                </div>
-             
-            </div>
-        </div>
+<div class="container bg-white mt-2 mb-2">
+  <div class="container bg-white m-0 mb-5">
+    {% for item in book %}
+    <div class="row mb-2 p-1 border bg-white rounded shadow shadow-sm" style="margin: 0%;">
+      <div class="col-4 p-0 pt-2 pb-2" style="display: flex;">
+        <img src="{{ item.image.url }}" class="img-fluid rounded border border-dark" style="filter: contrast(1.3); display: block;">
+      </div>
+      <div class="col-8 pt-4" style="line-height: 0.4;" data-bs-toggle="modal" data-bs-target="#modal{{ item.id }}">
+        <p style="font-size: x-small; opacity: 80%" style="color: #232f3e;"> Date = {{ item.date }}</p>
+        <p><b style="color: rgba(0, 0, 0, 1.380);">Model:</b> {{ item.model }}</p>
+        <p><b style="color: rgba(0, 0, 0, 1.380);">Brand:</b> {{ item.brand }}</p>
+        <p style="font-family: Arial; font-size: large; padding: 1%;"><small><b>Price:</b></small> {{ item.price }}<span> &#8377;</span></p>
+        <p style="font-size: x-small; text-align: center;"> <img src="{% static 'images/svg/location.svg' %}">{{ item.location }}.</p>
+      </div>
     </div>
-</div>
-{% endfor %}
-</div>
+    <div class="modal fade" id="modal{{ item.id }}" tabindex="-1" role="dialog" aria-labelledby="modalLabel{{ item.id }}" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered m-0 p-0" role="document">
+        <div class="modal-content p-0 m-0 bg-white">
+          <div class="modal-body p-0 m-0">
+            <div id="carousel{{ item.id }}" class="carousel slide" data-bs-ride="carousel" style="border-bottom: 0.5px solid silver;">
+              <div class="carousel-inner rounded">
+                <div class="carousel-item active">
+                  <img src="{{ item.image.url }}" class="d-block w-100 img-fluid" alt="Image 1">
+                </div>
+                <div class="carousel-item">
+                  <img src="{{ item.image_1.url }}" class="d-block w-100 img-fluid" alt="Image 2">
+                </div>
+                <div class="carousel-item">
+                  <img src="{{ item.image_2.url }}" class="d-block w-100 img-fluid" alt="Image 3">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carousel{{ item.id }}" role="button" data-bs-slide="prev">
+                <img src="{% static 'images/arrow.webp' %}" aria-hidden="true" class="img-fluid w-75 m-2" style="rotate: 180deg;">
+              </a>
+              <a class "carousel-control-next" href="#carousel{{ item.id }}" role="button" data-bs-slide="next">
+                <img src="{% static 'images/arrow.webp' %}" aria-hidden="true" class="img-fluid w-75 m-2">
+              </a>
+            </div>
+            <div class="pt-3 ps-3 row">
+              <div class="col-4">
+                <p class="rounded badge bg-dark text-white">Brand & Model:</p>
+              </div>
+              <div class="col-8">
+                <p class="bg-light rounded badge text-dark">{{ item.brand }}-{{ item.model }}</p>
+              </div>
+              <div class="col-4">
+                <p class="rounded badge bg-dark text-white">Seller Name:</p>
+              </div>
+              <div class="col-8">
+                <p class="bg-light rounded badge text-dark">{{ item.owner_name }}</p>
+              </div>
+              <div class="col-4">
+                <p class="rounded badge bg-dark text-white">About device:</p>
+              </div>
+              <div class="col-8">
+                <p class="bg-light rounded rounded p-1 text-dark" style="font-size: small;">{{ item.about }}</p>
+              </div>
+              <div class="col-4">
+                <p class="rounded badge bg-warning text-dark">Location:</p>
+              </div>
+              <div class="col-8">
+                <p class="bg-light rounded rounded p-1 text-dark text-center" style="font-size: x-small;"><img src="{% static 'images/svg/location.svg' %}">{{ item
+                    <p class="bg-light rounded rounded p-1 text-dark text-center" style="font-size: x-small;"><img src="{% static 'images/svg/location.svg' %}">{{ item.location }}</p>
+                  </div>
+                </div>
+                <div class="text-center pe-2 ps-2">
+                  <a href="https://wa.me/+91{{ item.contact }}?text=I%20want%20buy%20it.%20*{{ item.brand }}*%20*{{ item.model }}*." style="background-color: #ff9900;" class="btn text-white btn-md w-100 mb-1">Buy Now</a>
+                </div>
+                <div class="text-center pe-2 ps-2">
+                  <a href="#" style="background-color: #232f3e;" class="btn text-white btn-md w-100 mb-2" data-bs-dismiss="modal">Close</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 
-
-<br><br>
-    <!-- Footer  -->
-     <!-- --------Services icons------------------ -->
-     <nav class="footer-nav" style="padding-bottom: 0px;">
-      <a href="/" class="nav-item" id="home">
-        <img src="{% static 'images/svg/home.svg' %}" width="50%"  alt="">
-        <span>HOME</span>
-      </a>
-
-      <a href="/book" class="nav-item" id="buy-sell">
-        <img src="{% static 'images/svg/sell.svg' %}"   width="50%" alt="">
-        <span>BUY/SELL</span>
-      </a>
-
-      <a href="/product" class="nav-item" id="store">
-        <img src="{% static 'images/svg/shop.svg' %}" width="50%"   alt="">
-        <span>STORE</span>
-      </a>
-
-      <a href="/cart" class="nav-item" id="cart">
-        <button type="button" class="btn bg-white position-relative p-0">
-        <img src="{% static 'images/svg/cart.svg' %}" width="50%"  alt="">
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
-          {{request.session.cart.keys|length}}
+  <!-- Footer -->
+  <nav class="footer-nav" style="padding-bottom: 0px;">
+    <a href="/" class="nav-item" id="home">
+      <img src="{% static 'images/svg/home.svg' %}" width="50%" alt="">
+      <span>HOME</span>
+    </a>
+    <a href="/book" class="nav-item" id="buy-sell">
+      <img src="{% static 'images/svg/sell.svg' %}" width="50%" alt="">
+      <span>BUY/SELL</span>
+    </a>
+    <a href="/product" class="nav-item" id="store">
+      <img src="{% static 'images/svg/shop.svg' %}" width="50%" alt="">
+      <span>STORE</span>
+    </a>
+    <a href="/cart" class="nav-item" id="cart">
+      <button type="button" class="btn bg-white position-relative p-0">
+        <img src="{% static 'images/svg/cart.svg' %}" width="50%" alt="">
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
+          {{ request.session.cart.keys|length }}
         </span>
         <span style="font-size: x-small;">CART</span>
-        </button>
-      </a>
-
-      <a href="/orders" class="nav-item" id="settings">
-        <img src="{% static 'images/svg/profile.svg' %}" width="50%"  alt="">
-        <span>ACCOUNT</span>
-      </a>
-    </nav>
-
+      </button>
+    </a>
+    <a href="/orders" class="nav-item" id="settings">
+      <img src="{% static 'images/svg/profile.svg' %}" width="50%" alt="">
+      <span>ACCOUNT</span>
+    </a>
+  </nav>
 </div>
-</div> 
 </div>
-
+</div>
 {% endblock %}

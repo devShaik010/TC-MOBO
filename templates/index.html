@@ -1,214 +1,181 @@
 {% extends 'base.html' %}
+
 {% block content %}
 {% load static %}
-<!-- Main container div body -->
-            
- 
-         <!-- ---------------- Booking Models & Form ----------------- -->
-
-<div class=" bg-white  " style="margin-top: 0%;">
-  
+<div class="bg-white" style="margin-top: 0%;">
     <div class="loader"></div>
-       <center>
-  <div style="width:260px;background-color:#232f3e;margin-top: 0%;margin-bottom: 20px;
-  border-bottom-left-radius:30px;border-bottom-right-radius:30px;" class="text-center text-white"> <marquee>{{offer}} </marquee> </div>
-  <div style="display: flex;justify-content: space-between;" class="me-3 ms-2">
-
-
-          <p style="font-size: small;text-align: right;color: #232f3e" ><img src="{% static 'images/svg/profile.svg' %}" class="bg-warning   rouded rounded-3 p-1" > {{user}}</p>
-
-             <p style="font-size: small;text-align: right;color: #232f3e" ><img src="{% static 'images/svg/location.svg' %}" class="bg-warning rouded rounded-3 p-1"> {{location}}</p>
-          
+    <div class="sticky sticky-top bg-white">
+    <center>
+        <div style="width: 260px; background-color: #232f3e; margin-top: 0%; margin-bottom: 10px;
+                    border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;" class="text-center text-white">
+            <marquee>{{ offer }}</marquee>
         </div>
-
-  <form id="myForm" action="{% url 'testing2' %}" method="get" >
-
-
-   
-        <div class="search bg-white d-flex mb-3 border border-dark mt-0 sticky-top" style="width:95%;border-radius: 18px;">
-            <input type="text" id="search-input" name="query" placeholder="Second Hand .." style="border-radius:20px ;" >
-            <button style="color: white;border-radius:18px ;" class="bg-warning shadow-sm" type="submit" style="">
-                <img src="{% static 'images/svg/search.svg' %}" alt="Search" >
-            </button>
+        <div style="display: flex; justify-content: space-between;" class="me-3 ms-2">
+            <p style="font-size: small; text-align: right; color: #232f3e">
+                <img src="{% static 'images/svg/profile.svg' %}" class="bg-warning rouded rounded-3 p-1">
+                {{ user }}
+            </p>
+            <p style="font-size: small; text-align: right; color: #232f3e">
+                <img src="{% static 'images/svg/location.svg' %}" class="bg-warning rouded rounded-3 p-1">
+                {{ location }}
+            </p>
         </div>
-       
-  </form>
-</center>
-
-        <div id="carousel{{ i.id }}" class="carousel slide" data-bs-ride="carousel" style="border-bottom: 0.5px solid silver;">
-                    <div class="carousel-inner rounded ">
-                        <div class="carousel-item active">
-                            <img src="{{ i.image.url }}" class="d-block w-100 img-fluid" alt="Image 1" >
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ i.image_1.url }}" class="d-block w-100 img-fluid" alt="Image 2" >
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ i.image_2.url }}" class="d-block w-100 img-fluid" alt="Image 3" >
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carousel{{ i.id }}" role="button" data-bs-slide="prev">
-                        <img src="{% static 'images/arrow.webp' %}" aria-hidden="true" class="img-fluid w-75 m-2" style="rotate:180deg;">
-                    </a>
-                    <a class="carousel-control-next" href="#carousel{{ i.id }}" role="button" data-bs-slide="next">
-                        <img src="{% static 'images/arrow.webp' %}" aria-hidden="true" class="img-fluid w-75 m-2">
-                    </a>
-                </div>
-
-
-      
-
-
-        <!-- Slection of device for   ing -->
-        <div class="container mb-5">
-          <div class="row gap-0 gutters p-1">
-              <div class="col-6 mb-2">
-            <a href="/rqs/" style="text-decoration: none;color: black;">
-                <div class="service-box shadow shadow-sm border rounded gradient-border rounded-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  <img src="{% static 'images/services/phone.webp' %}" class="img-fluid rounded " alt="#">
-                  <p>Phone repair</p>
-                  <span class=" text-white p-1 rounded rounded-3" style="background-color: #232f3e;">&#8594;</span>
-                </div>
-            </a>
-              </div>
-              <div class="col-6 mb-2">
-                <a href="rqs2/" style="text-decoration:none;color: black;">
-                <div class="service-box shadow shadow-sm border rounded rounded-4 gradient-border">
-                  <img src="{% static 'images/services/laptop.webp' %}" class="img-fluid rounded" alt="#">
-                  <p>Laptop repair</p>
-                  <span class=" text-white  p-1 rounded rounded-3" style="background-color: #232f3e;">&#8594;</span>
-                  </div>
-                </a>
-              </div>
-              <div class="col-6">
-                <a href="/product" style="text-decoration:none;color: black;">
-                  <div class="service-box pb-0 shadow shadow-sm border gradient-border rounded rounded-4">
-                      <img src="{% static 'images/services/shop.webp' %}" class="img-fluid"  alt="#">
-                      <p class="pt-2">Accessories</p>
-                  </div>
-                </a>
-              </div>
-              <div class="col-6">
-                <a href="/book" style="text-decoration:none;color: black;">
-                  <div class="service-box pb-0 shadow shadow-sm border gradient-border  rounded rounded-4">
-                      <img src="{% static 'images/services/second.webp' %}" class="img-fluid" alt="#">
-                      <p class="pt-2">Buy & Sell</p>
-                  </div>
-                </a>
-              </div>
-          </div>
-<br>
-    <div class="row gap-0 gutters p-3 ">
-                    <p class="text-center fw-bold " style="font-size: large;">OUR BEST SERVICES</p>
-            <div class="col-3 p-0">
-              <div class="service-box pb-0 shadow shadow-sm p-1 rounded  rounded-2" style="border:0.6px solid #232f3e;">
-                <img src="{% static 'images/services/cctv.webp' %}" alt="#" style="width:50px;">
-                <p style="font-size: x-small;" class="fw-bold">CCTV SETUP</p>
-              </div>
+        <form id="myForm" action="{% url 'testing' %}" method="get">
+            <div class="search bg-white d-flex mb-1 border border-dark mt-0 sticky-top"
+                 style="width: 95%; border-radius: 18px;">
+                <input type="text" id="search-input" name="query" placeholder="" style="border-radius: 20px;">
+                <button style="color: white; border-radius: 18px;" class="bg-warning shadow-sm" type="submit">
+                    <img src="{% static 'images/svg/search.svg' %}" alt="Search">
+                </button>
             </div>
-            <div class="col-3 p-0">
-              <div class="service-box pb-0 shadow shadow-sm p-1 rounded  rounded-2" style="border:0.6px solid #232f3e;">
-                <img src="{% static 'images/services/wifi.webp' %}" alt="#" style="width:50px;">
-                <p style="font-size: x-small;" class="fw-bold" >WIFI / LAN SETUP</p>
-                </div>
+        </form>
+    </center>
+</div>
+    <div id="carousel{{ contact.id }}" class="carousel slide" data-bs-ride="carousel" style="border-bottom: 0.5px solid silver;">
+        <div class="carousel-inner rounded">
+            <div class="carousel-item active">
+                <img src="{{ contact.image.url }}" class="d-block w-100 img-fluid" alt="Image 1">
             </div>
-            <div class="col-3 p-0">
-              <div class="service-box shadow shadow-sm p-1 rounded  rounded-2" style="border:0.6px solid #232f3e;">
-                    <img src="{% static 'images/mobilefix/crackfix.png' %}" alt="#" style="width:50px;">
-                <p style="font-size: x-small;" class="fw-bold">Display Crack Fix</p>
-              </div>
+            <div class="carousel-item">
+                <img src="{{ contact.image_1.url }}" class="d-block w-100 img-fluid" alt="Image 2">
             </div>
-            <div class="col-3 p-0">
-              
-              <div class="service-box shadow shadow-sm p-1 rounded  rounded-2" style="border:0.6px solid #232f3e;">
-                <img src="{% static 'images/services/laptop.webp' %}" alt="#" style="width:50px; ">
-                <p style="font-size: x-small;" class="fw-bold">Desktop Services</p>
-                </div>
+            <div class="carousel-item">
+                <img src="{{ contact.image_2.url }}" class="d-block w-100 img-fluid" alt="Image 3">
             </div>
         </div>
-
-        <a href="/profile" style="text-decoration: none;color: black;">
-          <div  class="service-box shadow shadow-sm  rounded rounded-2 row  " style="border:1px solid #FF9900;"> 
-            <img src="{% static 'images/services/profile.webp' %}" class="col-4" alt="#">
-            <div class="content col-8">
-               <h4>Technicians</h4>
-              <p style="font-size: x-small;">Just connect with technician and repair your device.</p>
-              <span class="bg-white shadow-sm text-dark p-1 rounded rounded-3">&#8594;</span>
-            </div>
-          </div>
+        <a class="carousel-control-prev" href="#carousel{{ contact.id }}" role="button" data-bs-slide="prev">
+            <img src="{% static 'images/arrow.webp' %}" aria-hidden="true" class="img-fluid w-50 me-3" style="transform: rotate(180deg);">
         </a>
-
-        <a href="/profile" style="text-decoration: none;color: black;">
-           <div  class="service-box shadow shadow-sm  rounded rounded-2 row  " style="border:1px solid #232f3e;">
-            <img src="{% static 'images/services/store.webp' %}" class="col-4" alt="#">
-            <div class="content content col-8">
-              <h4>Stores</h4>
-              <p style="font-size: x-small;">Near by stores at your location reapir device physically</p>
-              <span class="bg-white text-dark p-1 rounded rounded-3 shadow-sm">&#8594;</span>
-          </div>
-        </div>
-      </a>
-<br>
-  <div class="row gap-0 gutters p-3 text-center">
-                    <p class="text-center fw-bold " style="font-size: large;">LETS SHOP ON YOUR FAVURATE CATOGERY</p>
-                    {% for i in catogereis %}
-            <div class="col-3 p-1">
-                <img src="{{i.image.url}}" alt="#" style="width:60px;border-radius: 50%;border: 1px solid silver;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.545);">
-                <p style="font-size: x-small;" class="fw-bold">{{i.name}}</p>
+        <a class="carousel-control-next" href="#carousel{{ contact.id }}" role="button" data-bs-slide="next">
+            <img src="{% static 'images/arrow.webp' %}" aria-hidden="true" class="img-fluid w-50 ms-3">
+        </a>
+    </div>
+    <div class="container mb-5">
+        <div class="row gap-0 gutters p-1">
+            <div class="col-6 mb-2">
+                <a href="/rqs/" style="text-decoration: none; color: black;">
+                    <div class="service-box shadow shadow-sm border rounded gradient-border rounded-4"
+                         data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <img src="{% static 'images/services/phone.webp' %}" class="img-fluid rounded" alt="#">
+                        <p>Phone repair</p>
+                        <span class="text-white p-1 rounded rounded-3" style="background-color: #232f3e;">&#8594;</span>
+                    </div>
+                </a>
             </div>
+            <div class="col-6 mb-2">
+                <a href="rqs2/" style="text-decoration: none; color: black;">
+                    <div class="service-box shadow shadow-sm border rounded rounded-4 gradient-border">
+                        <img src="{% static 'images/services/laptop.webp' %}" class="img-fluid rounded" alt="#">
+                        <p>Laptop repair</p>
+                        <span class="text-white p-1 rounded rounded-3" style="background-color: #232f3e;">&#8594;</span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-6">
+                <a href="/product" style="text-decoration: none; color: black;">
+                    <div class="service-box pb-0 shadow shadow-sm border gradient-border rounded rounded-4">
+                        <img src="{% static 'images/services/shop.webp' %}" class="img-fluid" alt="#">
+                        <p class="pt-2">Accessories</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-6">
+                <a href="/book" style="text-decoration: none; color: black;">
+                    <div class="service-box pb-0 shadow shadow-sm border gradient-border rounded rounded-4">
+                        <img src="{% static 'images/services/second.webp' %}" class="img-fluid" alt="#">
+                        <p class="pt-2">Buy & Sell</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <br>
+        <div class="row gap-0 gutters p-3">
+            <p class="text-center fw-bold" style="font-size: large;">OUR BEST SERVICES</p>
+            <div class="col-3 p-0">
+                <div class="service-box pb-0 shadow shadow-sm p-1 rounded rounded-2" style="border: 0.6px solid #232f3e;">
+                    <img src="{% static 'images/services/cctv.webp' %}" alt="#" style="width: 50px;">
+                    <p style="font-size: x-small;" class="fw-bold">CCTV SETUP</p>
+                </div>
+            </div>
+            <div class="col-3 p-0">
+                <div class="service-box pb-0 shadow shadow-sm p-1 rounded rounded-2" style="border: 0.6px solid #232f3e;">
+                    <img src="{% static 'images/services/wifi.webp' %}" alt="#" style="width: 50px;">
+                    <p style="font-size: x-small;" class="fw-bold">WIFI / LAN SETUP</p>
+                </div>
+            </div>
+            <div class="col-3 p-0">
+                <div class="service-box shadow shadow-sm p-1 rounded rounded-2" style="border: 0.6px solid"/>
+                    <img src="{% static 'images/mobilefix/crackfix.png' %}" alt="#" style="width: 50px;">
+                    <p style="font-size: x-small;" class="fw-bold">Display Crack Fix</p>
+                </div>
+            </div>
+            <div class="col-3 p-0">
+                <div class="service-box shadow shadow-sm p-1 rounded rounded-2" style="border: 0.6px solid #232f3e;">
+                    <img src="{% static 'images/services/laptop.webp' %}" alt="#" style="width: 50px;">
+                    <p style="font-size: x-small;" class="fw-bold">Desktop Services</p>
+                </div>
+            </div>
+        </div>
+        <a href="/profile" style="text-decoration: none; color: black;">
+            <div class="service-box shadow shadow-sm rounded rounded-2 row" style="border: 1px solid #FF9900;">
+                <img src="{% static 'images/services/profile.webp' %}" class="col-4" alt="#">
+                <div class="content col-8">
+                    <h4>Technicians</h4>
+                    <p style="font-size: x-small;">Just connect with the technician and repair your device.</p>
+                    <span class="bg-white shadow-sm text-dark p-1 rounded rounded-3">&#8594;</span>
+                </div>
+            </div>
+        </a>
+        <a href="/profile" style="text-decoration: none; color: black;">
+            <div class="service-box shadow shadow-sm rounded rounded-2 row" style="border: 1px solid #232f3e;">
+                <img src="{% static 'images/services/store.webp' %}" class="col-4" alt="#">
+                <div class="content content col-8">
+                    <h4>Stores</h4>
+                    <p style="font-size: x-small;">Nearby stores at your location repair devices physically</p>
+                    <span class="bg-white text-dark p-1 rounded rounded-3 shadow-sm">&#8594;</span>
+                </div>
+            </div>
+        </a>
+        <br>
+        <div class="row gap-0 gutters p-3 text-center">
+            <p class="text-center fw-bold" style="font-size: large;">LET'S SHOP IN YOUR FAVORITE CATEGORY</p>
+            {% for category in catogereis %}
+                <div class="col-3 p-1">
+                    <a href="/product/?catogereis=category.id">
+                    <img src="{{ category.image.url }}" alt="#"
+                         style="width: 60px; border-radius: 50%; border: 1px solid silver; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.545);">
+                </a>
+
+                    <p style="font-size: x-small;" class="fw-bold">{{ category.name }}</p>
+                </div>
             {% endfor %}
         </div>
-
-
-   <!-- ----------card and catogery option------- -->
-  <div class="container pt-1 pb-1 rounded rounded-3 mt-2" style="background-image: url('{% static 'images/services/bg.gif' %}');">
-  <div id="productCardCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner p-0 m-0">
-      {% for product in products %}
-        <div class="carousel-item {% if forloop.first %}active{% endif %}" >
-          <div class="product-card  card text-center p-0 shadow shadow-sm " >
-            <center>
-            <img src="{{ product.image.url }}" class="d-block   rounded" alt="{{ product.title }}" style="width: 250px;height: 250px;">
-            <h3>{{ product.title }}</h3>
-            <p>Price: ${{ product.discount }}</p>
-            </center>
-          </div>
+        <div class="container pt-1 pb-1 rounded rounded-3 mt-2" style="background-image: url('{% static 'images/services/bg.gif' %}');">
+            <div id="productCardCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner p-0 m-0">
+                    {% for product in products %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <div class="product-card card text-center p-0 shadow shadow-sm">
+                                <center>
+                                    <img src="{{ product.image.url }}" class="d-block rounded" alt="{{ product.title }}"
+                                         style="width: 250px; height: 250px;">
+                                    <h3>{{ product.title }}</h3>
+                                    <p style="font-family: arial"; class="p-1 fw-bold">{{ product.discount }}&#8377; Rupee Only</p>
+                                </center>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#productCardCarousel"
+                        data-bs-slide="prev">
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#productCardCarousel"
+                        data-bs-slide="next">
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
         </div>
-      {% endfor %}
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#productCardCarousel" data-bs-slide="prev">
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#productCardCarousel" data-bs-slide="next">
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-
-   
-
-    
-      </div>    
-</div>
-        
-    
-
-           
 {% endblock %}
-
-

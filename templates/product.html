@@ -1,130 +1,125 @@
 {% extends 'base.html' %}  
 {% block content %}
 {% load static %}
-  {% load cart %}
+{% load cart %}
 
- {% if user %}
+{% if user %}
     <form id="myForm" action="{% url 'testing' %}" method="get">
-
-    <div class="navbar sticky sticky-top">
-        <div class="search d-flex w-100  ">
-            <input type="text" id="search-input" name="query" placeholder="Search any items">
-            <button id="search-button" type="submit">
-                <img src="{% static 'images/svg/search.svg' %}" alt="Search">
-            </button>
+        <div class="navbar sticky sticky-top">
+            <div class="search d-flex w-100">
+                <input type="text" id="search-input" name="query" placeholder="Search any items">
+                <button id="search-button" type="submit">
+                    <img src="{% static 'images/svg/search.svg' %}" alt="Search">
+                </button>
+            </div>
         </div>
-       
-    </div>
-</form>
-
+    </form>
 {% endif %}
 
-    <div class="container1 bg-white " style="margin-top: 24%;">
-      <div class="row">
-            {% for i in product %}
-            <div class=" col-lg-3 col-6 mb-0 p-1 p-sm-3 ">
-              <div class="mb-2 card   shadow shadow-sm p-1 " style="border-radius: 20px;border: 0.5px solid silver ">
-                <img src="{{i.image.url}}" class="card-img-top mx-auto m-1 p-0  img-fluid " style="width: 150px;height: 150px;"  alt="..." id="{{i.id}}" width="8rem"  data-bs-toggle="modal" data-bs-target="#modal{{ i.id }}"> 
-                <p class="card-title ms-2 ">{{i.name}}</p>
+<div class="container1 bg-white">
+    <div class="row">
+        {% for i in product %}
+        <div class="col-lg-3 col-6 mb-0 p-1 p-sm-3">
+            <div class="mb-2 card shadow shadow-sm p-1" style="border-radius: 20px; border: 0.5px solid silver">
+                <img src="{{ i.image.url }}" class="card-img-top mx-auto m-1 p-0 img-fluid" style="width: 150px; height: 150px;"
+                     alt="..." id="{{ i.id }}" width="8rem" data-bs-toggle="modal" data-bs-target="#modal{{ i.id }}">
+                <p class="card-title ms-2">{{ i.name }}</p>
                 <div class="box d-flex">
-                  <p class="  h5 p-0  text-dark w-50 text-center rounded " style="font-family:arial">{{i.discount}} &#8377;</p>
-                  <p class="  fw-small p-0 bg-light text-dark w-50 text-center rounded " style="opacity: 70%;font-family: arial"><del>{{i.price}} &#8377;</del></p>
-              </div>
-              <center>
-                <small style="font-size: x-small;margin-top: -10px;">Free Delevery</small>
-              </center>
-                <div class="card-footer border-0 border bg-white  ">
-                  {% if i|check_cart:request.session.cart %}
-                  <div class="row no-gutters p-0" >
-
-                    <form action="/product/#{{i.id}}" class="col-2 p-0" method="post">
-                      {% csrf_token %}
-                      <input name="product" hidden type="text" value='{{i.id}}' />
-                      <input type="text" hidden name="remove"  value="true">                       
-                      <input type="submit"  value="-" class=" btn  w-50 fw-bold text-white" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;background-color: #ff9900;">                       
-                    </form>
-
-                    <div class="text-center col pt-2 bg-light fw-bold" ><stronge>{{i|check_count:request.session.cart }}</stronge></div>
-                    
-                    <form action="/product/#{{i.id}}" class="col-2 p-0" method="post">
-                      {% csrf_token %}
-                      <input name="product" hidden type="text" value='{{i.id}}' />
-                      <input type="submit" value="+" class=" btn  w-50  text-center fw-bold text-white" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;background-color: #ff9900;">
-                       
-                      </form>
-
+                    <p class="h5 p-0 text-dark w-50 text-center rounded" style="font-family: arial">{{ i.discount }} &#8377;</p>
+                    <p class="fw-small p-0 bg-light text-dark w-50 text-center rounded" style="opacity: 70%; font-family: arial">
+                        <del>{{ i.price }} &#8377;</del>
+                    </p>
+                </div>
+                <center>
+                    <small style="font-size: x-small; margin-top: -10px;">Free Delivery</small>
+                </center>
+                <div class="card-footer border-0 border bg-white">
+                    {% if i|check_cart:request.session.cart %}
+                    <div class="row no-gutters p-0">
+                        <form action="/product/#{{ i.id }}" class="col-2 p-0" method="post">
+                            {% csrf_token %}
+                            <input name="product" hidden type="text" value='{{ i.id }}' />
+                            <input type="text" hidden name="remove" value="true">
+                            <input type="submit" value="-" class="btn w-50 fw-bold text-white"
+                                   style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; background-color: #ff9900;">
+                        </form>
+                        <div class="text-center col pt-2 bg-light fw-bold"><strong>{{ i|check_count:request.session.cart }}</strong>
+                        </div>
+                        <form action="/product/#{{ i.id }}" class="col-2 p-0" method="post">
+                            {% csrf_token %}
+                            <input name="product" hidden type="text" value='{{ i.id }}' />
+                            <input type="submit" value="+" class="btn w-50 text-center fw-bold text-white"
+                                   style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; background-color: #ff9900;">
+                        </form>
                     </div>
-                  {% else %}
-                  <form action="/product/#{{i.id}}" method="POST" class="btn-block p-0">
-                    {% csrf_token %}
-                  <input name="product" hidden type="text" value='{{i.id}}' />
-                  <input type="submit"  class="btn  border-rounded   border-opacity-75  rounded-5 shadow  w-100 text-white" name="cart" style="height:2rem;font-size: small;height: auto;background-color: #FF9900; "  value="BUY NOW" />
-  
-                  </form>
+                    {% else %}
+                    <form action="/product/#{{ i.id }}" method="POST" class="btn-block p-0">
+                        {% csrf_token %}
+                        <input name="product" hidden type="text" value='{{ i.id }}' />
+                        <input type="submit" class="btn border-rounded border-opacity-75 rounded-5 shadow w-100 text-white"
+                               name="cart" style="height:2rem; font-size: small; height: auto; background-color: #FF9900;"
+                               value="BUY NOW" />
+                    </form>
                     {% endif %}
                 </div>
-                
-           </div>
-          </div> 
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
-           <!-- Modal -->
-    <div class="modal fade " id="modal{{ i.id }}" tabindex="-1" role="dialog" aria-labelledby="modalLabel{{ i.id }}" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered " role="document">
-          <div class="modal-content p-0 gradient-border " style="border-radius:10px;">
-              <div class="modal-header">
-                  <h5 class="modal-title " id="modalLabel{{ i.id }}">{{i.name}}</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body p-0">
+<!-- Modal -->
+{% for i in product %}
+<div class="modal fade" id="modal{{ i.id }}" tabindex="-1" role="dialog" aria-labelledby="modalLabel{{ i.id }}"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content p-0 gradient-border" style="border-radius: 10px;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel{{ i.id }}">{{ i.name }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
                 <center>
-                 <img src="{{ i.image.url }}" width="80%" alt="">
+                    <img src="{{ i.image.url }}" width="80%" alt="">
                 </center>
                 <hr>
-                <p class="h3 p-2">{{i.name}}</p>
-                <p class="h6 p-2">{{i.desc}}</p>
+                <p class="h6  ps-2">{{ i.desc }}</p>
                 <div class="box d-flex">
-                  <p class="  h2 ps-3  rounded " style="font-family: verdana;"> {{i.discount}}&#8377;</p>
-                  <p class=" ps-1 rounded ms-3 bg-light text-dark  p-1 " style="opacity:70%;font-family: verdana;"><small><del>{{i.price}}&#8377;</del></small></p>
-                  </div>
-                  <div class="modal-footer border-0 border bg-white  ">
+                    <p class="h2 ps-3 rounded" style="font-family: verdana;">{{ i.discount }}&#8377;</p>
+                    <p class="ps-1 rounded ms-3  bg-light text-dark p-1"
+                       style="opacity: 70%; font-family: verdana;"><small><del>{{ i.price }}&#8377;</del></small></p>
+                </div>
+                <div class="modal-footer border-0 border bg-white">
                     {% if i|check_cart:request.session.cart %}
-                    <div class="row no-gutters p-0" >
-  
-                      <form action="/product/#{{i.id}}" class="col-2 p-0" method="post">
-                        {% csrf_token %}
-                        <input name="product" hidden type="text" value='{{i.id}}' />
-                        <input type="text" hidden name="remove"  value="true">                       
-                        <input type="submit"  value="-" class=" btn  w-50  text-white" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;background-color: #ff9900;">                       
-                      </form>
-  
-                      <div class="text-center col pt-2 "><stronge>{{i|check_count:request.session.cart }}</stronge></div>
-                      
-                      <form action="/product/#{{i.id}}" class="col-2 p-0" method="post">
-                        {% csrf_token %}
-                        <input name="product" hidden type="text" value='{{i.id}}' />
-                        <input type="submit" value="+" class=" btn  w-50  text-center  text-white" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;background-color: #ff9900;">
-                         
+                    <div class="row no-gutters p-0">
+                        <form action="/product/#{{ i.id }}" class="col-2 p-0" method="post">
+                            {% csrf_token %}
+                            <input name="product" hidden type="text" value='{{ i.id }}
+                            <input type="text" hidden name="remove" value="true">
+                            <input type="submit" value="-" class="btn w-50 text-white"
+                                   style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; background-color: #ff9900;">
                         </form>
-  
-                      </div>
+                        <div class="text-center col pt-2"><strong>{{ i|check_count:request.session.cart }}</strong></div>
+                        <form action="/product/#{{ i.id }}" class="col-2 p-0" method="post">
+                            {% csrf_token %}
+                            <input name="product" hidden type="text" value='{{ i.id }}' />
+                            <input type="submit" value="+" class="btn w-50 text-center text-white"
+                                   style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; background-color: #ff9900;">
+                        </form>
+                    </div>
                     {% else %}
-                    <form action="/product/#{{i.id}}" method="POST" class="btn-block p-0">
-                      {% csrf_token %}
-                    <input name="product" hidden type="text" value='{{i.id}}' />
-                    <input type="submit"  class="btn  border-rounded   border-opacity-75  rounded-5 shadow  w-100 text-white" name="cart" style="height:2rem;font-size: small;height: auto;font-family: poppins;background-color: #FF9900; "  value="ORDER NOW" />
-    
+                    <form action="/product/#{{ i.id }}" method="POST" class="btn-block p-0">
+                        {% csrf_token %}
+                        <input name="product" hidden type="text" value='{{ i.id }}' />
+                        <input type="submit" class="btn border-rounded border-opacity-75 rounded-5 shadow w-100 text-white"
+                               name="cart" style="height:2rem; font-size: small; height: auto; font-family: poppins; background-color: #FF9900;"
+                               value="ORDER NOW" />
                     </form>
-                      {% endif %}
-                  </div>
-              </div>
-           
-          </div>
-      </div>
-  </div>
-          
-           {% endfor %}
-      </div>
-      </div>
-        
-           
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
 {% endblock %}

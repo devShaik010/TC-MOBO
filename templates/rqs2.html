@@ -24,7 +24,7 @@
                 event.preventDefault(); // Prevent the default form submission
 
                 // Get form data
-                var formData = $('#pc_repairing').serialize();
+                var formData = $('#pcfix_repairing').serialize();
 
                     // Send data to the second URL
                     $.post('http://192.168.0.109:8000/rhis/', formData, function(response2) {
@@ -64,7 +64,7 @@
         {% if user %}
 
               {% for i in url %}
-              <form action="{{i.url}}" method="post" id="pc_repairing">
+              <form action="{{i.url}}" method="post" id="pcfix_repairing">
               {% endfor %}
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -121,7 +121,7 @@
                    <div class="col">
                     <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="damage" value="Upgrade"  >
                     <label class="btn btn-outline-danger " for="damage" style="width: 70px;">
-                    <img src="{% static './images/laptop/laptopfix.png' %}" class="img-fluid   "   alt="Image 1">
+                    <img src="{% static './images/pcfix/laptopfix.webp' %}" class="img-fluid   "   alt="Image 1">
                     <small style="font-size:x-small;color: black;">Upgrade</small>
                     </label>
                   </div>
@@ -129,7 +129,7 @@
                   <div class="col" >
                     <input type="checkbox"  class="btn-check "  name="data[PROBLEM]" id="Battery" value="Battery" >
                     <label class="btn btn-outline-danger " for="Battery" style="width: 70px;">  
-                    <img src="{% static './images/laptop/batteryfix.png' %}" class="img-fluid   "   alt="Image 1">
+                    <img src="{% static './images/pcfix/batteryfix.webp' %}" class="img-fluid   "   alt="Image 1">
                     <small style="font-size:x-small;color: black;">Battery</small>
                     </label>
                   </div>
@@ -137,14 +137,14 @@
                   <div class="col">
                     <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="Booting" value="Boot Repair" >
                     <label class="btn btn-outline-danger " for="Booting" style="width: 70px;">  
-                    <img src="{% static './images/laptop/boot.png' %}" class="img-fluid   "   alt="Image 1">
+                    <img src="{% static './images/pcfix/boot.webp' %}" class="img-fluid   "   alt="Image 1">
                     <small style="font-size:x-small;color: black;">Booting</small>
                     </label>
                   </div>
                     <div class="col">
                     <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="virus" value="Anti virus"  >
                     <label class="btn btn-outline-danger " for="virus" style="width: 70px;">  
-                    <img src="{% static './images/laptop/virus.png' %}" class="img-fluid   "   alt="Image 1">
+                    <img src="{% static './images/pcfix/virus.webp' %}" class="img-fluid   "   alt="Image 1">
                     <small style="font-size:x-small;color: black;">Virus</small>
                     </label>
                   </div>
@@ -158,7 +158,7 @@
                   <div class="col">
                     <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="mic" value="Damage"  >
                     <label class="btn btn-outline-danger  " for="Damage" style="width: 70px;">  
-                    <img src="{% static './images/laptop/alert.png' %}" class="img-fluid   "   alt="Image 1">
+                    <img src="{% static './images/pcfix/alert.webp' %}" class="img-fluid   "   alt="Image 1">
                     <small style="font-size:x-small;color: black;">Damage</small>
                     </label>
                   </div>
@@ -166,7 +166,7 @@
                   <div class="col">
                     <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="lock" value="Unlcking"  >
                     <label class="btn btn-outline-danger " for="lock" style="width: 70px;">  
-                    <img src="{% static './images/laptop/lock.png' %}" class="img-fluid   "   alt="Image 1">
+                    <img src="{% static './images/pcfix/lock.webp' %}" class="img-fluid   "   alt="Image 1">
                     <small style="font-size:x-small;color: black;">Unlock</small>
                     </label>
                   </div>
@@ -174,7 +174,7 @@
                   <div class="col ">
                     <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="Software" value="OS installation"  >
                     <label class="btn btn-outline-danger " for="Software" style="width: 70px;">  
-                    <img src="{% static './images/laptop/os.png' %}" class="img-fluid   "   alt="Image 1">
+                    <img src="{% static './images/pcfix/os.webp' %}" class="img-fluid   "   alt="Image 1">
                     <small style="font-size:x-small;color: black;">Software</small>
                     </label>
                   </div>
@@ -182,7 +182,7 @@
                   <div class="col">
                     <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="ram" value="Ram" >
                     <label class="btn btn-outline-danger " for="ram" style="width: 70px;">  
-                    <img src="{% static './images/laptop/ramfix.png' %}" class="img-fluid   "   alt="Image 1">
+                    <img src="{% static './images/pcfix/ramfix.webp' %}" class="img-fluid   "   alt="Image 1">
                     <small style="font-size:x-small;color: black;">Ram</small>
                     </label>
                   </div>
@@ -194,21 +194,21 @@
              <div class="col">
                     <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="hdd" value="Heating"  >
                     <label class="btn btn-outline-danger " for="hdd" style="width: 70px;">  
-                    <img src="{% static './images/laptop/hddfix.png' %}" class="img-fluid   "   alt="Image 1">
+                    <img src="{% static './images/pcfix/hddfix.webp' %}" class="img-fluid   "   alt="Image 1">
                     <small style="font-size:x-small;color: black;">HDD/SSD</small>
                     </label>
                   </div>
                   <div class="col">
                     <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="keyboard" value="keyboard">
                     <label class="btn btn-outline-danger " for="keyboard" style="width: 70px;">  
-                    <img src="{% static './images/laptop/keyboard.png' %}" class="img-fluid   "   alt="Image 1">
+                    <img src="{% static './images/pcfix/keyboard.webp' %}" class="img-fluid   "   alt="Image 1">
                     <small style="font-size:x-small;color: black;">keyboard</small>
                     </label>
                   </div>
                     <div class="col">
                     <input type="checkbox"  class="btn-check "  name="data[PROBLEM]"  id="touchfix" value="touchfix" >
                     <label class="btn btn-outline-danger " for="touchfix" style="width: 70px;">  
-                    <img src="{% static './images/laptop/touchfix.png' %}" class="img-fluid   "   alt="Image 1">
+                    <img src="{% static './images/pcfix/touchfix.webp' %}" class="img-fluid   "   alt="Image 1">
                     <small style="font-size:x-small;color: black;">Touchfix</small>
                     </label>
                   </div>
@@ -240,25 +240,25 @@
                   <div class="col">
                     <input type="radio"  class="btn-check "   name="data[BRAND]" id="DELL" value="DELL" >
                     <label class="btn btn-outline-secondary p-1 " for="DELL" style="width: 70px; ">  
-                    <img src="{% static './images/laptopproblems/dell.png' %}" class="img-fluid  "  alt="Image 1">
+                    <img src="{% static './images/pc/dell.webp' %}" class="img-fluid  "  alt="Image 1">
                     </label>
                   </div>
                   <div class="col">
                     <input type="radio"  class="btn-check "   name="data[BRAND]" id="HP" value="HP" >
                     <label class="btn btn-outline-secondary p-1 " for="HP" style="width: 70px;">  
-                    <img src="{% static './images/laptopproblems/hp.png' %}" class="img-fluid " alt="Image 1">
+                    <img src="{% static './images/pc/hp.webp' %}" class="img-fluid " alt="Image 1">
                     </label>
                   </div>
                   <div class="col">
                     <input type="radio"  class="btn-check "   name="data[BRAND]" id="samsung" value="Samsung" >
                     <label class="btn btn-outline-secondary p-0" for="samsung" style="width: 70px;">  
-                    <img src="{% static './images/laptopproblems/samsung.jpg' %}" class="img-fluid " alt="Image 1">
+                    <img src="{% static './images/pc/samsung.webp' %}" class="img-fluid " alt="Image 1">
                     </label>
                   </div>
                   <div class="col">
                     <input type="radio"  class="btn-check "   name="data[BRAND]" id="realme" value="Realme" >
                     <label class="btn btn-outline-secondary p-0" for="realme" style="width: 70px;">  
-                    <img src="{% static './images/laptopproblems/realme.jpg' %}" class="img-fluid " alt="Image 1">
+                    <img src="{% static './images/pc/realme.webp' %}" class="img-fluid " alt="Image 1">
                     </label>
                   </div>
                 </div>
@@ -267,26 +267,26 @@
                   <div class="col">
                     <input type="radio"  class="btn-check "   name="data[BRAND]" id="lenovo" value="lenovo" >
                     <label class="btn btn-outline-secondary p-0" for="lenovo" style="width: 70px;">  
-                    <img src="{% static './images/laptopproblems/lenovo.jpg' %}" class="img-fluid  " alt="Image 1">
+                    <img src="{% static './images/pc/lenovo.webp' %}" class="img-fluid  " alt="Image 1">
                     </label>
                   </div>
                   <div class="col">
                     <input type="radio"  class="btn-check "   name="data[BRAND]" id="lg" value="lg" >
                     <label class="btn btn-outline-secondary p-0" for="lg" style="width: 70px;">  
-                    <img src="{% static './images/laptopproblems/lg.jpg' %}" class="img-fluid  " alt="Image 1">
+                    <img src="{% static './images/pc/lg.webp' %}" class="img-fluid  bg-white" alt="Image 1">
                     </label>
                   </div>
                   <div class="col">
                     <input type="radio"  class="btn-check "   name="data[BRAND]" id="sony" value="sony" >
                     <label class="btn btn-outline-secondary p-0" for="sony" style="width: 70px;">  
-                    <img src="{% static './images/laptopproblems/sony.jpg' %}" class="img-fluid  " alt="Image 1">
+                    <img src="{% static './images/pc/sony.webp' %}" class="img-fluid  " alt="Image 1">
                     </label>
                   </div>
                 
                   <div class="col">
                     <input type="radio"  class="btn-check "   name="data[BRAND]" id="msi" value="msi" >
                     <label class="btn btn-outline-secondary p-0" for="msi" style="width: 70px;">  
-                    <img src="{% static './images/laptopproblems/msi.jpg' %}" class="img-fluid  " alt="Image 1">
+                    <img src="{% static './images/pc/msi.webp' %}" class="img-fluid  " alt="Image 1">
                     </label>
                   </div>
                 
@@ -295,20 +295,20 @@
                   <div class="col">
                     <input type="radio"  class="btn-check "   name="data[BRAND]" id="toshiba" value="toshiba" >
                     <label class="btn btn-outline-secondary  pt-4 pb-4" for="toshiba" style="width: 70px;">  
-                    <img src="{% static './images/laptopproblems/toshiba.png' %}" class="img-fluid  " alt="Image 1">
+                    <img src="{% static './images/pc/toshiba.webp' %}" class="img-fluid  " alt="Image 1">
                     </label>
                   </div>
                   <div class="col">
                     <input type="radio"  class="btn-check "   name="data[BRAND]" id="avita" value="avita" >
                     <label class="btn btn-outline-secondary p-0" for="avita" style="width: 70px;">  
-                    <img src="{% static './images/laptopproblems/avita.jpg' %}" class="img-fluid  " alt="Image 1">
+                    <img src="{% static './images/pc/avita.webp' %}" class="img-fluid  " alt="Image 1">
                     </label>
                   </div>
 
                    <div class="col">
                     <input type="radio"  class="btn-check "   name="data[BRAND]" id="asus" value="Asus" >
                     <label class="btn btn-outline-secondary p-0" for="asus" style="width: 70px;">  
-                    <img src="{% static './images/laptopproblems/asus.jpg' %}" class="img-fluid  " alt="Image 1">
+                    <img src="{% static './images/pc/asus.webp' %}" class="img-fluid  " alt="Image 1">
                     </label>
                   </div>
 
@@ -398,12 +398,12 @@
     });
   });
 
-  var form = document.getElementById('pc_repairing');
+  var form = document.getElementById('pcfix_repairing');
   form.addEventListener("submit", e => {
     e.preventDefault();
     fetch(form.action, {
         method : "POST",
-        body: new FormData(document.getElementById("pc_repairing")),
+        body: new FormData(document.getElementById("pcfix_repairing")),
     }).then(
         response => response.json()
     ).then((html) => {

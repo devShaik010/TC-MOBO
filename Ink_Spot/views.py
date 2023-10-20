@@ -1,81 +1,64 @@
-from django.shortcuts import render , HttpResponse ,redirect
-from django.contrib.auth.models import User 
+from django.shortcuts import render, HttpResponse, redirect
+from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password, make_password
-# Import packages from Models
-from .models.product import Product
-from .models.contact import Contact
-from .models.profile import Profile
-from .models.categories import Categories
-from .models.profilecat import Profilecat
-from .models.book import Book
-from .models.b_catogeries import B_categories
-from .models.customer import Customer
-from .models.order import Order
-from .models.pform import Pform
-
-
-#payment gatway
+from .models import Product, Contact, Profile, Categories, Profilecat, Book, B_categories, Customer, Order, Pform
 import razorpay
+def payment(amount, user_profile):
+    key_id = "rzp_test_YlYtdLrSGniSFi"
+    key_secret = "1WYuR9tuqgVA9kHcTIG2PwoA"
+    client = razorpay.Client(auth=(key_id, key_secret))
 
-def payment(amount , user_profile):
-      key_id = "rzp_test_YlYtdLrSGniSFi"
-      key_secret = "1WYuR9tuqgVA9kHcTIG2PwoA"
-      client = razorpay.Client(auth=(key_id,key_secret))
+    data = {
+        "amount": float(amount) * 100,
+        "currency": "INR",
+        "receipt": user_profile,
+        "notes": {
+            "name": user_profile,
+            "Payment_for": "New order",
+        }
+    }
+    
+    order = client.order.create(data=data)
+    order_id = order["id"]
+    name = order['receipt']
 
-      data = {
-                 'amount' : int(amount)*100,
-                 "currency" : "INR",
-                 "receipt" : user_profile,
-                  "notes" :
-              {   
-                    "name" : user_profile,
-                    "Payment_for" : "New order",
-              }
+    get_order = {
+        'id': order_id,
+        'receipt': name,
+    }
+    return get_order
 
-             }
-      order = client.order.create(data=data)
-      for i in order:
-          print(i , order[i])
-
-
-      order_id = order["id"]
-      name = order['receipt']
-
-      get_order = {}
-      get_order['id'] = order_id
-      get_order['receipt'] = name
-
-      return get_order
-      
-# Create your views here.
 def index(request):
     product = Product.get_all()
+    contact = Contact.objects.get()
     catogereis = Categories.all_catogaries()
     book = Book.get_all()
-    user_profile = (request.session.get('name'))
-    user_mail = (request.session.get('email'))
-    user_phone = (request.session.get('phone'))
-    location = (request.session.get('location'))
-    login_button = None
+    user_profile = request.session.get('name')
+    user_mail = request.session.get('email')
+    user_phone = request.session.get('phone')
+    location = request.session.get('location')
+    
     if user_profile:
         login_button = None
     else:
-        login_button = "Login"  
+        login_button = "Login"
 
-    s_data = {}
-    s_data['user'] = user_profile
-    s_data['mail'] = user_mail
-    s_data['phone'] = user_phone
-    s_data['login']= login_button     
-    s_data['products'] = product 
-    s_data['catogereis'] = catogereis 
-    s_data['books'] = book 
-    s_data['location'] = location
-    
+    s_data = {
+        'user': user_profile,
+        'mail': user_mail,
+        'phone': user_phone,
+        'login': login_button,
+        'products': product,
+        'catogereis': catogereis,
+        'books': book,
+        'location': location,
+        'contact': contact,
+    }
+
     if user_profile:
-        return render(request, 'index.html' ,s_data)
+        return render(request, 'index.html', s_data)
     else:
-        return render(request,'intro.html')
+        return render(request, 'signup.html')
 
 
 # For Creating User ( signup )
@@ -331,6 +314,7 @@ def check_out(request):
         user_profile = (request.session.get('name'))
         
         total = request.POST.get('total')
+        print(total)
         user_profile = (request.session.get('name'))
         
         order_get = payment(total,user_profile)
@@ -341,7 +325,6 @@ def check_out(request):
         data['receipt'] = order_get['receipt']
         data['total'] = total
         data['user'] = user_profile
-        request.session['cart'] = {}
 
 
         return render(request, 'payment.html',data)   
@@ -366,12 +349,13 @@ def orders(request):
         return render(request, 'order.html',orders)
     
 def payment_page(request):
+    request.session['cart'] = {}
     if request.method =="POST":
         order_id = request.POST.get('data-order_id')
         print(order_id)
      
 
-        return redirect('home')
+        return redirect('orders')
 
 
     

@@ -12,7 +12,7 @@ SECRET_KEY = 'django-insecure-l_-orv@)j2o5(#97-dnnl2ahtnef*^$2^u547e8zfqt9##6dmd
 DEBUG = True   
 
 #Allowed Hosts
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # All isnatlled application defin

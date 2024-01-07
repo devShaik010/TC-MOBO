@@ -2,6 +2,9 @@
 
 {% block content %}
 {% load static %}
+<!-- Modal -->
+
+  
 <div class="bg-white" style="margin-top: 0%;">
     <div class="loader"></div>
     <div class="sticky sticky-top bg-white">
@@ -92,25 +95,25 @@
         <div class="row gap-0 gutters p-3">
             <p class="text-center fw-bold" style="font-size: large;">OUR BEST SERVICES</p>
             <div class="col-3 p-0">
-                <div class="service-box shadow shadow-sm p-1 rounded rounded-2" style="border: 0.6px solid"/>
+                <div onclick="sendMessage('Display Crack Fix service')" class="service-box shadow shadow-sm p-1 rounded rounded-2" style="border: 0.6px solid"/>
                 <img src="{% static 'images/mobilefix/crackfix.png' %}" alt="#" style="width: 50px;">
                 <p style="font-size: x-small;" class="fw-bold">Display Crack Fix</p>
             </div>
         </div>
         <div class="col-3 p-0">
-            <div class="service-box pb-0 shadow shadow-sm p-1 rounded rounded-2" style="border: 0.6px solid #232f3e;">
+            <div onclick="sendMessage('CCTV/DVR SETUP Service')" class="service-box pb-0 shadow shadow-sm p-1 rounded rounded-2" style="border: 0.6px solid #232f3e;">
                 <img src="{% static 'images/services/cctv.webp' %}" alt="#" style="width: 50px;">
                 <p style="font-size: x-small;" class="fw-bold">CCTV/DVR SETUP</p>
             </div>
         </div>
         <div class="col-3 p-0">
-            <div class="service-box pb-0 shadow shadow-sm p-1 rounded rounded-2" style="border: 0.6px solid #232f3e;">
+            <div onclick="sendMessage('WiFi/LAN SETUP Service')" class="service-box pb-0 shadow shadow-sm p-1 rounded rounded-2" style="border: 0.6px solid #232f3e;">
                 <img src="{% static 'images/services/wifi.webp' %}" alt="#" style="width: 50px;">
                 <p style="font-size: x-small;" class="fw-bold">WIFI / LAN SETUP</p>
             </div>
         </div>
             <div class="col-3 p-0">
-                <div class="service-box shadow shadow-sm p-1 rounded rounded-2" style="border: 0.6px solid #232f3e;">
+                <div onclick="sendMessage('Desktop Service')" class="service-box shadow shadow-sm p-1 rounded rounded-2" style="border: 0.6px solid #232f3e;">
                     <img src="{% static 'images/services/laptop.webp' %}" alt="#" style="width: 50px;">
                     <p style="font-size: x-small;" class="fw-bold">Desktop Services</p>
                 </div>
@@ -178,4 +181,13 @@
         </div>
     </div>
 </div>
+
+<script>
+    function sendMessage(service) {
+      var phoneNumber = '+918897103324'; // Replace with your WhatsApp number
+      var message = encodeURIComponent('Hello! I am interested in ' + service + '.'); // Customize your message here
+      var whatsappLink = 'https://wa.me/' + phoneNumber + '?text=' + message;
+      window.open(whatsappLink);
+    }
+  </script>
 {% endblock %}

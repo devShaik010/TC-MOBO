@@ -8,7 +8,7 @@ class Profile(models.Model):
     phone = models.CharField(max_length=15)
     services = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
-    image = models.ImageField(upload_to="Uploads\profile")
+    image = models.ImageField(upload_to="statics/Uploads/profile")
     categories = models.ForeignKey(Profilecat,on_delete=models.CASCADE, default=1)
     status = models.BooleanField(default=False)
 

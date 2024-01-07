@@ -28,41 +28,41 @@ def payment(amount, user_profile):
     }
     return get_order
 
-def index(request):
-    product = Product.get_all()
-    contact = Contact.objects.get()
-    catogereis = Categories.all_catogaries()
-    book = Book.get_all()
-    user_profile = request.session.get('name')
-    user_mail = request.session.get('email')
-    user_phone = request.session.get('phone')
-    location = request.session.get('location')
+# def index(request):
+#     product = Product.get_all()
+#     contact = Contact.objects.get()
+#     catogereis = Categories.all_catogaries()
+#     book = Book.get_all()
+#     user_profile = request.session.get('name')
+#     user_mail = request.session.get('email')
+#     user_phone = request.session.get('phone')
+#     location = request.session.get('location')
     
-    if user_profile:
-        login_button = None
-    else:
-        login_button = "Login"
+#     if user_profile:
+#         login_button = None
+#     else:
+#         login_button = "Login"
 
-    s_data = {
-        'user': user_profile,
-        'mail': user_mail,
-        'phone': user_phone,
-        'login': login_button,
-        'products': product,
-        'catogereis': catogereis,
-        'books': book,
-        'location': location,
-        'contact': contact,
-    }
+#     s_data = {
+#         'user': user_profile,
+#         'mail': user_mail,
+#         'phone': user_phone,
+#         'login': login_button,
+#         'products': product,
+#         'catogereis': catogereis,
+#         'books': book,
+#         'location': location,
+#         'contact': contact,
+#     }
 
-    if user_profile:
-        return render(request, 'index.html', s_data)
-    else:
-        return render(request, 'signup.html')
+#     if user_profile:
+#         return render(request, 'index.html', s_data)
+#     else:
+#         return render(request, 'signup.html')
 
 
-# For Creating User ( signup )
-def sign_up(request):
+# # For Creating User ( signup )
+# def sign_up(request):
     if request.method == 'GET':
         user_name = ""
         user_check = {}

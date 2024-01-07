@@ -11,9 +11,9 @@ class Book(models.Model):
     about = models.CharField(max_length=500)
     price = models.IntegerField(default=0)
     location = models.CharField(max_length=150)
-    image = models.ImageField(upload_to="Uploads/Books")
-    image_1 = models.ImageField(upload_to="Uploads/Books")
-    image_2 = models.ImageField(upload_to="Uploads/Books")
+    image = models.ImageField(upload_to="statics/Uploads/Books")
+    image_1 = models.ImageField(upload_to="statics/Uploads/Books")
+    image_2 = models.ImageField(upload_to="statics/Uploads/Books")
     b_categories = models.ForeignKey(B_categories, on_delete=models.CASCADE, default=1)
 
     @staticmethod

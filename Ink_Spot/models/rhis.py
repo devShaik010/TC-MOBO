@@ -1,6 +1,7 @@
 from .customer import Customer
 from django.db import models
 import datetime
+from .order import Order
 
 class Rhis(models.Model):  
     customer  = models.ForeignKey(Customer, on_delete=models.CASCADE)

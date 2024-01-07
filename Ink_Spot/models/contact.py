@@ -5,9 +5,9 @@ class Contact(models.Model):
     offcial_phone = models.CharField(max_length=20,default=7330012300)
     email = models.EmailField()
 
-    image = models.ImageField(upload_to="Uploads/Books",default="Uploads/Books/1.jpg")
-    image_1 = models.ImageField(upload_to="Uploads/Books",default="Uploads/Books/1.jpg")
-    image_2 = models.ImageField(upload_to="Uploads/Books",default="Uploads/Books/1.jpg")
+    image = models.ImageField(upload_to="statics/Uploads/Books",default="statics/Uploads/Books/1.jpg")
+    image_1 = models.ImageField(upload_to="statics/Uploads/Books",default="statics/Uploads/Books/1.jpg")
+    image_2 = models.ImageField(upload_to="statics/Uploads/Books",default="statics/Uploads/Books/1.jpg")
     
     
 

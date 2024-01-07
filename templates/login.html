@@ -3,8 +3,8 @@
 {% load static %}
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
   <title>LOGIN</title>
 
@@ -19,22 +19,23 @@
       });
     });
   </script>
+  
 
   <style>
     /* General Styles */
     body {
-      background-color: #28282B;
+      background-color: #ffffff;
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-    }
+    }   
 
     /* Card Styles */
     .card {
       border-radius: 20px;
       padding: 30px;
-      background: linear-gradient(45deg, #FF9900, #232f3e);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(45deg, #ffffff, #ffffff);
+      box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
       margin-top: 5rem;
       width: 80%;
       max-width: 400px;
@@ -43,7 +44,7 @@
     }
 
     .card-body {
-      color: #000;
+      color: #c9c5c5;
     }
 
     /* Input Styles */
@@ -51,7 +52,7 @@
       position: relative;
       margin-bottom: 1rem;
     }
-
+    
     .fa-input {
       position: absolute;
       top: 50%;
@@ -62,10 +63,11 @@
 
     .form-control {
       border-radius: 20px;
-      padding: 15px 20px 15px 45px;
+      padding: 15px 25px 15px 45px;
       border: none;
       background-color: #fff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 0px 10px rgba(23, 22, 22, 0.1);
+      
       width: 80%;
     }
 
@@ -99,37 +101,37 @@
 
 <body>
 
-  <div class="loader"></div>
-
-  <div class="container">
-    <section id="signup" class="vh-100 d-flex justify-content-center align-items-center">
-      <div class="card">
-        <div class="card-body">
-          <center>
-            <img src="{% static '/images/svg/logo.svg' %}" width="50%" alt="Logo">
-          </center>
-          <form class="mt-4" method="POST" action="/login/">
-            {% csrf_token %}
-            <div class="input-group">
-              <span class="fa fa-user fa-lg fa-fw fa-input"></span>
-              <input type="email" id="email" name="email" class="form-control" placeholder="Enter Gmail Id" required>
-              <p class="alert alert-danger text-small" hidden> Remove Spaces</p>
-            </div>
-            <div class="input-group">
-              <span class="fa fa-lock fa-lg fa-fw fa-input"></span>
-              <input type="password" id="password" name="password" class="form-control" placeholder="Enter PIN" required>
-              <p class="alert alert-danger text-small" hidden> Remove Spaces</p>
-            </div>
-            <button type="submit" class="btn-login">LOGIN</button>
-          </form>
-          <a href="/signup/#signup" class="help-link">Sign Up</a>
-          <a href="#" class="help-link">Forgot Password</a>
+  <body>
+    <div class="container">
+      <section id="signup" class="vh-100 d-flex justify-content-center align-items-center">
+        <div class="card">
+          <div class="card-body">
+            <center>
+              <img src="{% static '/images/svg/logo.svg' %}" width="50%" alt="Logo">
+            </center>
+            <form class="mt-4" method="POST" action="/login/">
+              {% csrf_token %}
+              <div class="input-group">
+                <center>
+                  {% if error %}
+                  <p style="color: rgba(255, 0, 0, 0.668);font-weight: 900;">{{error}}</p>
+                  {% endif %}
+                </center>
+                <input type="email" id="email" name="email" class="form-control" value="{{email}}" placeholder="Enter Gmail Id"  required>
+              </div>
+              <div class="input-group">
+                <input type="password" id="password" name="password" class="form-control" placeholder="Enter PIN" required>
+              </div>
+              <button type="submit" class="btn-login">LOGIN</button>
+              <div class="loader" style="display: none;"></div>
+            </form>
+            <a href="/signup/#signup" class="help-link">Sign Up</a>
+            <a href="#" class="help-link">Forgot Password</a>
+          </div>
         </div>
-      </div>
-    </section>
-  </div>
-  <script src="{% static 'js/script.js' %}"></script>
+      </section>
+    </div>
 
-</body>
-
-</html>
+  </body>
+  
+  </html>
